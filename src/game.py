@@ -51,7 +51,7 @@ while running:
 
     # determine player movement
     player_dir = Vec2()
-    if keys[pygame.K_LEFT]:
+    if keys[pygame.K_LEFT] or keys[pygame.K_a]:
         player_dir += Vec2(-1, 0)
     if keys[pygame.K_RIGHT]:
         player_dir += Vec2(1, 0)
