@@ -78,7 +78,6 @@ while running:
             player_pos = new_player_pos
 
             if prev_tile_props['id'] != new_tile_props['id']:
-                print(new_tile_props)
                 if new_tile_props['id'] == 65: # hardcoded special tile id
                     audio.play_sfx('rasp')
 
