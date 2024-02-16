@@ -1,6 +1,7 @@
 import pygame
 from vec2 import Vec2
 from map import TiledMap
+from audio import AudioEngine
 
 TILE_SIZE = 16
 PLAYER_SPEED = 1.5
@@ -9,6 +10,7 @@ PLAYER_SPEED = 1.5
 pygame.init()
 screen = pygame.display.set_mode((1024, 576)) # this should probably be 16:9
 clock = pygame.time.Clock()
+audio = AudioEngine()
 running = True
 
 current_map = TiledMap('../maps/dungeon_map.tmx')
@@ -65,12 +67,20 @@ while running:
 
         player_v = player_dir.normalized() * PLAYER_SPEED
 
+        prev_player_tile_coords = player_pos / TILE_SIZE
+        prev_tile_props = current_map.get_tile_props_by_coords(base_tile_layer_idx, prev_player_tile_coords.x, prev_player_tile_coords.y)
+
         new_player_pos = player_pos + player_v
-        player_tile_coords = new_player_pos / TILE_SIZE
-        tile_props = current_map.get_tile_props_by_coords(base_tile_layer_idx, player_tile_coords.x, player_tile_coords.y)
-        passable = tile_props.get('passable', False)
+        new_player_tile_coords = new_player_pos / TILE_SIZE
+        new_tile_props = current_map.get_tile_props_by_coords(base_tile_layer_idx, new_player_tile_coords.x, new_player_tile_coords.y)
+        passable = new_tile_props.get('passable', False)
         if passable:
             player_pos = new_player_pos
+
+            if prev_tile_props['id'] != new_tile_props['id']:
+                print(new_tile_props)
+                if new_tile_props['id'] == 65: # hardcoded special tile id
+                    audio.play_sfx('rasp')
 
     # render map to a temporary surface
     temp_surface = current_map.render_map_to_new_surface()
