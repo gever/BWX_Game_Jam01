@@ -19,7 +19,7 @@ base_tile_layer_idx = current_map.get_first_tile_layer_index()
 
 CHARACTER_SIZE = 16
 CHARACTER_ANCHOR = Vec2(8, 14)
-character_sheet = pygame.image.load('../assets/Sprout Lands - Sprites - premium pack/Characters/Basic Charakter Spritesheet.png').convert_alpha()
+character_sheet = pygame.image.load('../gfx/Sprout Lands - Sprites - premium pack/Characters/Basic Charakter Spritesheet.png').convert_alpha()
 character_down_frames = []
 for i in range(0, 4):
     frame = character_sheet.subsurface((16*(3*i + 1), 16, 16, 16))
