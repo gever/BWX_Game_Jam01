@@ -11,7 +11,9 @@ pygame.init()
 screen = pygame.display.set_mode((1024, 576)) # this should probably be 16:9
 clock = pygame.time.Clock()
 audio = AudioEngine()
+font = pygame.font.Font(None, 16)
 running = True
+show_fps = True
 
 current_map = TiledMap('../maps/dungeon_map.tmx')
 
@@ -37,6 +39,9 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_f:
+                show_fps = not show_fps
 
     # check keyboard input
     keys = pygame.key.get_pressed()
@@ -93,6 +98,12 @@ while running:
     char_render_frame = character_down_frames[character_frame_num]
     char_render_pos = player_pos - CHARACTER_ANCHOR
     temp_surface.blit(char_render_frame, (char_render_pos.x, char_render_pos.y))
+
+    # render FPS
+    if show_fps:
+        rounded_fps = str(round(clock.get_fps(), 2))
+        fps_text = font.render(rounded_fps, True, (255, 255, 255))
+        temp_surface.blit(fps_text, (temp_surface.get_width() - fps_text.get_width(), 0))
 
     # determine factor by which we need to scale map surface to fit display
     scale = min(screen.get_width() / temp_surface.get_width(), screen.get_height() / temp_surface.get_height())
