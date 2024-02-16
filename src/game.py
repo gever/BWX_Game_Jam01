@@ -29,6 +29,8 @@ character_frame_num = 0
 spawn_point = current_map.get_object_by_name('player_spawn')
 player_pos = Vec2(spawn_point.x, spawn_point.y)
 
+audio.play_sfx('water_drops', loop=True)
+
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
