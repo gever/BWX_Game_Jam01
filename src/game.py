@@ -53,11 +53,11 @@ while running:
     player_dir = Vec2()
     if keys[pygame.K_LEFT] or keys[pygame.K_a]:
         player_dir += Vec2(-1, 0)
-    if keys[pygame.K_RIGHT]:
+    if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
         player_dir += Vec2(1, 0)
-    if keys[pygame.K_UP]:
+    if keys[pygame.K_UP] or keys[pygame.K_w]:
         player_dir += Vec2(0, -1)
-    if keys[pygame.K_DOWN]:
+    if keys[pygame.K_DOWN] or keys[pygame.K_s]:
         player_dir += Vec2(0, 1)
 
     if player_dir.is_zero():
