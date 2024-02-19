@@ -1,10 +1,13 @@
+import time
 import pygame
 from vec2 import Vec2
 from map import TiledMap
 from audio import AudioEngine
+import pymunk
 
 TILE_SIZE = 16
-PLAYER_SPEED = 1.5
+PLAYER_SPEED = 100
+PLAYER_MOVEMENT_MAX_ACCEL = 25
 
 # pygame setup
 pygame.init()
@@ -20,7 +23,7 @@ current_map = TiledMap('../maps/dungeon_map.tmx')
 base_tile_layer_idx = current_map.get_first_tile_layer_index()
 
 CHARACTER_SIZE = 16
-CHARACTER_ANCHOR = Vec2(8, 14)
+CHARACTER_ANCHOR = Vec2(7, 12)
 character_sheet = pygame.image.load('../gfx/Sprout Lands - Sprites - premium pack/Characters/Basic Charakter Spritesheet.png').convert_alpha()
 character_down_frames = []
 for i in range(0, 4):
@@ -29,38 +32,78 @@ for i in range(0, 4):
 character_frame_num = 0
 
 spawn_point = current_map.get_object_by_name('player_spawn')
-player_pos = Vec2(spawn_point.x, spawn_point.y)
 
+# physics setup
+space = pymunk.Space()
+
+# create player body and collision shape
+player_body = pymunk.Body(1, float('inf'))
+player_body.position = (spawn_point.x, spawn_point.y)
+player_shape = pymunk.Circle(player_body, 6)
+player_shape.elasticity = 0
+space.add(player_body, player_shape)
+
+# create a collision square for each impassable tile
+impassable_tile_coords = current_map.list_impassable_tile_coords()
+for (x, y) in impassable_tile_coords:
+    body = pymunk.Body(body_type=pymunk.Body.STATIC)
+    body.position = (x*TILE_SIZE + TILE_SIZE/2, y*TILE_SIZE + TILE_SIZE/2)
+    shape = pymunk.Poly.create_box(body, (TILE_SIZE, TILE_SIZE), 0.1)
+    shape.elasticity = 0
+    space.add(body, shape)
+
+# start background music
 audio.play_sfx('water_drops', loop=True)
 
+last_time = time.time()
+
 while running:
+    # calculate time since last frame
+    dt = time.time() - last_time
+    last_time = time.time()
+
+    # advance physics simulation
+    space.step(dt)
+
     # poll for events
-    # pygame.QUIT event means the user clicked X to close your window
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+        if event.type == pygame.QUIT: # pygame.QUIT event means the user clicked X to close your window
             running = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_f:
                 show_fps = not show_fps
 
-    # check keyboard input
+    # check keyboard input (currently pressed keys)
     keys = pygame.key.get_pressed()
 
     if keys[pygame.K_ESCAPE]:
         running = False
 
-    # determine player movement
-    player_dir = Vec2()
+    # determine desired player velocity based on keyboard input
+    player_desired_velo = Vec2()
     if keys[pygame.K_LEFT] or keys[pygame.K_a]:
-        player_dir += Vec2(-1, 0)
+        player_desired_velo += Vec2(-1, 0)
     if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
-        player_dir += Vec2(1, 0)
+        player_desired_velo += Vec2(1, 0)
     if keys[pygame.K_UP] or keys[pygame.K_w]:
-        player_dir += Vec2(0, -1)
+        player_desired_velo += Vec2(0, -1)
     if keys[pygame.K_DOWN] or keys[pygame.K_s]:
-        player_dir += Vec2(0, 1)
+        player_desired_velo += Vec2(0, 1)
 
-    if player_dir.is_zero():
+    # normalize and scale desired velocity
+    if not player_desired_velo.is_zero():
+        player_desired_velo = player_desired_velo.normalized() * PLAYER_SPEED
+
+    # apply force to player body to make its velocity approach the desired velocity
+    velocity_diff = player_desired_velo - Vec2(player_body.velocity[0], player_body.velocity[1])
+    if dt > 0:
+        movement_force = velocity_diff * (PLAYER_MOVEMENT_MAX_ACCEL * player_body.mass)
+    else:
+        movement_force = Vec2()
+    player_body.apply_force_at_local_point((movement_force.x, movement_force.y))
+
+    # update character sprite frame
+    if player_desired_velo.is_zero():
         character_frame_num = 0
     else:
         if character_frame_num == 0:
@@ -72,31 +115,12 @@ while running:
         else:
             assert False
 
-        player_v = player_dir.normalized() * PLAYER_SPEED
-
-        prev_player_tile_coords = player_pos / TILE_SIZE
-        prev_tile_props = current_map.get_tile_props_by_coords(base_tile_layer_idx, prev_player_tile_coords.x, prev_player_tile_coords.y)
-
-        new_player_pos = player_pos + player_v
-        new_player_tile_coords = new_player_pos / TILE_SIZE
-        new_tile_props = current_map.get_tile_props_by_coords(base_tile_layer_idx, new_player_tile_coords.x, new_player_tile_coords.y)
-        passable = new_tile_props.get('passable', False)
-        if passable:
-            player_pos = new_player_pos
-
-            if prev_tile_props['id'] != new_tile_props['id']:
-                if new_tile_props['id'] == 65: # hardcoded special tile id
-                    audio.play_sfx('rasp')
-
     # render map to a temporary surface
     temp_surface = current_map.render_map_to_new_surface()
 
-    # draw player placeholder
-    #pygame.draw.circle(temp_surface, (255, 0, 0), (player_pos.x, player_pos.y), 3)
-
     # render character sprite
     char_render_frame = character_down_frames[character_frame_num]
-    char_render_pos = player_pos - CHARACTER_ANCHOR
+    char_render_pos = player_body.position - CHARACTER_ANCHOR
     temp_surface.blit(char_render_frame, (char_render_pos.x, char_render_pos.y))
 
     # render FPS

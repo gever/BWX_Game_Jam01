@@ -120,3 +120,16 @@ class TiledMap(object):
     def render_image_layer(self, surface, layer) -> None:
         if layer.image:
             surface.blit(layer.image, (0, 0))
+
+    # returns a list of (x, y) tuples for each impassable tile in any layer
+    def list_impassable_tile_coords(self):
+        impassable_tiles_coords = []
+        for layer in self.tmx_data.visible_layers:
+            if isinstance(layer, TiledTileLayer):
+                for x in range(self.tmx_data.width):
+                    for y in range(self.tmx_data.height):
+                        gid = layer.data[int(y)][int(x)]
+                        tile_props = self.tmx_data.get_tile_properties_by_gid(gid)
+                        if tile_props and not tile_props.get('passable', False):
+                            impassable_tiles_coords.append((x, y))
+        return impassable_tiles_coords
