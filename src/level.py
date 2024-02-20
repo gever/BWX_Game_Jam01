@@ -12,11 +12,8 @@ PLAYER_ANCHOR = Vec2(7, 12)
 
 class BaseLevel:
     def __init__(self, map_fn):
-        self.map_fn = map_fn
-
-    def start(self):
         # load Tiled map
-        self.map = TiledMap(os.path.join('../maps', self.map_fn))
+        self.map = TiledMap(os.path.join('../maps', map_fn))
 
         self.extra_renderables = [] # these are "extras" added per level
 
@@ -58,6 +55,12 @@ class BaseLevel:
             frame = player_spritesheet.subsurface((16*(3*i + 1), 16, 16, 16))
             self.player_frames.append(frame)
         self.player_anim_framenum = 0
+
+    def start(self):
+        pass
+
+    def stop(self):
+        pass
 
     def _make_tile_physics_body(self, x, y):
         tile_body = pymunk.Body(body_type=pymunk.Body.STATIC)

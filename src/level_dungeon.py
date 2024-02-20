@@ -37,9 +37,6 @@ class DungeonLevel(BaseLevel):
     def __init__(self):
         super().__init__('dungeon_map.tmx')
 
-    def start(self):
-        super().start()
-
         self.COLLISION_TYPE_BLUE_LIGHT = self.MAX_COLLISION_TYPE + 1
 
         for tile in self.all_tiles:

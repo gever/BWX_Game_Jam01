@@ -19,7 +19,7 @@ init_audio()
 # start background music
 get_audio().play_sfx('water_drops', loop=True)
 
-# configure all levels (this doesn't load them yet)
+# configure all levels (this loads them, but doesn't start running them yet)
 levels = [
     DungeonLevel(),
     DungeonLevel2(),
@@ -31,6 +31,7 @@ current_level.start()
 
 def switch_level(new_level_idx):
     global current_level, current_level_idx
+    current_level.stop()
     current_level = levels[new_level_idx]
     current_level.start()
     current_level_idx = new_level_idx
