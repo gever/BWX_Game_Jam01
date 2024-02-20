@@ -25,9 +25,13 @@ class DungeonLevel(BaseLevel):
         self.skull_monster = SkullMonster(self.space, (monster_spawn_point.x, monster_spawn_point.y))
         self.entities.append(self.skull_monster)
 
+        self.skull_monster2 = SkullMonster(self.space, (monster_spawn_point.x - 50, monster_spawn_point.y))
+        self.entities.append(self.skull_monster2)
+
     def handle_blue_light_collision(self, arbiter, space, data):
         get_audio().play_sfx('rasp')
         return True
 
     def before_advance_simulation(self, dt):
         self.skull_monster.move_towards_player(self.player)
+        self.skull_monster2.move_towards_player(self.player)
