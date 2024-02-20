@@ -4,8 +4,8 @@ import pygame
 
 from audio import init_audio, get_audio
 from config import *
-from level_dungeon import DungeonLevel
-from level_dungeon_2 import DungeonLevel2
+from levels_loader import load_levels
+from entities_loader import load_entities
 
 # pygame setup
 pygame.init()
@@ -19,11 +19,9 @@ init_audio()
 # start background music
 get_audio().play_sfx('water_drops', loop=True)
 
-# configure all levels (this loads them, but doesn't start running them yet)
-levels = [
-    DungeonLevel(),
-    DungeonLevel2(),
-]
+# load all entities and levels
+entities = load_entities()
+levels = load_levels()
 
 current_level_idx = 0
 current_level = levels[current_level_idx]

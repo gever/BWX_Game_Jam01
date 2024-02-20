@@ -1,5 +1,5 @@
 from audio import get_audio
-from level import BaseLevel
+from level_base import BaseLevel
 
 class DungeonLevel2(BaseLevel):
     def __init__(self):
