@@ -12,8 +12,11 @@ PLAYER_ANCHOR = Vec2(7, 12)
 
 class BaseLevel:
     def __init__(self, map_fn):
+        self.map_fn = map_fn
+
+    def start(self):
         # load Tiled map
-        self.map = TiledMap(os.path.join('../maps', map_fn))
+        self.map = TiledMap(os.path.join('../maps', self.map_fn))
 
         # find player spawn point
         self.player_spawn_point = self.map.get_object_by_name('player_spawn')
@@ -25,7 +28,6 @@ class BaseLevel:
         self.COLLISION_TYPE_PLAYER = 1
         self.COLLISION_TYPE_IMPASSABLE_TILE = 2
         self.MAX_COLLISION_TYPE = 2 # for adding more custom ones after
-
 
         # create player body and collision shape
         self.player_body = pymunk.Body(1, float('inf'))
@@ -54,9 +56,6 @@ class BaseLevel:
             frame = player_spritesheet.subsurface((16*(3*i + 1), 16, 16, 16))
             self.player_frames.append(frame)
         self.player_anim_framenum = 0
-
-        # start background music
-        get_audio().play_sfx('water_drops', loop=True)
 
     def _make_tile_physics_body(self, x, y):
         tile_body = pymunk.Body(body_type=pymunk.Body.STATIC)
@@ -115,3 +114,6 @@ class BaseLevel:
         surface.blit(player_render_frame, (player_render_pos.x, player_render_pos.y))
 
         return surface
+
+    def stop(self):
+        pass

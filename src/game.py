@@ -2,9 +2,10 @@ import time
 
 import pygame
 
-from audio import init_audio
+from audio import init_audio, get_audio
 from config import *
 from level_dungeon import DungeonLevel
+from level_dungeon_2 import DungeonLevel2
 
 # pygame setup
 pygame.init()
@@ -15,10 +16,26 @@ running = True
 show_fps = True
 init_audio()
 
-current_level = DungeonLevel('dungeon_map.tmx')
+# start background music
+get_audio().play_sfx('water_drops', loop=True)
+
+# configure all levels (this doesn't load them yet)
+levels = [
+    DungeonLevel(),
+    DungeonLevel2(),
+]
+
+current_level_idx = 0
+current_level = levels[current_level_idx]
+current_level.start()
+
+def switch_level(new_level_idx):
+    global current_level, current_level_idx
+    current_level = levels[new_level_idx]
+    current_level.start()
+    current_level_idx = new_level_idx
 
 last_time = time.time()
-
 while running:
     # calculate time since last frame
     dt = time.time() - last_time
@@ -32,6 +49,12 @@ while running:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_f:
                 show_fps = not show_fps
+            elif event.key == pygame.K_LEFTBRACKET:
+                switch_level((current_level_idx - 1) % len(levels))
+            elif event.key == pygame.K_RIGHTBRACKET:
+                switch_level((current_level_idx + 1) % len(levels))
+            else:
+                unhandled_events.append(event)
         else:
             unhandled_events.append(event)
 
