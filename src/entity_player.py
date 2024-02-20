@@ -64,7 +64,7 @@ class Player(BaseEntity):
             desired_velo = desired_velo.normalized() * PLAYER_SPEED
 
         # apply force to player body to make its velocity approach the desired velocity
-        self.apply_force_to_achieve_velocity(desired_velo, PLAYER_MOVEMENT_MAX_ACCEL)
+        self.apply_force_to_achieve_velocity(desired_velo, PLAYER_MOVEMENT_STRENGTH)
 
         # # update player sprite frame
         if desired_velo.is_zero():

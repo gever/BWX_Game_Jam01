@@ -36,11 +36,11 @@ class SkullMonster(BaseEntity):
 
     def move_towards_player(self, player):
         MAX_SPEED = 50
-        MAX_ACCEL = 10
+        MOVEMENT_STRENGTH = 10
 
         pos_diff = player.body.position - self.body.position
         if pos_diff.length > 0:
             desired_velocity = pos_diff.normalized() * MAX_SPEED
         else:
             desired_velocity = pymunk.Vec2d(0, 0)
-        self.apply_force_to_achieve_velocity(desired_velocity, MAX_ACCEL)
+        self.apply_force_to_achieve_velocity(desired_velocity, MOVEMENT_STRENGTH)
