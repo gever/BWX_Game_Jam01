@@ -18,6 +18,8 @@ class BaseLevel:
         # load Tiled map
         self.map = TiledMap(os.path.join('../maps', self.map_fn))
 
+        self.extra_renderables = [] # these are "extras" added per level
+
         # find player spawn point
         self.player_spawn_point = self.map.get_object_by_name('player_spawn')
 
@@ -63,6 +65,11 @@ class BaseLevel:
         tile_shape = pymunk.Poly.create_box(tile_body, (TILE_SIZE, TILE_SIZE), 0.1)
         return (tile_body, tile_shape)
 
+    def _apply_force_to_achieve_velocity(self, body, desired_velo, max_accel):
+        velocity_diff = desired_velo - Vec2(body.velocity[0], body.velocity[1])
+        movement_force = velocity_diff * (max_accel * body.mass)
+        body.apply_force_at_local_point((movement_force.x, movement_force.y))
+
     def handle_input(self, keys, events, dt):
         # determine desired player velocity based on keyboard input
         player_desired_velo = Vec2()
@@ -80,12 +87,7 @@ class BaseLevel:
             player_desired_velo = player_desired_velo.normalized() * PLAYER_SPEED
 
         # apply force to player body to make its velocity approach the desired velocity
-        velocity_diff = player_desired_velo - Vec2(self.player_body.velocity[0], self.player_body.velocity[1])
-        if dt > 0:
-            movement_force = velocity_diff * (PLAYER_MOVEMENT_MAX_ACCEL * self.player_body.mass)
-        else:
-            movement_force = Vec2()
-        self.player_body.apply_force_at_local_point((movement_force.x, movement_force.y))
+        self._apply_force_to_achieve_velocity(self.player_body, player_desired_velo, PLAYER_MOVEMENT_MAX_ACCEL)
 
         # update player sprite frame
         if player_desired_velo.is_zero():
@@ -100,7 +102,12 @@ class BaseLevel:
             else:
                 assert False
 
+    def before_advance_simulation(self, dt):
+        # override this in a derived class to do something before the simulation step, e.g. monster logic
+        pass
+
     def advance_simulation(self, dt):
+        self.before_advance_simulation(dt)
         self.space.step(dt)
 
     # returns new pygame surface, which will be scaled to fit the display
@@ -112,6 +119,11 @@ class BaseLevel:
         player_render_frame = self.player_frames[self.player_anim_framenum]
         player_render_pos = self.player_body.position - PLAYER_ANCHOR
         surface.blit(player_render_frame, (player_render_pos.x, player_render_pos.y))
+
+        for extra in self.extra_renderables:
+            render_info = extra.get_render_info()
+            render_pos = (render_info['pos'][0] - render_info['anchor'][0], render_info['pos'][1] - render_info['anchor'][1])
+            surface.blit(render_info['sprite'], render_pos)
 
         return surface
 
