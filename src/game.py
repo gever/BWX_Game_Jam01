@@ -9,7 +9,11 @@ from entities_loader import load_entities
 
 # pygame setup
 pygame.init()
-screen = pygame.display.set_mode((1024, 576)) # this should probably be 16:9
+
+screen_width = pygame.display.Info().current_w
+screen_height = pygame.display.Info().current_h
+
+screen = pygame.display.set_mode((screen_width, screen_height)) # this should probably be 16:9
 clock = pygame.time.Clock()
 font = pygame.font.Font(None, 16)
 running = True
