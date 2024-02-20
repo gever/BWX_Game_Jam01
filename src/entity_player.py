@@ -23,7 +23,7 @@ class PlayerAssets:
         }
         self.anchor = (7, 12)
 
-# It is convenient to create an instance of the player in each level, rather than "moving" the player between levels
+# It is convenient to create an instance of the player in each level, rather than "moving" the player between levels:
 class Player(BaseEntity):
     def __init__(self, space, initial_pos):
         self.space = space
