@@ -6,15 +6,15 @@ from entity_base import BaseEntity
 
 def load():
     global assets
-    assets = SkullMonsterAssets()
+    assets = SlimeMonsterAssets()
 
-class SkullMonsterAssets:
+class SlimeMonsterAssets:
     def __init__(self):
         spritesheet = pygame.image.load('../gfx/2D Dungeon Asset Pack_v5.2/character and tileset/Dungeon_Enemy_v2.png').convert_alpha()
         self.sprite = spritesheet.subsurface((32, 0, 16, 16))
         self.anchor = (8, 14)
 
-class SkullMonster(BaseEntity):
+class SlimeMonster(BaseEntity):
     def __init__(self, space, initial_pos):
         self.sprite = assets.sprite
         self.anchor = assets.anchor
@@ -35,8 +35,8 @@ class SkullMonster(BaseEntity):
         }
 
     def move_towards_player(self, player):
-        MAX_SPEED = 10
-        MOVEMENT_STRENGTH = 100
+        MAX_SPEED = 25
+        MOVEMENT_STRENGTH = 120
 
         pos_diff = player.body.position - self.body.position
         if pos_diff.length > 0:
