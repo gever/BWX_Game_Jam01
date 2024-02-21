@@ -35,8 +35,8 @@ class SkullMonster(BaseEntity):
         }
 
     def move_towards_player(self, player):
-        MAX_SPEED = 50
-        MOVEMENT_STRENGTH = 45
+        MAX_SPEED = 10
+        MOVEMENT_STRENGTH = 100
 
         pos_diff = player.body.position - self.body.position
         if pos_diff.length > 0:
