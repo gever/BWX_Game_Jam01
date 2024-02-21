@@ -398,7 +398,7 @@
  </tile>
  <tile id="79">
   <properties>
-   <property name="passable" type="bool" value="false"/>
+   <property name="passable" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="80">
