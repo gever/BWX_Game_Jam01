@@ -11,7 +11,7 @@ def load():
 class SlimeMonsterAssets:
     def __init__(self):
         spritesheet = pygame.image.load('../gfx/2D Dungeon Asset Pack_v5.2/character and tileset/Dungeon_Enemy_v2.png').convert_alpha()
-        self.sprite = spritesheet.subsurface((32, 0, 16, 16))
+        self.sprite = spritesheet.subsurface((0, 0, 16, 16))
         self.anchor = (8, 14)
 
 class SlimeMonster(BaseEntity):
@@ -35,7 +35,7 @@ class SlimeMonster(BaseEntity):
         }
 
     def move_towards_player(self, player):
-        MAX_SPEED = 25
+        MAX_SPEED = 30
         MOVEMENT_STRENGTH = 120
 
         pos_diff = player.body.position - self.body.position
