@@ -45,6 +45,14 @@ class BaseLevel:
 
     def stop(self):
         pass
+    
+    def level_complete(self):
+        player_position = self.player.body.position
+        distance = player_position.get_distance((self.exit_point.x, self.exit_point.y))
+        if distance <= 10:
+            return True
+        else:
+            return False
 
     def _make_tile_physics_body(self, x, y):
         tile_body = pymunk.Body(body_type=pymunk.Body.STATIC)

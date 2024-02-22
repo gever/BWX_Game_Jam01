@@ -6,6 +6,7 @@ from audio import init_audio, get_audio
 from config import *
 from levels_loader import load_levels
 from entities_loader import load_entities
+from level_base import BaseLevel
 
 # pygame setup
 pygame.init()
@@ -70,6 +71,9 @@ while running:
     # do core work based on the current level
     current_level.handle_input(keys, unhandled_events, dt)
     current_level.advance_simulation(dt)
+    if current_level.level_complete():
+        switch_level((current_level_idx + 1) % len(levels))
+
     render_surface = current_level.render()
 
     # render FPS
