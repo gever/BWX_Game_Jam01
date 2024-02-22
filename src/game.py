@@ -15,7 +15,7 @@ screen_width = pygame.display.Info().current_w
 screen_height = pygame.display.Info().current_h
 
 # screen = pygame.display.set_mode((screen_width, screen_height)) # this should probably be 16:9
-screen = pygame.display.set_mode((960, 540)) # this should probably be 16:9
+screen = pygame.display.set_mode((screen_width, screen_height)) # this should probably be 16:9
 clock = pygame.time.Clock()
 font = pygame.font.Font(None, 16)
 running = True
@@ -57,9 +57,17 @@ while running:
             elif event.key == pygame.K_r:
                 current_level.base_reset()
                 current_level.level_reset()
+            elif event.key == pygame.K_MINUS:
+                screen = pygame.display.set_mode((960, 540))
+            elif event.key == pygame.K_PLUS:
+                screen = pygame.display.set_mode((screen_width, screen_height))
             elif event.key == pygame.K_LEFTBRACKET:
+                current_level.base_reset()
+                current_level.level_reset()
                 switch_level((current_level_idx - 1) % len(levels))
             elif event.key == pygame.K_RIGHTBRACKET:
+                current_level.base_reset()
+                current_level.level_reset()
                 switch_level((current_level_idx + 1) % len(levels))
             else:
                 unhandled_events.append(event)
@@ -76,7 +84,10 @@ while running:
     current_level.handle_input(keys, unhandled_events, dt)
     current_level.advance_simulation(dt)
     if current_level.level_complete():
+        current_level.base_reset()
+        current_level.level_reset()
         switch_level((current_level_idx + 1) % len(levels))
+
 
     render_surface = current_level.render()
 
