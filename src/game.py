@@ -14,7 +14,8 @@ pygame.init()
 screen_width = pygame.display.Info().current_w
 screen_height = pygame.display.Info().current_h
 
-screen = pygame.display.set_mode((screen_width, screen_height)) # this should probably be 16:9
+# screen = pygame.display.set_mode((screen_width, screen_height)) # this should probably be 16:9
+screen = pygame.display.set_mode((960, 540)) # this should probably be 16:9
 clock = pygame.time.Clock()
 font = pygame.font.Font(None, 16)
 running = True
@@ -53,6 +54,9 @@ while running:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_f:
                 show_fps = not show_fps
+            elif event.key == pygame.K_r:
+                current_level.base_reset()
+                current_level.level_reset()
             elif event.key == pygame.K_LEFTBRACKET:
                 switch_level((current_level_idx - 1) % len(levels))
             elif event.key == pygame.K_RIGHTBRACKET:
