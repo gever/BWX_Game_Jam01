@@ -25,7 +25,7 @@ class BaseLevel:
         self.space = pymunk.Space()
 
         # create player
-        self.player = Player(self.space, (self.player_spawn_point.x, self.player_spawn_point.y))
+        self.player = Player(self.space, (0, 0))
         self.entities.append(self.player)
 
         # get all level tiles
@@ -40,12 +40,22 @@ class BaseLevel:
                 self.space.add(tile_body, tile_shape)
                 tile['body'] = tile_body
 
+        self.base_reset()
+
     def start(self):
         pass
 
     def stop(self):
         pass
-    
+
+    def base_reset(self):
+        print('reset')
+        self.player.body.position = (self.player_spawn_point.x, self.player_spawn_point.y)
+        self.player.body.velocity = (0, 0)
+
+    def level_reset(self):
+        pass
+
     def level_complete(self):
         player_position = self.player.body.position
         distance = player_position.get_distance((self.exit_point.x, self.exit_point.y))
