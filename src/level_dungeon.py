@@ -5,6 +5,7 @@ from audio import get_audio
 from level_base import BaseLevel
 from entity_skull_monster import SkullMonster
 from collision_types import *
+from player_state import player_state
 
 class DungeonLevel(BaseLevel):
     def __init__(self):
@@ -30,6 +31,7 @@ class DungeonLevel(BaseLevel):
 
     def handle_blue_light_collision(self, arbiter, space, data):
         get_audio().play_sfx('rasp')
+        player_state.apply_damage()
         return True
 
     def before_advance_simulation(self, dt):
