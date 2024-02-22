@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="3">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="4">
  <tileset firstgid="1" source="Dungeon_Tileset_v2.tsx"/>
  <layer id="1" name="Tile Layer 1" width="23" height="13">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,3,2,2,4,2,83,6,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,31,12,13,13,13,13,14,15,16,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,31,12,13,13,13,13,14,95,16,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,31,22,23,24,23,24,39,25,16,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,31,32,34,34,34,34,49,35,16,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,41,45,44,44,44,45,45,45,46,
@@ -20,6 +20,9 @@
  </layer>
  <objectgroup id="2" name="Object Layer 1">
   <object id="1" name="player_spawn" x="257.302" y="54.7195">
+   <point/>
+  </object>
+  <object id="3" name="level_exit" x="343.253" y="24.3798">
    <point/>
   </object>
  </objectgroup>

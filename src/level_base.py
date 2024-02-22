@@ -19,6 +19,8 @@ class BaseLevel:
         # find player spawn point
         self.player_spawn_point = self.map.get_object_by_name('player_spawn')
 
+        self.exit_point = self.map.get_object_by_name('level_exit')
+
         # create physics space
         self.space = pymunk.Space()
 
