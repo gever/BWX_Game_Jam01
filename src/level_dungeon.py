@@ -28,9 +28,8 @@ class LevelDungeon(BaseLevel):
         self.skull_monster2 = SkullMonster(self.space, (0, 0))
         self.entities.append(self.skull_monster2)
 
-        self.level_reset()
-
-    def level_reset(self):
+    def reset(self):
+        super().reset()
         monster_spawn_point = self.map.get_object_by_name('monster_spawn')
         self.skull_monster.body.position = (monster_spawn_point.x, monster_spawn_point.y)
         self.skull_monster2.body.position = (monster_spawn_point.x - 50, monster_spawn_point.y)

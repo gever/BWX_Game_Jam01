@@ -42,21 +42,15 @@ class BaseLevel:
                 self.space.add(tile_body, tile_shape)
                 tile['body'] = tile_body
 
-        self.base_reset()
-
     def start(self):
         pass
 
     def stop(self):
         pass
 
-    def base_reset(self):
-        print('reset')
+    def reset(self):
         self.player.body.position = (self.player_spawn_point.x, self.player_spawn_point.y)
         self.player.body.velocity = (0, 0)
-
-    def level_reset(self):
-        pass
 
     def level_complete(self):
         player_position = self.player.body.position
