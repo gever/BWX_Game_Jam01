@@ -40,7 +40,7 @@
   <object id="13" name="player_spawn" x="264.967" y="189.616">
    <point/>
   </object>
-  <object id="14" name="level_end" x="103.298" y="13.0892">
+  <object id="14" name="level_exit" x="103.298" y="13.0892">
    <point/>
   </object>
  </objectgroup>
