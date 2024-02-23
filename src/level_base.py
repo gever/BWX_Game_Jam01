@@ -18,8 +18,10 @@ class BaseLevel:
 
         # find player spawn point
         self.player_spawn_point = self.map.get_object_by_name('player_spawn')
+        assert self.player_spawn_point, 'No player spawn found in map: %s' % map_fn
 
         self.exit_point = self.map.get_object_by_name('level_exit')
+        assert self.exit_point, 'No level exit found in map: %s' % map_fn
 
         # create physics space
         self.space = pymunk.Space()
