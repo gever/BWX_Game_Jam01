@@ -4,6 +4,6 @@ from entity_skull_monster import SkullMonster
 from entity_slime_monster import SlimeMonster
 from collision_types import *
 
-class DungeonLevel_Maze(BaseLevel):
+class LevelMaze(BaseLevel):
     def __init__(self):
         super().__init__('Maze.tmx')

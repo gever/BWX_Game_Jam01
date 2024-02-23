@@ -7,7 +7,7 @@ from entity_skull_monster import SkullMonster
 from collision_types import *
 from player_state import player_state
 
-class DungeonLevel(BaseLevel):
+class LevelDungeon(BaseLevel):
     def __init__(self):
         super().__init__('dungeon_map.tmx')
 

@@ -4,7 +4,7 @@ from entity_skull_monster import SkullMonster
 from entity_slime_monster import SlimeMonster
 from collision_types import *
 
-class DungeonLevel_PuzzleRoom(BaseLevel):
+class LevelPuzzleRoom(BaseLevel):
     def __init__(self):
         super().__init__('Puzzle_room.tmx')
         monster_spawn_point1 = self.map.get_object_by_name('monster_spawn1')
