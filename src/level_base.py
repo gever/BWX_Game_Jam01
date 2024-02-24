@@ -55,7 +55,7 @@ class BaseLevel:
     def level_complete(self):
         player_position = self.player.body.position
         distance = player_position.get_distance((self.exit_point.x, self.exit_point.y))
-        if distance <= 10:
+        if distance <= 5:
             return True
         else:
             return False
