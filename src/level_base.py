@@ -8,6 +8,7 @@ from config import *
 from collision_types import *
 from map import TiledMap
 from entity_player import Player
+from entities_loader import ENTITY_MAP
 
 class BaseLevel:
     def __init__(self, map_fn):
@@ -26,10 +27,6 @@ class BaseLevel:
         # create physics space
         self.space = pymunk.Space()
 
-        # create player
-        self.player = Player(self.space, (0, 0))
-        self.entities.append(self.player)
-
         # get all level tiles
         self.all_tiles = self.map.list_all_tiles()
 
@@ -42,6 +39,12 @@ class BaseLevel:
                 self.space.add(tile_body, tile_shape)
                 tile['body'] = tile_body
 
+        # create entities (including player) for each object in the map with a matching name
+        for obj in self.map.list_all_objects():
+            if obj.name in ENTITY_MAP:
+                entity = ENTITY_MAP[obj.name](self, (obj.x, obj.y))
+                self.entities.append(entity)
+
     def start(self):
         pass
 
@@ -49,16 +52,17 @@ class BaseLevel:
         pass
 
     def reset(self):
-        self.player.body.position = (self.player_spawn_point.x, self.player_spawn_point.y)
-        self.player.body.velocity = (0, 0)
+        for entity in self.entities:
+            entity.reset()
 
     def level_complete(self):
-        player_position = self.player.body.position
-        distance = player_position.get_distance((self.exit_point.x, self.exit_point.y))
-        if distance <= 5:
-            return True
-        else:
-            return False
+        for entity in self.entities:
+            if entity.is_player():
+                player_position = entity.body.position
+                distance = player_position.get_distance((self.exit_point.x, self.exit_point.y))
+                if distance <= 5:
+                    return True
+        return False
 
     def _make_tile_physics_body(self, x, y):
         tile_body = pymunk.Body(body_type=pymunk.Body.STATIC)
@@ -71,8 +75,9 @@ class BaseLevel:
             entity.handle_input(keys, events, dt)
 
     def before_advance_simulation(self, dt):
-        # override this in a derived class to do something before the simulation step, e.g. monster logic
-        pass
+        # override this in a derived class to do something extra before the simulation step
+        for entity in self.entities:
+            entity.act()
 
     def advance_simulation(self, dt):
         self.before_advance_simulation(dt)

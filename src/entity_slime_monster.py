@@ -15,17 +15,18 @@ class SlimeMonsterAssets:
         self.anchor = (8, 14)
 
 class SlimeMonster(BaseEntity):
-    def __init__(self, space, initial_pos):
+    def __init__(self, level, initial_pos):
+        super().__init__(level, initial_pos)
+
         self.sprite = assets.sprite
         self.anchor = assets.anchor
-        self.space = space
 
         self.body = pymunk.Body(1, float('inf'))
-        self.body.position = initial_pos
+        self.body.position = self.initial_pos
         self.shape = pymunk.Circle(self.body, 6)
         self.shape.collision_type = COLLISION_TYPE_OTHER_ENTITY
         self.shape.elasticity = 0
-        space.add(self.body, self.shape)
+        self.level.space.add(self.body, self.shape)
 
     def get_render_info(self):
         return {
@@ -34,13 +35,7 @@ class SlimeMonster(BaseEntity):
             'anchor': self.anchor,
         }
 
-    def move_towards_player(self, player):
+    def act(self):
         MAX_SPEED = 30
         MOVEMENT_STRENGTH = 120
-
-        pos_diff = player.body.position - self.body.position
-        if pos_diff.length > 0:
-            desired_velocity = pos_diff.normalized() * MAX_SPEED
-        else:
-            desired_velocity = pymunk.Vec2d(0, 0)
-        self.apply_force_to_achieve_velocity(desired_velocity, MOVEMENT_STRENGTH)
+        self.move_towards_player(MAX_SPEED, MOVEMENT_STRENGTH)

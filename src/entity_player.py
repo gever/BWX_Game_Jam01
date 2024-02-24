@@ -25,18 +25,18 @@ class PlayerAssets:
 
 # It is convenient to create an instance of the player in each level, rather than "moving" the player between levels:
 class Player(BaseEntity):
-    def __init__(self, space, initial_pos):
-        self.space = space
+    def __init__(self, level, initial_pos):
+        super().__init__(level, initial_pos)
 
         self.current_anim = 'standing'
         self.anim_phase = 0
 
         self.body = pymunk.Body(1, float('inf'))
-        self.body.position = initial_pos
+        self.body.position = self.initial_pos
         self.shape = pymunk.Circle(self.body, 6)
         self.shape.collision_type = COLLISION_TYPE_PLAYER
         self.shape.elasticity = 0
-        space.add(self.body, self.shape)
+        self.level.space.add(self.body, self.shape)
 
     def get_render_info(self):
         anim = assets.anims[self.current_anim]
@@ -74,3 +74,6 @@ class Player(BaseEntity):
             self.current_anim = 'walking'
             PLAYER_WALKING_ANIM_TIME = 0.25
             self.anim_phase += dt / PLAYER_WALKING_ANIM_TIME
+
+    def is_player(self):
+        return True

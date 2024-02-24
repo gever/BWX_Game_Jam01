@@ -21,24 +21,7 @@ class LevelDungeon(BaseLevel):
                 handler = self.space.add_collision_handler(COLLISION_TYPE_PLAYER, self.COLLISION_TYPE_BLUE_LIGHT)
                 handler.begin = self.handle_blue_light_collision
 
-        # add monster
-        self.skull_monster = SkullMonster(self.space, (0, 0))
-        self.entities.append(self.skull_monster)
-
-        self.skull_monster2 = SkullMonster(self.space, (0, 0))
-        self.entities.append(self.skull_monster2)
-
-    def reset(self):
-        super().reset()
-        monster_spawn_point = self.map.get_object_by_name('monster_spawn')
-        self.skull_monster.body.position = (monster_spawn_point.x, monster_spawn_point.y)
-        self.skull_monster2.body.position = (monster_spawn_point.x - 50, monster_spawn_point.y)
-
     def handle_blue_light_collision(self, arbiter, space, data):
         get_audio().play_sfx('rasp')
         player_state.apply_damage()
         return True
-
-    def before_advance_simulation(self, dt):
-        self.skull_monster.move_towards_player(self.player)
-        self.skull_monster2.move_towards_player(self.player)

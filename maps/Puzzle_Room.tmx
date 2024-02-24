@@ -22,10 +22,10 @@
   <object id="1" name="player_spawn" x="39.4721" y="23.2189">
    <point/>
   </object>
-  <object id="2" name="monster_spawn2" x="55.7253" y="134.67">
+  <object id="2" name="slime_monster" x="55.7253" y="134.67">
    <point/>
   </object>
-  <object id="3" name="monster_spawn1" x="25.1538" y="119.19">
+  <object id="3" name="skull_monster" x="25.1538" y="119.19">
    <point/>
   </object>
   <object id="4" name="level_exit" x="40" y="184.5">

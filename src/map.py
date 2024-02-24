@@ -20,6 +20,14 @@ class TiledMap(object):
                     if obj.name == name:
                         return obj
 
+    def list_all_objects(self):
+        all_objects = []
+        for layer in self.tmx_data.visible_layers:
+            if isinstance(layer, TiledObjectGroup):
+                for obj in layer:
+                    all_objects.append(obj)
+        return all_objects
+
     def get_first_tile_layer_index(self) -> int:
         """Get the first tile layer number"""
         for idx, layer in enumerate(self.tmx_data.visible_layers):
