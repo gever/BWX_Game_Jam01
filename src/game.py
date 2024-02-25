@@ -58,6 +58,10 @@ while running:
                 show_fps = not show_fps
             elif event.key == pygame.K_r:
                 current_level.reset()
+            elif event.key == pygame.K_t:
+                # demonstrate changing tile layer visibility
+                tmx_data = current_level.map.set_layer_visibility('Tile Layer 2', False)
+                current_level._create_tile_physics()
             elif event.key == pygame.K_MINUS:
                 screen = pygame.display.set_mode((960, 540))
             elif event.key == pygame.K_PLUS:

@@ -12,9 +12,9 @@ class LevelDungeon(BaseLevel):
         super().__init__('dungeon_map.tmx')
 
         self.COLLISION_TYPE_BLUE_LIGHT = get_new_collision_type_id()
-        for tile in self.all_tiles:
+        for tile in self.visible_tiles:
             if tile['props']['id'] == 65:
-                (tile_body, tile_shape) = self._make_tile_physics_body(tile['x'], tile['y'])
+                (tile_body, tile_shape) = self._make_tile_physics_body((tile['x'], tile['y']))
                 tile_shape.collision_type = self.COLLISION_TYPE_BLUE_LIGHT
                 tile_shape.sensor = True
                 self.space.add(tile_body, tile_shape)

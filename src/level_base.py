@@ -27,23 +27,34 @@ class BaseLevel:
         # create physics space
         self.space = pymunk.Space()
 
-        # get all level tiles
-        self.all_tiles = self.map.list_all_tiles()
-
-        # create a collision square for each impassable tile
-        for tile in self.all_tiles:
-            if not tile['props'].get('passable', False):
-                (tile_body, tile_shape) = self._make_tile_physics_body(tile['x'], tile['y'])
-                tile_shape.collision_type = COLLISION_TYPE_IMPASSABLE_TILE
-                tile_shape.elasticity = 0
-                self.space.add(tile_body, tile_shape)
-                tile['body'] = tile_body
+        # create tile physics
+        self.tile_physics_objs = [] # both bodies and shapes
+        self._create_tile_physics()
 
         # create entities (including player) for each object in the map with a matching name
         for obj in self.map.list_all_objects():
             if obj.name in ENTITY_MAP:
                 entity = ENTITY_MAP[obj.name](self, (obj.x, obj.y))
                 self.entities.append(entity)
+
+    def _create_tile_physics(self):
+        # if we have already created tile physics, remove them
+        for phys_obj in self.tile_physics_objs:
+            self.space.remove(phys_obj)
+        self.tile_physics_objs = []
+
+        self.visible_tiles = self.map.list_visible_tiles()
+
+        # create a collision square for each impassable tile
+        for tile in self.visible_tiles:
+            if not tile['props'].get('passable', False):
+                tile_coords = (tile['x'], tile['y'])
+                (tile_body, tile_shape) = self._make_tile_physics_body(tile_coords)
+                tile_shape.collision_type = COLLISION_TYPE_IMPASSABLE_TILE
+                tile_shape.elasticity = 0
+                self.space.add(tile_body, tile_shape)
+                self.tile_physics_objs.append(tile_body)
+                self.tile_physics_objs.append(tile_shape)
 
     def start(self):
         pass
@@ -64,7 +75,8 @@ class BaseLevel:
                     return True
         return False
 
-    def _make_tile_physics_body(self, x, y):
+    def _make_tile_physics_body(self, coords):
+        (x, y) = coords
         tile_body = pymunk.Body(body_type=pymunk.Body.STATIC)
         tile_body.position = (x*TILE_SIZE + TILE_SIZE/2, y*TILE_SIZE + TILE_SIZE/2)
         tile_shape = pymunk.Poly.create_box(tile_body, (TILE_SIZE, TILE_SIZE), 0.1)

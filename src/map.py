@@ -129,7 +129,7 @@ class TiledMap(object):
         if layer.image:
             surface.blit(layer.image, (0, 0))
 
-    def list_all_tiles(self):
+    def list_visible_tiles(self):
         all_tiles = []
         for layer in self.tmx_data.visible_layers:
             if isinstance(layer, TiledTileLayer):
@@ -145,3 +145,8 @@ class TiledMap(object):
                                 'props': tile_props
                             })
         return all_tiles
+
+    def set_layer_visibility(self, layer_name, visibility):
+        for layer in self.tmx_data.visible_layers:
+            if layer.name == layer_name:
+                layer.visible = visibility
