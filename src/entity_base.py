@@ -1,10 +1,20 @@
 from vec2 import Vec2
 import pymunk
 
+from collision_types import *
+
 class BaseEntity:
     def __init__(self, level, initial_pos):
         self.level = level
         self.initial_pos = initial_pos
+
+        self.body = pymunk.Body(1, float('inf'))
+        self.body.position = self.initial_pos
+        self.body.entity = self
+        self.shape = pymunk.Circle(self.body, 6)
+        self.shape.collision_type = COLLISION_TYPE_ENTITY
+        self.shape.elasticity = 0
+        self.level.space.add(self.body, self.shape)
 
     def apply_force_to_achieve_velocity(self, desired_velo, strength):
         velocity_diff = desired_velo - Vec2(self.body.velocity[0], self.body.velocity[1])
@@ -43,6 +53,10 @@ class BaseEntity:
         pass
 
     def act(self):
+        # safe to ignore by default
+        pass
+
+    def handle_entity_collision(self, other_entity):
         # safe to ignore by default
         pass
 

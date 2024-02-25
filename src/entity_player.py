@@ -2,7 +2,6 @@ import pygame
 import pymunk
 
 from config import *
-from collision_types import *
 from entity_base import BaseEntity
 from vec2 import Vec2
 
@@ -30,13 +29,6 @@ class Player(BaseEntity):
 
         self.current_anim = 'standing'
         self.anim_phase = 0
-
-        self.body = pymunk.Body(1, float('inf'))
-        self.body.position = self.initial_pos
-        self.shape = pymunk.Circle(self.body, 6)
-        self.shape.collision_type = COLLISION_TYPE_PLAYER
-        self.shape.elasticity = 0
-        self.level.space.add(self.body, self.shape)
 
     def get_render_info(self):
         anim = assets.anims[self.current_anim]

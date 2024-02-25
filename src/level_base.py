@@ -27,6 +27,10 @@ class BaseLevel:
         # create physics space
         self.space = pymunk.Space()
 
+        # add collision handlers
+        entity_entity_collision_handler = self.space.add_collision_handler(COLLISION_TYPE_ENTITY, COLLISION_TYPE_ENTITY)
+        entity_entity_collision_handler.begin = self._handle_entity_entity_collision
+
         # create tile physics
         self.tile_physics_objs = [] # both bodies and shapes
         self._create_tile_physics()
@@ -36,6 +40,14 @@ class BaseLevel:
             if obj.name in ENTITY_MAP:
                 entity = ENTITY_MAP[obj.name](self, (obj.x, obj.y))
                 self.entities.append(entity)
+
+    def _handle_entity_entity_collision(self, arbiter, space, data):
+        if hasattr(arbiter.shapes[0].body, 'entity') and hasattr(arbiter.shapes[1].body, 'entity'):
+            entity1 = arbiter.shapes[0].body.entity
+            entity2 = arbiter.shapes[1].body.entity
+            entity1.handle_entity_collision(entity2)
+            entity2.handle_entity_collision(entity1)
+        return True
 
     def _create_tile_physics(self):
         # if we have already created tile physics, remove them

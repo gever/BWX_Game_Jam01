@@ -1,7 +1,6 @@
 import pygame
 import pymunk
 
-from collision_types import *
 from entity_base import BaseEntity
 
 def load():
@@ -18,21 +17,11 @@ class SkullMonster(BaseEntity):
     def __init__(self, level, initial_pos):
         super().__init__(level, initial_pos)
 
-        self.sprite = assets.sprite
-        self.anchor = assets.anchor
-
-        self.body = pymunk.Body(1, float('inf'))
-        self.body.position = self.initial_pos
-        self.shape = pymunk.Circle(self.body, 6)
-        self.shape.collision_type = COLLISION_TYPE_OTHER_ENTITY
-        self.shape.elasticity = 0
-        self.level.space.add(self.body, self.shape)
-
     def get_render_info(self):
         return {
-            'sprite': self.sprite,
+            'sprite': assets.sprite,
             'pos': self.body.position,
-            'anchor': self.anchor,
+            'anchor': assets.anchor,
         }
 
     def act(self):
