@@ -31,7 +31,7 @@ class BaseLevel:
         entity_entity_collision_handler = self.space.add_collision_handler(COLLISION_TYPE_ENTITY, COLLISION_TYPE_ENTITY)
         entity_entity_collision_handler.begin = self._handle_entity_entity_collision
 
-        # create tile physics
+        # create tile physicspython game.py
         self.tile_physics_objs = [] # both bodies and shapes
         self._create_tile_physics()
 
