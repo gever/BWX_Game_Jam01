@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="4">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="7">
  <tileset firstgid="1" source="Dungeon_Tileset_v2.tsx"/>
  <tileset firstgid="101" source="cave_crawler.tsx"/>
  <layer id="1" name="Tile Layer 1" width="23" height="13">
   <data encoding="csv">
 1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,6,
 31,161,161,161,161,161,162,161,176,101,102,102,102,192,161,161,161,161,161,162,162,162,16,
-31,161,161,161,162,161,162,161,176,116,117,117,117,118,177,161,162,162,161,162,162,162,16,
-31,161,161,162,162,161,162,161,176,116,117,117,117,118,177,161,161,162,161,162,161,162,16,
+31,161,161,161,162,161,162,161,161,179,179,179,179,179,161,161,162,162,161,162,162,162,16,
+31,161,161,162,162,161,162,161,161,178,178,178,178,178,161,161,161,162,161,162,161,162,16,
 31,161,162,162,162,161,162,161,176,116,117,117,117,118,177,162,161,162,161,162,161,162,26,
 31,161,161,161,162,162,162,161,162,206,132,132,132,133,177,162,161,162,161,162,161,162,16,
 31,161,162,162,162,161,161,162,161,162,71,43,73,179,161,162,161,162,161,162,161,95,16,
@@ -24,6 +24,15 @@
    <point/>
   </object>
   <object id="3" name="level_exit" x="345.035" y="104.61">
+   <point/>
+  </object>
+  <object id="4" name="pickaxe" x="87.234" y="22.695">
+   <point/>
+  </object>
+  <object id="5" name="rock" x="185.106" y="40.7801">
+   <point/>
+  </object>
+  <object id="6" name="rock" x="184.752" y="57.4468">
    <point/>
   </object>
  </objectgroup>
