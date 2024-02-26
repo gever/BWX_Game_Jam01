@@ -53,7 +53,10 @@ class Player(BaseEntity):
 
         # normalize and scale desired velocity
         if not desired_velo.is_zero():
-            desired_velo = desired_velo.normalized() * PLAYER_SPEED
+            multiplier = PLAYER_SPEED
+            if keys[pygame.K_SPACE]:
+                multiplier += PLAYER_SPEED_BOOST
+            desired_velo = desired_velo.normalized() * multiplier
 
         # apply force to player body to make its velocity approach the desired velocity
         self.apply_force_to_achieve_velocity(desired_velo, PLAYER_MOVEMENT_STRENGTH)
