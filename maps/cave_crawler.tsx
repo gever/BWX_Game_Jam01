@@ -109,25 +109,25 @@
  </tile>
  <tile id="90">
   <properties>
-   <property name="kill you" type="bool" value="true"/>
+   <property name="kills you" type="bool" value="true"/>
    <property name="passable" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="91">
   <properties>
-   <property name="kill you" type="bool" value="true"/>
+   <property name="kills you" type="bool" value="true"/>
    <property name="passable" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="105">
   <properties>
-   <property name="kill you" type="bool" value="true"/>
+   <property name="kills you" type="bool" value="true"/>
    <property name="passable" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="106">
   <properties>
-   <property name="kill you" type="bool" value="true"/>
+   <property name="kills you" type="bool" value="true"/>
    <property name="passable" type="bool" value="false"/>
   </properties>
  </tile>
