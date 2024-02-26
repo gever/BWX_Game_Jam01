@@ -17,7 +17,8 @@ python game.py
 
 ## Story of Game
 You play a nervous miner, who has fallen from the engineered part of the mine into a complicated
-series of connected caverns filled with danger and annoyances.
+series of connected caverns filled with danger and annoyances. The player can pick up items to progress levels, such as a pickaxe to break rocks. but the pickaxes are very old and break after one use.the player keeps progressing avoiding lava and monsters, and then they reach the mine that they fell from. but it is blocked off by a giant rock which you need a pickaxe to break.
+the player goes in the other direction looking for another picaxe. the player keeps running into monsters and other obstacles, possibly going into different 
 
 
 ## Attributions

@@ -62,7 +62,7 @@ class BaseLevel:
 
         # create a collision square for each impassable tile
         for tile in self.visible_tiles:
-            if not tile['props'].get('passable', False):
+            if tile['props'] and (not tile['props'].get('passable', True)):
                 tile_coords = (tile['x'], tile['y'])
                 (tile_body, tile_shape) = self._make_tile_physics_body(tile_coords)
                 tile_shape.collision_type = COLLISION_TYPE_IMPASSABLE_TILE
