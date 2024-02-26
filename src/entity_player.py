@@ -69,3 +69,6 @@ class Player(BaseEntity):
 
     def is_player(self):
         return True
+
+    def act(self):
+        self.die_if_tile_kills_you()

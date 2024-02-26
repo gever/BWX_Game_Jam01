@@ -15,6 +15,9 @@ class BaseLevel:
         # load Tiled map
         self.map = TiledMap(os.path.join('../maps', map_fn))
 
+        self.reset()
+
+    def reset(self):
         self.entities = []
 
         # find player spawn point
@@ -31,7 +34,7 @@ class BaseLevel:
         entity_entity_collision_handler = self.space.add_collision_handler(COLLISION_TYPE_ENTITY, COLLISION_TYPE_ENTITY)
         entity_entity_collision_handler.begin = self._handle_entity_entity_collision
 
-        # create tile physics
+        # create tile physicspython game.py
         self.tile_physics_objs = [] # both bodies and shapes
         self._create_tile_physics()
 
@@ -68,15 +71,21 @@ class BaseLevel:
                 self.tile_physics_objs.append(tile_body)
                 self.tile_physics_objs.append(tile_shape)
 
+    def _get_tile_props_by_coords(self, x, y):
+        return self.map.get_tile_props_by_coords(self.map.get_first_tile_layer_index(), x, y)
+
     def start(self):
         pass
 
     def stop(self):
         pass
 
-    def reset(self):
-        for entity in self.entities:
-            entity.reset()
+    def remove_entity(self, entity):
+        self.entities.remove(entity)
+
+        # if there are no more players, the level is over
+        if not any([entity.is_player() for entity in self.entities]):
+            self.reset()
 
     def level_complete(self):
         for entity in self.entities:

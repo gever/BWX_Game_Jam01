@@ -19,7 +19,7 @@ class SlimeMonster(BaseEntity):
 
     def handle_entity_collision(self, other_entity):
         if other_entity.is_player():
-            self.level.reset()
+            other_entity.remove()
 
     def get_render_info(self):
         return {
@@ -29,6 +29,8 @@ class SlimeMonster(BaseEntity):
         }
 
     def act(self):
-        MAX_SPEED = 30
+        MAX_SPEED = 150
         MOVEMENT_STRENGTH = 110
         self.move_towards_player(MAX_SPEED, MOVEMENT_STRENGTH)
+
+        self.die_if_tile_kills_you()

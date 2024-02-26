@@ -1,6 +1,7 @@
 from vec2 import Vec2
 import pymunk
 
+from config import *
 from collision_types import *
 
 class BaseEntity:
@@ -48,6 +49,18 @@ class BaseEntity:
                 desired_velocity = pymunk.Vec2d(0, 0)
             self.apply_force_to_achieve_velocity(desired_velocity, strength)
 
+    def get_current_tile_props(self):
+        return self.level._get_tile_props_by_coords(int(self.body.position.x/TILE_SIZE), int(self.body.position.y/TILE_SIZE))
+
+    def die_if_tile_kills_you(self):
+        tile_props = self.get_current_tile_props()
+        if tile_props and tile_props.get('kills you'):
+            self.remove()
+
+    def remove(self):
+        self.level.space.remove(self.body, self.shape)
+        self.level.remove_entity(self)
+
     def handle_input(self, keys, events, dt):
         # safe to ignore by default
         pass
@@ -63,10 +76,6 @@ class BaseEntity:
     def get_render_info(self):
         # not safe to ignore by default
         raise NotImplementedError
-
-    def reset(self):
-        self.body.position = pymunk.Vec2d(self.initial_pos[0], self.initial_pos[1])
-        self.body.velocity = (0, 0)
 
     def is_player(self):
         return False
