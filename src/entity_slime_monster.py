@@ -30,5 +30,5 @@ class SlimeMonster(BaseEntity):
 
     def act(self):
         MAX_SPEED = 30
-        MOVEMENT_STRENGTH = 120
+        MOVEMENT_STRENGTH = 110
         self.move_towards_player(MAX_SPEED, MOVEMENT_STRENGTH)
