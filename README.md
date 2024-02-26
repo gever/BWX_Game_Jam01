@@ -15,6 +15,11 @@ Then to run the game, make sure you've activated your environment with `. env/bi
 python game.py
 ```
 
+## Story of Game
+You play a nervous miner, who has fallen from the engineered part of the mine into a complicated
+series of connected caverns filled with danger and annoyances.
+
+
 ## Attributions
 
 * [2D Pixel Dungeon Asset Pack](https://pixel-poem.itch.io/dungeon-assetpuck) by [Pixel_Poem](https://itch.io/profile/pixel-poem)

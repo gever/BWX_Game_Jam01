@@ -4,67 +4,67 @@
  <tile id="0">
   <properties>
    <property name="kills you" type="bool" value="true"/>
-   <property name="passable" type="bool" value="false"/>
+   <property name="passable" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="1">
   <properties>
    <property name="kills you" type="bool" value="true"/>
-   <property name="passable" type="bool" value="false"/>
+   <property name="passable" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="2">
   <properties>
    <property name="kills you" type="bool" value="true"/>
-   <property name="passable" type="bool" value="false"/>
+   <property name="passable" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="15">
   <properties>
    <property name="kills you" type="bool" value="true"/>
-   <property name="passable" type="bool" value="false"/>
+   <property name="passable" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="16">
   <properties>
    <property name="kills you" type="bool" value="true"/>
-   <property name="passable" type="bool" value="false"/>
+   <property name="passable" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="17">
   <properties>
    <property name="kills you" type="bool" value="true"/>
-   <property name="passable" type="bool" value="false"/>
+   <property name="passable" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="30">
   <properties>
    <property name="kills you" type="bool" value="true"/>
-   <property name="passable" type="bool" value="false"/>
+   <property name="passable" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="31">
   <properties>
    <property name="kills you" type="bool" value="true"/>
-   <property name="passable" type="bool" value="false"/>
+   <property name="passable" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="32">
   <properties>
    <property name="kills you" type="bool" value="true"/>
-   <property name="passable" type="bool" value="false"/>
+   <property name="passable" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="45">
   <properties>
    <property name="kills you" type="bool" value="true"/>
-   <property name="passable" type="bool" value="false"/>
+   <property name="passable" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="46">
   <properties>
    <property name="kills you" type="bool" value="true"/>
-   <property name="passable" type="bool" value="false"/>
+   <property name="passable" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="60">
@@ -110,25 +110,25 @@
  <tile id="90">
   <properties>
    <property name="kills you" type="bool" value="true"/>
-   <property name="passable" type="bool" value="false"/>
+   <property name="passable" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="91">
   <properties>
    <property name="kills you" type="bool" value="true"/>
-   <property name="passable" type="bool" value="false"/>
+   <property name="passable" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="105">
   <properties>
    <property name="kills you" type="bool" value="true"/>
-   <property name="passable" type="bool" value="false"/>
+   <property name="passable" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="106">
   <properties>
    <property name="kills you" type="bool" value="true"/>
-   <property name="passable" type="bool" value="false"/>
+   <property name="passable" type="bool" value="true"/>
   </properties>
  </tile>
 </tileset>
