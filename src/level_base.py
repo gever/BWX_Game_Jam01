@@ -13,6 +13,8 @@ from player_state import player_state
 
 class BaseLevel:
     def __init__(self, map_fn):
+        self.map_fn = map_fn
+
         # load Tiled map
         self.map = TiledMap(os.path.join('../maps', map_fn))
 
@@ -23,10 +25,10 @@ class BaseLevel:
 
         # find player spawn point
         self.player_spawn_point = self.map.get_object_by_name('player_spawn')
-        assert self.player_spawn_point, 'No player spawn found in map: %s' % map_fn
+        assert self.player_spawn_point, 'No player spawn found in map: %s' % self.map_fn
 
         self.exit_point = self.map.get_object_by_name('level_exit')
-        assert self.exit_point, 'No level exit found in map: %s' % map_fn
+        assert self.exit_point, 'No level exit found in map: %s' % self.map_fn
 
         # create physics space
         self.space = pymunk.Space()
