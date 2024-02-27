@@ -5,14 +5,14 @@ from config import *
 from collision_types import *
 
 class BaseEntity:
-    def __init__(self, level, initial_pos):
+    def __init__(self, level, initial_pos, *, radius=6, mass=1, static=False):
         self.level = level
         self.initial_pos = initial_pos
 
-        self.body = pymunk.Body(1, float('inf'))
+        self.body = pymunk.Body(mass, float('inf'), body_type=pymunk.Body.STATIC if static else pymunk.Body.DYNAMIC)
         self.body.position = self.initial_pos
         self.body.entity = self
-        self.shape = pymunk.Circle(self.body, 6)
+        self.shape = pymunk.Circle(self.body, radius)
         self.shape.collision_type = COLLISION_TYPE_ENTITY
         self.shape.elasticity = 0
         self.level.space.add(self.body, self.shape)
