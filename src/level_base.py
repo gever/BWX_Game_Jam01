@@ -115,7 +115,7 @@ class BaseLevel:
     def before_advance_simulation(self, dt):
         # override this in a derived class to do something extra before the simulation step
         for entity in self.entities:
-            entity.act()
+            entity.act(dt)
 
     def advance_simulation(self, dt):
         self.before_advance_simulation(dt)
