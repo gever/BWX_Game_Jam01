@@ -11,23 +11,23 @@ def load():
 
 class PlayerAssets:
     def __init__(self):
-        spritesheet = pygame.image.load('../gfx/Sprout Lands - Sprites - premium pack/Characters/Basic Charakter Spritesheet.png').convert_alpha()
+        spritesheet = pygame.image.load('../gfx/player_sprite.png').convert_alpha()
         sprites = []
         for i in range(0, 4):
-            frame = spritesheet.subsurface((16*(3*i + 1), 16, 16, 16))
+            frame = spritesheet.subsurface(((17*i + 1), 1, 16, 20))
             sprites.append(frame)
         self.anims = {
-            'standing': sprites[0:1],
-            'walking': sprites[2:4],
+            'left': sprites[0:2],
+            'right': sprites[2:4],
         }
         self.anchor = (7, 12)
-
+    
 # It is convenient to create an instance of the player in each level, rather than "moving" the player between levels:
 class Player(BaseEntity):
     def __init__(self, level, initial_pos):
         super().__init__(level, initial_pos)
 
-        self.current_anim = 'standing'
+        self.current_anim = 'right'
         self.anim_phase = 0
 
     def get_render_info(self):
@@ -44,8 +44,10 @@ class Player(BaseEntity):
         desired_velo = Vec2()
         if keys[pygame.K_LEFT] or keys[pygame.K_a]:
             desired_velo += Vec2(-1, 0)
+            self.current_anim = 'left'
         if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
             desired_velo += Vec2(1, 0)
+            self.current_anim = 'right'
         if keys[pygame.K_UP] or keys[pygame.K_w]:
             desired_velo += Vec2(0, -1)
         if keys[pygame.K_DOWN] or keys[pygame.K_s]:
@@ -63,10 +65,8 @@ class Player(BaseEntity):
 
         # # update player sprite frame
         if desired_velo.is_zero():
-            self.current_anim = 'standing'
             self.anim_phase = 0
         else:
-            self.current_anim = 'walking'
             PLAYER_WALKING_ANIM_TIME = 0.25
             self.anim_phase += dt / PLAYER_WALKING_ANIM_TIME
 
