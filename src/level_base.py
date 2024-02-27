@@ -9,6 +9,7 @@ from collision_types import *
 from map import TiledMap
 from entity_player import Player
 from entities_loader import ENTITY_MAP
+from player_state import player_state
 
 class BaseLevel:
     def __init__(self, map_fn):
@@ -43,6 +44,8 @@ class BaseLevel:
             if obj.name in ENTITY_MAP:
                 entity = ENTITY_MAP[obj.name](self, (obj.x, obj.y))
                 self.entities.append(entity)
+
+        player_state.reset()
 
     def _handle_entity_entity_collision(self, arbiter, space, data):
         if hasattr(arbiter.shapes[0].body, 'entity') and hasattr(arbiter.shapes[1].body, 'entity'):

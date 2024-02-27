@@ -1,5 +1,8 @@
 class PlayerState:
     def __init__(self):
+        self.reset()
+
+    def reset(self):
         self.health = 5
         self.inventory = []
 
