@@ -16,4 +16,14 @@
    <property name="kills you" type="bool" value="true"/>
   </properties>
  </tile>
+ <tile id="94">
+  <properties>
+   <property name="passable" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="109">
+  <properties>
+   <property name="passable" type="bool" value="false"/>
+  </properties>
+ </tile>
 </tileset>
