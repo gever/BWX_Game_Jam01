@@ -37,7 +37,7 @@ class LavaBlob(BaseEntity):
         
         if player: 
             dist = player.body.position.get_distance(self.body.position)
-            if dist < 60:
+            if dist < 75:
                self.chasing = True
 
             if self.chasing:
