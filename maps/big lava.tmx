@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="3">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="11">
  <tileset firstgid="1" source="Dungeon_Tileset_v2.tsx"/>
  <tileset firstgid="101" source="cave_crawler.tsx"/>
  <tileset firstgid="326" source="cave_crawler_v2.tsx"/>
@@ -25,6 +25,21 @@
    <point/>
   </object>
   <object id="2" name="level_exit" x="311.046" y="26.6524">
+   <point/>
+  </object>
+  <object id="4" x="91.0408" y="41.0373">
+   <point/>
+  </object>
+  <object id="6" x="72.0739" y="48.2792">
+   <point/>
+  </object>
+  <object id="7" name="lava_blob" x="200.704" y="108.284">
+   <point/>
+  </object>
+  <object id="8" name="lava_blob" x="125.181" y="148.631">
+   <point/>
+  </object>
+  <object id="10" name="lava_blob" x="170.702" y="133.802">
    <point/>
   </object>
  </objectgroup>
