@@ -30,8 +30,8 @@ class BaseEntity:
             desired_velocity = pymunk.Vec2d(0, 0)
         self.apply_force_to_achieve_velocity(desired_velocity, strength)
 
-    def move_towards_player(self, max_speed, strength):
-        # find closest player (in case there are multiple players)
+    # find closest player (in case there are multiple players)
+    def get_nearest_player(self):
         player = None
         closest_dist = float('inf')
         for entity in self.level.entities:
@@ -40,6 +40,10 @@ class BaseEntity:
                 if dist < closest_dist:
                     player = entity
                     closest_dist = dist
+        return player
+
+    def move_towards_player(self, max_speed, strength):
+        player = self.get_nearest_player()
 
         if player:
             pos_diff = player.body.position - self.body.position
