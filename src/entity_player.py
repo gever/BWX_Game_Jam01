@@ -67,7 +67,7 @@ class Player(BaseEntity):
         if desired_velo.is_zero():
             self.anim_phase = 0
         else:
-            PLAYER_WALKING_ANIM_TIME = 0.25
+            PLAYER_WALKING_ANIM_TIME = 0.2
             self.anim_phase += dt / PLAYER_WALKING_ANIM_TIME
 
     def is_player(self):

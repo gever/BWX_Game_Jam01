@@ -11,7 +11,7 @@ def load():
 class RockAssets:
     def __init__(self):
         spritesheet = pygame.image.load('../gfx/The Rock.png').convert_alpha()
-        self.sprite = spritesheet.subsurface((0, 0, 31, 25))
+        self.sprite = spritesheet.subsurface((0, 0, 33, 27))
         self.anchor = (17, 15)
 
 class Rock(BaseEntity):
