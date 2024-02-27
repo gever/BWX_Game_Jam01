@@ -6,15 +6,15 @@ from player_state import player_state
 
 def load():
     global assets
-    assets = RockAssets()
+    assets = PickaxeAssets()
 
-class RockAssets:
+class PickaxeAssets:
     def __init__(self):
         spritesheet = pygame.image.load('../gfx/objects.png').convert_alpha()
-        self.sprite = spritesheet.subsurface((1, 1, 35, 25))
-        self.anchor = (17, 15)
+        self.sprite = spritesheet.subsurface((47, 1, 24, 24))
+        self.anchor = (11, 16)
 
-class Rock(BaseEntity):
+class Pickaxe(BaseEntity):
     def __init__(self, level, initial_pos):
         super().__init__(level, initial_pos, radius=12, static=True)
 
@@ -27,6 +27,5 @@ class Rock(BaseEntity):
 
     def handle_entity_collision(self, other_entity):
         if other_entity.is_player():
-            if player_state.inventory_contains('pickaxe'):
-                self.remove()
-                player_state.remove_from_inventory('pickaxe')
+            self.remove()
+            player_state.add_to_inventory('pickaxe')
