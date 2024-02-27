@@ -24,7 +24,7 @@ class SkullMonster(BaseEntity):
             'anchor': assets.anchor,
         }
 
-    def act(self):
+    def act(self, dt):
         MAX_SPEED = 85
         MOVEMENT_STRENGTH = 15
         self.move_towards_player(MAX_SPEED, MOVEMENT_STRENGTH)

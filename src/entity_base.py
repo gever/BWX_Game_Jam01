@@ -69,7 +69,7 @@ class BaseEntity:
         # safe to ignore by default
         pass
 
-    def act(self):
+    def act(self, dt):
         # safe to ignore by default
         pass
 

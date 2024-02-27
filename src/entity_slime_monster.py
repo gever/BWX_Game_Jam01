@@ -28,7 +28,7 @@ class SlimeMonster(BaseEntity):
             'anchor': assets.anchor,
         }
 
-    def act(self):
+    def act(self, dt):
         MAX_SPEED = 100
         MOVEMENT_STRENGTH = 110
         self.move_towards_player(MAX_SPEED, MOVEMENT_STRENGTH)
