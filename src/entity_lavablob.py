@@ -19,7 +19,7 @@ class LavaBlob(BaseEntity):
     def __init__(self, level, initial_pos):
         super().__init__(level, initial_pos)
         self.chasing = False
-        self.time_until_death = 2
+        self.time_until_death = 2.5
         self.paused = False
 
     def get_render_info(self):
@@ -41,7 +41,7 @@ class LavaBlob(BaseEntity):
         
         if player:
             dist = player.body.position.get_distance(self.body.position)
-            if dist < 75:
+            if dist < 80:
                self.chasing = True
 
             if self.chasing == True:
