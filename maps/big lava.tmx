@@ -38,28 +38,28 @@
 </data>
  </layer>
  <objectgroup id="2" name="Object Layer 1">
-  <object id="1" name="player_spawn" x="23.9266" y="107.518">
+  <object id="1" name="player_spawn" x="22.6551" y="107.836">
    <point/>
   </object>
   <object id="2" name="level_exit" x="343.543" y="37.1661">
    <point/>
   </object>
-  <object id="4" name="lava_blob" x="148.174" y="105.623">
+  <object id="4" name="lava_blob" x="150.399" y="107.848">
    <point/>
   </object>
   <object id="6" name="lava_blob" x="152.392" y="140.189">
    <point/>
   </object>
-  <object id="7" name="lava_blob" x="200.704" y="108.284">
+  <object id="7" name="lava_blob" x="195.618" y="108.284">
    <point/>
   </object>
-  <object id="8" name="lava_blob" x="125.181" y="148.631">
+  <object id="8" name="lava_blob" x="131.538" y="141.32">
    <point/>
   </object>
-  <object id="10" name="lava_blob" x="170.702" y="133.802">
+  <object id="10" name="lava_blob" x="184.053" y="129.67">
    <point/>
   </object>
-  <object id="11" name="lava_blob" x="22.9391" y="43.9665">
+  <object id="11" name="lava_blob" x="60.7661" y="19.1723">
    <point/>
   </object>
   <object id="12" name="lava_blob" x="6.45161" y="23.6559">
@@ -71,10 +71,10 @@
   <object id="14" name="lava_blob" x="324.731" y="84.1099">
    <point/>
   </object>
-  <object id="15" name="lava_blob" x="358.159" y="73.2859">
+  <object id="15" name="lava_blob" x="330.504" y="92.6762">
    <point/>
   </object>
-  <object id="16" name="lava_blob" x="256.392" y="48.9845">
+  <object id="16" name="lava_blob" x="258.935" y="52.4811">
    <point/>
   </object>
  </objectgroup>
