@@ -4,6 +4,7 @@ import entity_slime_monster
 import entity_rock
 import entity_pickaxe
 import entity_lavablob
+import entity_waterblob
 
 def load_entities():
     entity_player.load()
@@ -12,6 +13,7 @@ def load_entities():
     entity_rock.load()
     entity_pickaxe.load()
     entity_lavablob.load()
+    entity_waterblob.load()
 
 # maps strings found in the map files to entity classes
 ENTITY_MAP = {
@@ -21,4 +23,5 @@ ENTITY_MAP = {
     'rock': entity_rock.Rock,
     'pickaxe': entity_pickaxe.Pickaxe,
     'lava_blob': entity_lavablob.LavaBlob,
+    'water_blob': entity_waterblob.WaterBlob,
 }
