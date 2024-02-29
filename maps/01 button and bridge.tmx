@@ -30,10 +30,7 @@
   <object id="4" name="pickaxe" x="87.234" y="22.695">
    <point/>
   </object>
-  <object id="5" name="rock" x="184.773" y="44.4468">
-   <point/>
-  </object>
-  <object id="6" name="rock" x="184.752" y="59.1135">
+  <object id="5" name="rock" x="184.17" y="49.2701">
    <point/>
   </object>
  </objectgroup>
