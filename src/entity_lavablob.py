@@ -48,7 +48,7 @@ class LavaBlob(BaseEntity):
         if tile_props and tile_props.get('kills you'):
             if self.paused == True:
                 self.paused = False
-                self.time_until_death = 2.5
+                self.time_until_death = 2
         
         if player:
             dist = player.body.position.get_distance(self.body.position)
@@ -56,8 +56,8 @@ class LavaBlob(BaseEntity):
                self.chasing = True
 
             if self.paused == True:
-                MAX_SPEED = 45
-                MOVEMENT_STRENGTH = 35
+                MAX_SPEED = 50
+                MOVEMENT_STRENGTH = 30
 
             else:
                 MAX_SPEED = 85
