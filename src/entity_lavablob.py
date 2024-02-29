@@ -38,6 +38,11 @@ class LavaBlob(BaseEntity):
         MAX_SPEED = 85
         MOVEMENT_STRENGTH = 15
         player = self.get_nearest_player()
+
+
+        tile_props = self.get_current_tile_props()
+        if tile_props and tile_props.get('water'):
+            self.paused = True
         
         if player:
             dist = player.body.position.get_distance(self.body.position)

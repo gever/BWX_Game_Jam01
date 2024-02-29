@@ -16,6 +16,11 @@
    <property name="kills you" type="bool" value="true"/>
   </properties>
  </tile>
+ <tile id="66">
+  <properties>
+   <property name="water" type="bool" value="true"/>
+  </properties>
+ </tile>
  <tile id="94">
   <properties>
    <property name="passable" type="bool" value="false"/>
