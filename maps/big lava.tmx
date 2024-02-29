@@ -47,9 +47,6 @@
   <object id="4" name="lava_blob" x="150.399" y="107.848">
    <point/>
   </object>
-  <object id="6" name="lava_blob" x="152.392" y="140.189">
-   <point/>
-  </object>
   <object id="7" name="lava_blob" x="195.618" y="108.284">
    <point/>
   </object>
@@ -65,13 +62,7 @@
   <object id="13" name="lava_blob" x="31.5412" y="17.2043">
    <point/>
   </object>
-  <object id="14" name="lava_blob" x="324.731" y="84.1099">
-   <point/>
-  </object>
-  <object id="15" name="lava_blob" x="330.504" y="92.6762">
-   <point/>
-  </object>
-  <object id="16" name="lava_blob" x="258.935" y="52.4811">
+  <object id="14" name="lava_blob" x="318.367" y="79.8675">
    <point/>
   </object>
  </objectgroup>
