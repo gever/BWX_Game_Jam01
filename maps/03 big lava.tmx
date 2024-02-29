@@ -41,7 +41,7 @@
   <object id="1" name="player_spawn" x="22.6551" y="107.836">
    <point/>
   </object>
-  <object id="2" name="level_exit" x="343.543" y="37.1661">
+  <object id="2" name="level_exit" x="344.146" y="40.4821">
    <point/>
   </object>
   <object id="7" name="lava_blob" x="183.861" y="113.107">
