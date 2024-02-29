@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="8">
  <tileset firstgid="1" source="cave_crawler_v2.tsx"/>
- <layer id="1" name="Tile Layer 1" width="23" height="13">
+ <layer id="1" name="Tile Layer 1" width="23" height="13" locked="1">
   <data encoding="csv">
 95,110,110,95,110,110,110,110,110,110,110,110,110,95,110,110,95,110,110,110,110,110,95,
 1610612846,61,61,95,46,46,61,61,61,61,61,61,61,95,46,46,95,61,61,61,61,61,2684354670,
