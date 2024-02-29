@@ -11,8 +11,8 @@ class LavaBlobAssets:
     def __init__(self):
         spritesheet = pygame.image.load('../gfx/Lava Blob.png').convert_alpha()
         paused_spritesheet = pygame.image.load('../gfx/Stone Lava Blob.png').convert_alpha()
-        self.sprite = spritesheet.subsurface((17, 20, 16, 12))
-        self.pausedsprite = paused_spritesheet.subsurface((17, 20, 16, 12))
+        self.sprite = spritesheet.subsurface((0, 0, 16, 12))
+        self.pausedsprite = paused_spritesheet.subsurface((0, 0, 16, 12))
         self.anchor = (8, 14)
 
 class LavaBlob(BaseEntity):
