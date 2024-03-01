@@ -20,7 +20,7 @@ class PlayerAssets:
             'left': sprites[0:2],
             'right': sprites[2:4],
         }
-        self.anchor = (7, 12)
+        self.anchor = (7, 14)
     
 # It is convenient to create an instance of the player in each level, rather than "moving" the player between levels:
 class Player(BaseEntity):
