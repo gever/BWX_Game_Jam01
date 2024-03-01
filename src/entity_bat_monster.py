@@ -5,15 +5,15 @@ from entity_base import BaseEntity
 
 def load():
     global assets
-    assets = SkullMonsterAssets()
+    assets = BatMonsterAssets()
 
-class SkullMonsterAssets:
+class BatMonsterAssets:
     def __init__(self):
-        spritesheet = pygame.image.load('../gfx/2D Dungeon Asset Pack_v5.2/character and tileset/Dungeon_Enemy_v2.png').convert_alpha()
-        self.sprite = spritesheet.subsurface((32, 0, 16, 16))
-        self.anchor = (8, 14)
+        spritesheet = pygame.image.load('../gfx/bat_sprite.png').convert_alpha()
+        self.sprite = spritesheet.subsurface((0, 0, 16, 9))
+        self.anchor = (8, 8)
 
-class SkullMonster(BaseEntity):
+class BatMonster(BaseEntity):
     def __init__(self, level, initial_pos):
         super().__init__(level, initial_pos)
 

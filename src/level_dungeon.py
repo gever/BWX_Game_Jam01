@@ -3,7 +3,7 @@ import pymunk
 
 from audio import get_audio
 from level_base import BaseLevel
-from entity_skull_monster import SkullMonster
+from entity_bat_monster import SkullMonster
 from collision_types import *
 from player_state import player_state
 
