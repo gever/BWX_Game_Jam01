@@ -35,7 +35,6 @@ class LavaBlob(BaseEntity):
 
     def get_render_info(self):
         frame = int(self.timer) % len(assets.spritelist)
-        print(self.paused, self.stone)
         return {
             'sprite': assets.stonesprite if self.stone else (assets.pausedsprite if self.paused else assets.spritelist[frame]),
             'pos': self.body.position,
