@@ -126,11 +126,17 @@ class BaseLevel:
         # render map to a temporary surface
         surface = self.map.render_map_to_new_surface()
 
+        render_infos = [entity.get_render_info() for entity in self.entities]
+        for info in render_infos:
+            render_pos = (info['pos'][0] - info['anchor'][0], info['pos'][1] - info['anchor'][1])
+            info['render_pos'] = render_pos
+
+        # sort by y position so that entities are drawn in the correct order
+        render_infos.sort(key=lambda info: info['pos'][1])
+
         # render all entities
-        for entity in self.entities:
-            render_info = entity.get_render_info()
-            render_pos = (render_info['pos'][0] - render_info['anchor'][0], render_info['pos'][1] - render_info['anchor'][1])
-            surface.blit(render_info['sprite'], render_pos)
+        for info in render_infos:
+            surface.blit(info['sprite'], info['render_pos'])
 
         return surface
 
