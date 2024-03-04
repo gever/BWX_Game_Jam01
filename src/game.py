@@ -23,7 +23,7 @@ show_fps = True
 init_audio()
 
 # start background music
-get_audio().play_sfx('water_drops', loop=True)
+get_audio().start_music()
 
 # load all entities and levels
 entities = load_entities()
@@ -47,6 +47,8 @@ while running:
     # calculate time since last frame
     dt = time.time() - last_time
     last_time = time.time()
+
+    get_audio().update_music()
 
     # poll for events
     unhandled_events = []
