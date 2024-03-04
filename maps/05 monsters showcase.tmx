@@ -51,9 +51,6 @@
   <object id="5" name="player_spawn" x="25.5198" y="43.81">
    <point/>
   </object>
-  <object id="6" name="skull_monster" x="84.1774" y="135.979">
-   <point/>
-  </object>
   <object id="7" name="slime_monster" x="166.831" y="56.3722">
    <point/>
   </object>
