@@ -16,7 +16,7 @@ class RockAssets:
 
 class Rock(BaseEntity):
     def __init__(self, level, initial_pos):
-        super().__init__(level, initial_pos, radius=12, static=True)
+        super().__init__(level, initial_pos, radius=18, static=True)
 
     def get_render_info(self):
         return {
