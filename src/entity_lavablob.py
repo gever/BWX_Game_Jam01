@@ -56,9 +56,9 @@ class LavaBlob(BaseEntity):
                self.chasing = True
 
             if self.paused == True:
-                MAX_SPEED = 10
-                MOVEMENT_STRENGTH = 30
-                #self.chasing = False
+                MAX_SPEED = 0
+                MOVEMENT_STRENGTH = 25
+                self.chasing = False
 
             else:
                 MAX_SPEED = 85
