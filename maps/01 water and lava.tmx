@@ -37,16 +37,10 @@
 </data>
  </layer>
  <objectgroup id="3" name="Object Layer 1">
-  <object id="1" name="player_spawn" x="184.096" y="188.2">
+  <object id="1" name="player_spawn" x="194.1" y="187.2">
    <point/>
   </object>
   <object id="2" name="level_exit" x="344.99" y="21.75">
-   <point/>
-  </object>
-  <object id="9" name="lava_blob" x="54" y="37.6667">
-   <point/>
-  </object>
-  <object id="11" name="water_blob" x="312.5" y="137.5">
    <point/>
   </object>
  </objectgroup>

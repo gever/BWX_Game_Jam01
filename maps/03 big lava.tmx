@@ -44,16 +44,10 @@
   <object id="2" name="level_exit" x="344.146" y="40.4821">
    <point/>
   </object>
-  <object id="7" name="lava_blob" x="183.861" y="113.107">
+  <object id="7" name="lava_blob" x="167.483" y="126.057">
    <point/>
   </object>
-  <object id="10" name="lava_blob" x="158.648" y="133.945">
-   <point/>
-  </object>
-  <object id="11" name="lava_blob" x="60.7661" y="19.1723">
-   <point/>
-  </object>
-  <object id="12" name="lava_blob" x="23.4213" y="18.8074">
+  <object id="12" name="lava_blob" x="21.5168" y="22.9972">
    <point/>
   </object>
   <object id="14" name="lava_blob" x="318.367" y="79.8675">
