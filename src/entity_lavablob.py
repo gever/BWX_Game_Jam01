@@ -12,8 +12,10 @@ class LavaBlobAssets:
     def __init__(self):
         spritesheet = pygame.image.load('../gfx/Lava Blob.png').convert_alpha()
         paused_spritesheet = pygame.image.load('../gfx/Half Stone Lava Blob.png').convert_alpha()
+        stone_spritesheet = pygame.image.load('../gfx/Stone Lava Blob.png').convert_alpha()
         self.sprite = spritesheet.subsurface((0, 0, 16, 12))
         self.pausedsprite = paused_spritesheet.subsurface((0, 0, 16, 12))
+        self.stonesprite = stone_spritesheet.subsurface((0, 0, 16, 12))
         self.spritelist = []
         for i in range (0,4):
             frame = spritesheet.subsurface(((20*i), 0, 16, 12))
@@ -24,21 +26,24 @@ class LavaBlob(BaseEntity):
     def __init__(self, level, initial_pos):
         super().__init__(level, initial_pos)
         self.chasing = False
-        self.time_until_death = 2.5
+        self.time_until_death = 1.5
         self.paused = False
         self.less_speed = 0
         self.timer = 0
+        self.time_unil_stone = 2.5
+        self.stone = False
 
     def get_render_info(self):
         frame = int(self.timer) % len(assets.spritelist)
+        print(self.paused, self.stone)
         return {
-            'sprite': assets.pausedsprite if self.paused else assets.spritelist[frame],
+            'sprite': assets.stonesprite if self.stone else (assets.pausedsprite if self.paused else assets.spritelist[frame]),
             'pos': self.body.position,
             'anchor': assets.anchor,
         }
     
     def handle_entity_collision(self, other_entity):
-        if not self.paused:
+        if not self.stone:
             # TODO: trigger player death noise
             if other_entity.is_player():
                 other_entity.remove()
@@ -61,19 +66,29 @@ class LavaBlob(BaseEntity):
 
         tile_props = self.get_current_tile_props()
         if tile_props and tile_props.get('kills you'):
-            if self.paused == True:
-                self.paused = False
-                self.time_until_death = 2.5
+            self.paused = False
+            self.time_until_death = 2.5
+            self.time_unil_stone = 2.5
+
         
         if player:
             dist = player.body.position.get_distance(self.body.position)
             if dist < 80:
                self.chasing = True
 
-            if self.paused == True:
-                MAX_SPEED = 0
-                MOVEMENT_STRENGTH = 25
+            if self.stone:
                 self.chasing = False
+                MAX_SPEED = 0
+                MOVEMENT_STRENGTH = 0
+
+
+            if self.paused == True:
+               # self.chasing = False
+                self.time_unil_stone -= dt
+                if self.time_unil_stone < 0:
+                    self.stone = True
+                MAX_SPEED = 30
+                MOVEMENT_STRENGTH = 15
 
             else:
                 MAX_SPEED = 85
