@@ -6,6 +6,7 @@ audio_engine = None
 SFX_MAP = {
     'rasp': 'rasp.wav',
     'water_drops': 'water-drops-daniel_simon.mp3',
+    'mine_rock': 'miningNoises.wav',
 }
 
 MUSIC_PLAYLIST = [

@@ -3,6 +3,7 @@ import pymunk
 
 from entity_base import BaseEntity
 from player_state import player_state
+from audio import get_audio
 
 def load():
     global assets
@@ -30,3 +31,4 @@ class Rock(BaseEntity):
             if player_state.inventory_contains('pickaxe'):
                 self.remove()
                 player_state.remove_from_inventory('pickaxe')
+                get_audio().play_sfx('mine_rock')
