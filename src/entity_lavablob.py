@@ -14,6 +14,10 @@ class LavaBlobAssets:
         paused_spritesheet = pygame.image.load('../gfx/Half Stone Lava Blob.png').convert_alpha()
         self.sprite = spritesheet.subsurface((0, 0, 16, 12))
         self.pausedsprite = paused_spritesheet.subsurface((0, 0, 16, 12))
+        self.spritelist = []
+        for i in range (0,4):
+            frame = spritesheet.subsurface(((20*i), 0, 16, 12))
+            self.spritelist.append(frame)
         self.anchor = (8, 14)
 
 class LavaBlob(BaseEntity):
@@ -22,10 +26,13 @@ class LavaBlob(BaseEntity):
         self.chasing = False
         self.time_until_death = 2.5
         self.paused = False
+        self.less_speed = 0
+        self.timer = 0
 
     def get_render_info(self):
+        frame = int(self.timer) % len(assets.spritelist)
         return {
-            'sprite': assets.pausedsprite if self.paused else assets.sprite,
+            'sprite': assets.pausedsprite if self.paused else assets.spritelist[frame],
             'pos': self.body.position,
             'anchor': assets.anchor,
         }
@@ -42,6 +49,7 @@ class LavaBlob(BaseEntity):
                 other_entity.remove()
 
     def act(self,dt):
+        self.timer += dt*7
         MAX_SPEED = 85
         MOVEMENT_STRENGTH = 15
         player = self.get_nearest_player()
@@ -79,5 +87,3 @@ class LavaBlob(BaseEntity):
                         
             else:
                 self.body.velocity = (0,0)
-
-
