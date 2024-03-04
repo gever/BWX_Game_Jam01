@@ -2,6 +2,7 @@ import pygame
 import pymunk
 
 from entity_base import BaseEntity
+from entity_waterblob import WaterBlob
 
 def load():
     global assets
@@ -30,8 +31,14 @@ class LavaBlob(BaseEntity):
         }
     
     def handle_entity_collision(self, other_entity):
-        if other_entity.is_player():
-            if not self.paused:
+        if not self.paused:
+            # TODO: trigger player death noise
+            if other_entity.is_player():
+                other_entity.remove()
+                return
+
+            # TODO: trigger water blob death noise
+            if isinstance(other_entity, WaterBlob):
                 other_entity.remove()
 
     def act(self,dt):
@@ -48,7 +55,7 @@ class LavaBlob(BaseEntity):
         if tile_props and tile_props.get('kills you'):
             if self.paused == True:
                 self.paused = False
-                self.time_until_death = 2
+                self.time_until_death = 2.5
         
         if player:
             dist = player.body.position.get_distance(self.body.position)
