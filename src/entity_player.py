@@ -17,7 +17,7 @@ class PlayerAssets:
             frame = spritesheet.subsurface(((17*i + 1), 1, 16, 20))
             sprites.append(frame)
         self.anims = {
-            'left': sprites[0:2],
+            'left': list(reversed(sprites[0:2])),
             'right': sprites[2:4],
         }
         self.anchor = (7, 16)
