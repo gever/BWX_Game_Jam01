@@ -10,7 +10,7 @@ def load():
 class LavaBlobAssets:
     def __init__(self):
         spritesheet = pygame.image.load('../gfx/Lava Blob.png').convert_alpha()
-        paused_spritesheet = pygame.image.load('../gfx/Stone Lava Blob.png').convert_alpha()
+        paused_spritesheet = pygame.image.load('../gfx/Half Stone Lava Blob.png').convert_alpha()
         self.sprite = spritesheet.subsurface((0, 0, 16, 12))
         self.pausedsprite = paused_spritesheet.subsurface((0, 0, 16, 12))
         self.anchor = (8, 14)
@@ -56,8 +56,9 @@ class LavaBlob(BaseEntity):
                self.chasing = True
 
             if self.paused == True:
-                MAX_SPEED = 50
+                MAX_SPEED = 10
                 MOVEMENT_STRENGTH = 30
+                #self.chasing = False
 
             else:
                 MAX_SPEED = 85
