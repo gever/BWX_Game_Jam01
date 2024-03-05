@@ -1,4 +1,4 @@
-import pygame 
+import pygame
 import pymunk
 
 from entity_base import BaseEntity
@@ -13,18 +13,20 @@ class LavaBlobAssets:
         spritesheet = pygame.image.load('../gfx/Lava Blob.png').convert_alpha()
         paused_spritesheet = pygame.image.load('../gfx/Half Stone Lava Blob.png').convert_alpha()
         stone_spritesheet = pygame.image.load('../gfx/Stone Lava Blob.png').convert_alpha()
-        blank_spritesheet = pygame.image.load('../gfx/In_lava_lava_blob.png').convert_alpha()
-        self.sprite = spritesheet.subsurface((0, 0, 16, 12))
-        self.pausedsprite = paused_spritesheet.subsurface((0, 0, 16, 12))
+        blank_spritesheet = pygame.image.load('../gfx/in_lava_lava_blob.png').convert_alpha()
         self.stonesprite = stone_spritesheet.subsurface((0, 0, 16, 12))
         self.spritelist = []
+        self.pausedspritelist = []
         self.inlavaspritelist = []
         for i in range (0,4):
-            frame = spritesheet.subsurface(((20*i), 0, 16, 12))
-            self.spritelist.append(frame)
+            main_frame = spritesheet.subsurface(((20*i), 0, 16, 12))
+            self.spritelist.append(main_frame)
         for i in range (0,4):
-            frame = blank_spritesheet.subsurface(((20*i), 0, 16, 12))
-            self.inlavaspritelist.append(frame)
+            paused_frame = paused_spritesheet.subsurface(((20*i), 0, 16, 12))
+            self.pausedspritelist.append(paused_frame)
+        for i in range (0,4):
+            in_lava_frame = blank_spritesheet.subsurface(((20*i), 0, 16, 12))
+            self.inlavaspritelist.append(in_lava_frame)
         self.anchor = (8, 14)
 
 class LavaBlob(BaseEntity):
@@ -38,17 +40,20 @@ class LavaBlob(BaseEntity):
         self.time_unil_stone = 2.5
         self.stone = False
         self.inlava = False
+        self.exiting_lava = 1
 
     def get_render_info(self):
-        frame = int(self.timer) % len(assets.spritelist)
+        main_frame = int(self.timer) % len(assets.spritelist)
+        paused_frame = int(self.timer) % len(assets.pausedspritelist)
+        in_lava_frame = int(self.timer) % len(assets.inlavaspritelist)
         return {
-            'sprite': assets.inlavaspritelist[frame] if self.inlava else (assets.stonesprite if self.stone else (assets.pausedsprite if self.paused else assets.spritelist[frame])),
+            'sprite': assets.inlavaspritelist[in_lava_frame] if self.inlava else (assets.stonesprite if self.stone else (assets.pausedspritelist[paused_frame] if self.paused else assets.spritelist[main_frame])),
             'pos': self.body.position,
             'anchor': assets.anchor,
         }
     
     def handle_entity_collision(self, other_entity):
-        if not self.stone:
+        if (not self.paused or not self.stone) and not self.paused and not self.stone:
             # TODO: trigger player death noise
             if other_entity.is_player():
                 other_entity.remove()
@@ -76,7 +81,10 @@ class LavaBlob(BaseEntity):
             self.time_until_death = 2.5
             self.time_unil_stone = 2.5
         else:
-            self.inlava = False
+            self.exiting_lava -= 1
+            if self.exiting_lava < 1:
+                self.inlava = False
+                self.exiting_lava = 1
         
         if player:
             dist = player.body.position.get_distance(self.body.position)
@@ -95,7 +103,7 @@ class LavaBlob(BaseEntity):
                 if self.time_unil_stone < 0:
                     self.stone = True
                 MAX_SPEED = 30
-                MOVEMENT_STRENGTH = 15
+                MOVEMENT_STRENGTH = 90
 
             else:
                 MAX_SPEED = 85
