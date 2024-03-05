@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="17">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="24">
  <tileset firstgid="1" source="Dungeon_Tileset_v2.tsx"/>
  <tileset firstgid="101" source="cave_crawler.tsx"/>
  <tileset firstgid="326" source="cave_crawler_v2.tsx"/>
@@ -9,7 +9,7 @@
 371,371,371,371,371,386,386,386,386,386,386,386,386,386,386,386,386,386,386,386,386,405,2684354995,
 371,371,371,371,387,161,161,161,161,162,162,162,162,162,162,371,371,162,162,162,162,386,2684354995,
 371,371,371,162,162,162,162,162,162,162,161,161,162,162,162,371,371,402,162,372,373,403,373,
-371,161,161,161,161,161,161,161,161,161,162,161,161,161,161,161,404,161,373,372,371,371,373,
+371,161,161,161,161,161,161,161,161,403,403,403,403,403,161,161,404,161,373,372,371,371,373,
 1610613171,161,162,162,162,162,162,162,191,102,102,102,102,102,192,162,162,162,373,373,162,372,373,
 1610613171,405,161,161,161,161,161,191,373,117,117,117,373,373,118,402,161,161,161,373,373,404,2684354995,
 1610613171,161,162,162,162,162,191,373,373,373,373,117,373,373,207,162,162,162,162,162,162,162,2684354995,
@@ -44,13 +44,16 @@
   <object id="2" name="level_exit" x="344.646" y="26.9821">
    <point/>
   </object>
-  <object id="7" name="lava_blob" x="167.483" y="126.057">
-   <point/>
-  </object>
-  <object id="12" name="lava_blob" x="21.5168" y="22.9972">
-   <point/>
-  </object>
   <object id="14" name="lava_blob" x="318.367" y="79.8675">
+   <point/>
+  </object>
+  <object id="20" name="lava_blob" x="188.5" y="115.5">
+   <point/>
+  </object>
+  <object id="22" name="lava_blob" x="154" y="133.5">
+   <point/>
+  </object>
+  <object id="23" name="lava_blob" x="21.5" y="16.5">
    <point/>
   </object>
  </objectgroup>

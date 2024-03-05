@@ -31,6 +31,11 @@
    <property name="passable" type="bool" value="false"/>
   </properties>
  </tile>
+ <tile id="96">
+  <properties>
+   <property name="passable" type="bool" value="false"/>
+  </properties>
+ </tile>
  <tile id="109">
   <properties>
    <property name="passable" type="bool" value="false"/>
