@@ -19,7 +19,7 @@ screen = pygame.display.set_mode((screen_width, screen_height)) # this should pr
 clock = pygame.time.Clock()
 font = pygame.font.Font(None, 16)
 running = True
-show_fps = True
+show_fps = False
 init_audio()
 
 # start background music
