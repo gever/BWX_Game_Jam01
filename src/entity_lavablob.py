@@ -13,9 +13,11 @@ class LavaBlobAssets:
         spritesheet = pygame.image.load('../gfx/Lava Blob.png').convert_alpha()
         paused_spritesheet = pygame.image.load('../gfx/Half Stone Lava Blob.png').convert_alpha()
         stone_spritesheet = pygame.image.load('../gfx/Stone Lava Blob.png').convert_alpha()
+        blank_spritesheet = pygame.image.load('../gfx/blank_spritesheet.png').convert_alpha()
         self.sprite = spritesheet.subsurface((0, 0, 16, 12))
         self.pausedsprite = paused_spritesheet.subsurface((0, 0, 16, 12))
         self.stonesprite = stone_spritesheet.subsurface((0, 0, 16, 12))
+        self.inlavasprite = blank_spritesheet.subsurface((0,0, 16, 16))
         self.spritelist = []
         for i in range (0,4):
             frame = spritesheet.subsurface(((20*i), 0, 16, 12))
@@ -32,11 +34,12 @@ class LavaBlob(BaseEntity):
         self.timer = 0
         self.time_unil_stone = 2.5
         self.stone = False
+        self.inlava = False
 
     def get_render_info(self):
         frame = int(self.timer) % len(assets.spritelist)
         return {
-            'sprite': assets.stonesprite if self.stone else (assets.pausedsprite if self.paused else assets.spritelist[frame]),
+            'sprite': assets.inlavasprite if self.inlava else (assets.stonesprite if self.stone else (assets.pausedsprite if self.paused else assets.spritelist[frame])),
             'pos': self.body.position,
             'anchor': assets.anchor,
         }
@@ -66,9 +69,11 @@ class LavaBlob(BaseEntity):
         tile_props = self.get_current_tile_props()
         if tile_props and tile_props.get('kills you'):
             self.paused = False
+            self.inlava = True
             self.time_until_death = 2.5
             self.time_unil_stone = 2.5
-
+        else:
+            self.inlava = False
         
         if player:
             dist = player.body.position.get_distance(self.body.position)
