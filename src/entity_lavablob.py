@@ -40,6 +40,7 @@ class LavaBlob(BaseEntity):
         self.time_unil_stone = 2.5
         self.stone = False
         self.inlava = False
+        self.exiting_lava = 1
 
     def get_render_info(self):
         main_frame = int(self.timer) % len(assets.spritelist)
@@ -52,7 +53,7 @@ class LavaBlob(BaseEntity):
         }
     
     def handle_entity_collision(self, other_entity):
-        if (not self.paused and self.stone):
+        if (not self.paused or not self.stone) and not self.paused and not self.stone:
             # TODO: trigger player death noise
             if other_entity.is_player():
                 other_entity.remove()
@@ -79,8 +80,11 @@ class LavaBlob(BaseEntity):
             self.inlava = True
             self.time_until_death = 2.5
             self.time_unil_stone = 2.5
-        else: 
-            self.inlava = False
+        else:
+            self.exiting_lava -= 1
+            if self.exiting_lava < 1:
+                self.inlava = False
+                self.exiting_lava = 1
         
         if player:
             dist = player.body.position.get_distance(self.body.position)
