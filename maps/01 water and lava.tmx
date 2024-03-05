@@ -2,6 +2,7 @@
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="12">
  <tileset firstgid="1" source="cave_crawler_v2.tsx"/>
  <tileset firstgid="226" source="Dungeon_Tileset_v2.tsx"/>
+ <tileset firstgid="326" source="stalagmite.tsx"/>
  <layer id="1" name="Tile Layer 1" width="23" height="13">
   <data encoding="csv">
 61,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
