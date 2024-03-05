@@ -31,7 +31,7 @@ class BatMonster(BaseEntity):
         }
 
     def act(self, dt):
-        self.timer += dt*7
+        self.timer += dt*4
         MAX_SPEED = 85
         MOVEMENT_STRENGTH = 15
         self.move_towards_player(MAX_SPEED, MOVEMENT_STRENGTH)
