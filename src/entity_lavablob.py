@@ -40,14 +40,13 @@ class LavaBlob(BaseEntity):
         self.time_unil_stone = 2.5
         self.stone = False
         self.inlava = False
-        self.exiting_lava = 1
 
     def get_render_info(self):
-        main_frame = int(self.timer) % len(assets.spritelist)
-        paused_frame = int(self.timer) % len(assets.pausedspritelist)
-        in_lava_frame = int(self.timer) % len(assets.inlavaspritelist)
+        self.main_frame = int(self.timer) % len(assets.spritelist)
+        self.paused_frame = int(self.timer) % len(assets.pausedspritelist)
+        self.in_lava_frame = int(self.timer) % len(assets.inlavaspritelist)
         return {
-            'sprite': assets.inlavaspritelist[in_lava_frame] if self.inlava else (assets.stonesprite if self.stone else (assets.pausedspritelist[paused_frame] if self.paused else assets.spritelist[main_frame])),
+            'sprite': assets.inlavaspritelist[self.in_lava_frame] if self.inlava else (assets.stonesprite if self.stone else (assets.pausedspritelist[self.paused_frame] if self.paused else assets.spritelist[self.main_frame])),
             'pos': self.body.position,
             'anchor': assets.anchor,
         }
@@ -81,10 +80,8 @@ class LavaBlob(BaseEntity):
             self.time_until_death = 2.5
             self.time_unil_stone = 2.5
         else:
-            self.exiting_lava -= 1
-            if self.exiting_lava < 1:
+            if self.in_lava_frame == 0 or self.in_lava_frame == 4:
                 self.inlava = False
-                self.exiting_lava = 1
         
         if player:
             dist = player.body.position.get_distance(self.body.position)
