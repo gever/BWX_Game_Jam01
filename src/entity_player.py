@@ -29,6 +29,8 @@ class Player(BaseEntity):
 
         self.current_anim = 'right'
         self.anim_phase = 0
+        self.stamina = MAX_STAMINA
+
 
     def get_render_info(self):
         anim = assets.anims[self.current_anim]
@@ -57,7 +59,13 @@ class Player(BaseEntity):
         if not desired_velo.is_zero():
             multiplier = PLAYER_SPEED
             if keys[pygame.K_SPACE]:
-                multiplier += PLAYER_SPEED_BOOST
+                if self.stamina > 3:
+                    multiplier += PLAYER_SPEED_BOOST
+                    self.stamina = self.stamina - 4
+            else:
+                self.stamina = self.stamina + 2
+                if self.stamina > MAX_STAMINA:
+                    self.stamina = MAX_STAMINA
             desired_velo = desired_velo.normalized() * multiplier
 
         # apply force to player body to make its velocity approach the desired velocity
