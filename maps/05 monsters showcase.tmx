@@ -36,7 +36,7 @@
 </data>
  </layer>
  <objectgroup id="2" name="Object Layer 1">
-  <object id="1" name="pickaxe" x="240.58" y="57.95">
+  <object id="1" name="pickaxe" x="241.08" y="66.45">
    <point/>
   </object>
   <object id="2" name="rock" x="343.566" y="103.984">
