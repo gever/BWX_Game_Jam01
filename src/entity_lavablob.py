@@ -13,15 +13,18 @@ class LavaBlobAssets:
         spritesheet = pygame.image.load('../gfx/Lava Blob.png').convert_alpha()
         paused_spritesheet = pygame.image.load('../gfx/Half Stone Lava Blob.png').convert_alpha()
         stone_spritesheet = pygame.image.load('../gfx/Stone Lava Blob.png').convert_alpha()
-        blank_spritesheet = pygame.image.load('../gfx/blank_spritesheet.png').convert_alpha()
+        blank_spritesheet = pygame.image.load('../gfx/In_lava_lava_blob.png').convert_alpha()
         self.sprite = spritesheet.subsurface((0, 0, 16, 12))
         self.pausedsprite = paused_spritesheet.subsurface((0, 0, 16, 12))
         self.stonesprite = stone_spritesheet.subsurface((0, 0, 16, 12))
-        self.inlavasprite = blank_spritesheet.subsurface((0,0, 16, 16))
         self.spritelist = []
+        self.inlavaspritelist = []
         for i in range (0,4):
             frame = spritesheet.subsurface(((20*i), 0, 16, 12))
             self.spritelist.append(frame)
+        for i in range (0,4):
+            frame = blank_spritesheet.subsurface(((20*i), 0, 16, 12))
+            self.inlavaspritelist.append(frame)
         self.anchor = (8, 14)
 
 class LavaBlob(BaseEntity):
@@ -39,7 +42,7 @@ class LavaBlob(BaseEntity):
     def get_render_info(self):
         frame = int(self.timer) % len(assets.spritelist)
         return {
-            'sprite': assets.inlavasprite if self.inlava else (assets.stonesprite if self.stone else (assets.pausedsprite if self.paused else assets.spritelist[frame])),
+            'sprite': assets.inlavaspritelist[frame] if self.inlava else (assets.stonesprite if self.stone else (assets.pausedsprite if self.paused else assets.spritelist[frame])),
             'pos': self.body.position,
             'anchor': assets.anchor,
         }

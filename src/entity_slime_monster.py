@@ -9,8 +9,8 @@ def load():
 
 class SlimeMonsterAssets:
     def __init__(self):
-        spritesheet = pygame.image.load('../gfx/2D Dungeon Asset Pack_v5.2/character and tileset/Dungeon_Enemy_v2.png').convert_alpha()
-        self.sprite = spritesheet.subsurface((0, 0, 16, 16))
+        spritesheet = pygame.image.load('../gfx/Mushroom Monster.png').convert_alpha()
+        self.sprite = spritesheet.subsurface((0, 0, 30, 27))
         self.anchor = (8, 14)
 
 class SlimeMonster(BaseEntity):
