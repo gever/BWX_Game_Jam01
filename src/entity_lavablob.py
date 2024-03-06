@@ -65,7 +65,7 @@ class LavaBlob(BaseEntity):
                 other_entity.remove()
 
     def act(self,dt):
-        self.timer += dt*7
+        self.timer += dt*5
         MAX_SPEED = 85
         MOVEMENT_STRENGTH = 15
         player = self.get_nearest_player()
