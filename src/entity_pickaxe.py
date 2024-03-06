@@ -10,13 +10,13 @@ def load():
 
 class PickaxeAssets:
     def __init__(self):
-        spritesheet = pygame.image.load('../gfx/objects.png').convert_alpha()
-        self.sprite = spritesheet.subsurface((47, 1, 24, 24))
-        self.anchor = (11, 16)
+        spritesheet = pygame.image.load('../gfx/Pickaxe.png').convert_alpha()
+        self.sprite = spritesheet.subsurface((0, 0, 16, 16))
+        self.anchor = (8, 8)
 
 class Pickaxe(BaseEntity):
     def __init__(self, level, initial_pos):
-        super().__init__(level, initial_pos, radius=12, static=True)
+        super().__init__(level, initial_pos, radius=5, static=True)
 
     def get_render_info(self):
         return {

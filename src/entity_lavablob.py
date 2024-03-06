@@ -25,10 +25,6 @@ class LavaBlobAssets:
             paused_frame = paused_spritesheet.subsurface(((20*i), 0, 16, 12))
             self.pausedspritelist.append(paused_frame)
         for i in range (0,3):
-<<<<<<< HEAD
-            #sleep()
-=======
->>>>>>> 9fa70fa (changed the textures of the boulder and pickaxe)
             in_lava_frame = blank_spritesheet.subsurface(((20*i), 0, 16, 12))
             self.inlavaspritelist.append(in_lava_frame)
         self.anchor = (8, 14)
