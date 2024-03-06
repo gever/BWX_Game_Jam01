@@ -13,19 +13,20 @@ class LavaBlobAssets:
         spritesheet = pygame.image.load('../gfx/Lava Blob.png').convert_alpha()
         paused_spritesheet = pygame.image.load('../gfx/Half Stone Lava Blob.png').convert_alpha()
         stone_spritesheet = pygame.image.load('../gfx/Stone Lava Blob.png').convert_alpha()
-        blank_spritesheet = pygame.image.load('../gfx/in_lava_lava_blob.png').convert_alpha()
+        blank_spritesheet = pygame.image.load('../gfx/Placeholder.png').convert_alpha()
         self.stonesprite = stone_spritesheet.subsurface((0, 0, 16, 12))
         self.spritelist = []
         self.pausedspritelist = []
         self.inlavaspritelist = []
-        for i in range (0,3):
+        for i in range (0,4):
             main_frame = spritesheet.subsurface(((20*i), 0, 16, 12))
             self.spritelist.append(main_frame)
-        for i in range (0,3):
+        for i in range (0,4):
             paused_frame = paused_spritesheet.subsurface(((20*i), 0, 16, 12))
             self.pausedspritelist.append(paused_frame)
-        for i in range (0,3):
-            in_lava_frame = blank_spritesheet.subsurface(((20*i), 0, 16, 12))
+        for i in range (0,4):
+            #sleep()
+            in_lava_frame = blank_spritesheet.subsurface(((20*0), 0, 16, 12))
             self.inlavaspritelist.append(in_lava_frame)
         self.anchor = (8, 14)
 
@@ -40,6 +41,7 @@ class LavaBlob(BaseEntity):
         self.time_unil_stone = 2.5
         self.stone = False
         self.inlava = False
+        self.exit_lava = 0
 
     def get_render_info(self):
         self.main_frame = int(self.timer) % len(assets.spritelist)
@@ -68,7 +70,6 @@ class LavaBlob(BaseEntity):
         MOVEMENT_STRENGTH = 15
         player = self.get_nearest_player()
 
-
         tile_props = self.get_current_tile_props()
         if tile_props and tile_props.get('water'):
             self.paused = True
@@ -76,17 +77,24 @@ class LavaBlob(BaseEntity):
         tile_props = self.get_current_tile_props()
         if tile_props and tile_props.get('kills you'):
             self.paused = False
-            self.inlava = True
+        #    self.inlava = True
             self.time_until_death = 2.5
             self.time_unil_stone = 2.5
-        else:
-            if self.in_lava_frame == 0 or self.in_lava_frame == 4:
-                self.inlava = False
+        #else:
+            #if self.in_lava_frame == 0 or self.in_lava_frame == 4:
+        #    self.inlava = False
         
         if player:
             dist = player.body.position.get_distance(self.body.position)
             if dist < 80:
                self.chasing = True
+            if dist > 80 and (tile_props and tile_props.get('kills you')):
+                self.inlava = True
+            else:
+                self.exit_lava += 1
+                if self.exit_lava > 10:
+                    self.inlava = False
+                    self.exit_lava = 0
 
             if self.stone:
                 self.chasing = False

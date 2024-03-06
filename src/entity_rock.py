@@ -13,7 +13,7 @@ class RockAssets:
     def __init__(self):
         spritesheet = pygame.image.load('../gfx/Boulder.png').convert_alpha()
         self.sprite = spritesheet.subsurface((0, 0, 32, 32))
-        self.anchor = (16, 16)
+        self.anchor = (17, 15)
 
 class Rock(BaseEntity):
     def __init__(self, level, initial_pos):
