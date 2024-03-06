@@ -12,7 +12,7 @@ class WaterBlobAssets:
         spritesheet = pygame.image.load('../gfx/Water Blob.png').convert_alpha()
         self.sprite = spritesheet.subsurface((0, 0, 16, 12))
         self.spritelist = []
-        for i in range (0,4):
+        for i in range (0,3):
             frame = spritesheet.subsurface(((20*i), 0, 16, 12))
             self.spritelist.append(frame)
         self.anchor = (8, 14)
