@@ -13,7 +13,7 @@ class LavaBlobAssets:
         spritesheet = pygame.image.load('../gfx/Lava Blob.png').convert_alpha()
         paused_spritesheet = pygame.image.load('../gfx/Half Stone Lava Blob.png').convert_alpha()
         stone_spritesheet = pygame.image.load('../gfx/Stone Lava Blob.png').convert_alpha()
-        blank_spritesheet = pygame.image.load('../gfx/Placeholder.png').convert_alpha()
+        blank_spritesheet = pygame.image.load('../gfx/in_lava_lava_blob.png').convert_alpha()
         self.stonesprite = stone_spritesheet.subsurface((0, 0, 16, 12))
         self.spritelist = []
         self.pausedspritelist = []
@@ -25,7 +25,6 @@ class LavaBlobAssets:
             paused_frame = paused_spritesheet.subsurface(((20*i), 0, 16, 12))
             self.pausedspritelist.append(paused_frame)
         for i in range (0,4):
-            #sleep()
             in_lava_frame = blank_spritesheet.subsurface(((20*0), 0, 16, 12))
             self.inlavaspritelist.append(in_lava_frame)
         self.anchor = (8, 14)
