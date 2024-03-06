@@ -1,5 +1,6 @@
 import pygame
 import pymunk
+import time
 
 from entity_base import BaseEntity
 from player_state import player_state
@@ -18,6 +19,7 @@ class RockAssets:
 class Rock(BaseEntity):
     def __init__(self, level, initial_pos):
         super().__init__(level, initial_pos, radius=18, static=True)
+        self.touch_time = None
 
     def get_render_info(self):
         return {
@@ -29,6 +31,10 @@ class Rock(BaseEntity):
     def handle_entity_collision(self, other_entity):
         if other_entity.is_player():
             if player_state.inventory_contains('pickaxe'):
-                self.remove()
                 player_state.remove_from_inventory('pickaxe')
                 get_audio().play_sfx('mine_rock')
+                self.touch_time = time.time()
+    def act(self, dt):
+        if self.touch_time is not None:
+            if time.time() - self.touch_time >= 1:
+                self.remove()
