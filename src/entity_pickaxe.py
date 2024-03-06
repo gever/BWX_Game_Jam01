@@ -16,7 +16,7 @@ class PickaxeAssets:
 
 class Pickaxe(BaseEntity):
     def __init__(self, level, initial_pos):
-        super().__init__(level, initial_pos, radius=5, static=True)
+        super().__init__(level, initial_pos, radius=4, static=True)
 
     def get_render_info(self):
         return {
