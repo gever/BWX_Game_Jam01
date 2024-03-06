@@ -26,7 +26,7 @@ class LavaBlobAssets:
             self.pausedspritelist.append(paused_frame)
         for i in range (0,4):
             #sleep()
-            in_lava_frame = blank_spritesheet.subsurface(((20*0), 0, 16, 12))
+            in_lava_frame = blank_spritesheet.subsurface(((20*i), 0, 16, 12))
             self.inlavaspritelist.append(in_lava_frame)
         self.anchor = (8, 14)
 
