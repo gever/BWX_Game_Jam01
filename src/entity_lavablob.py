@@ -25,6 +25,7 @@ class LavaBlobAssets:
             paused_frame = paused_spritesheet.subsurface(((20*i), 0, 16, 12))
             self.pausedspritelist.append(paused_frame)
         for i in range (0,4):
+            #sleep()
             in_lava_frame = blank_spritesheet.subsurface(((20*0), 0, 16, 12))
             self.inlavaspritelist.append(in_lava_frame)
         self.anchor = (8, 14)
@@ -91,7 +92,7 @@ class LavaBlob(BaseEntity):
                 self.inlava = True
             else:
                 self.exit_lava += 1
-                if self.exit_lava > 10:
+                if self.exit_lava > 2:
                     self.inlava = False
                     self.exit_lava = 0
 
