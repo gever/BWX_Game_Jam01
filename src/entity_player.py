@@ -59,11 +59,11 @@ class Player(BaseEntity):
         if not desired_velo.is_zero():
             multiplier = PLAYER_SPEED
             if keys[pygame.K_SPACE]:
-                if self.stamina > 4:
+                if self.stamina >= 30:
                     multiplier += PLAYER_SPEED_BOOST
                     self.stamina = self.stamina - 10
             else:
-                self.stamina = self.stamina + 5
+                self.stamina = self.stamina + .1
                 if self.stamina > MAX_STAMINA:
                     self.stamina = MAX_STAMINA
             desired_velo = desired_velo.normalized() * multiplier
