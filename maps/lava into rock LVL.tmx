@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="14">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="15">
  <tileset firstgid="1" source="cave_crawler_v2.tsx"/>
  <layer id="1" name="Tile Layer 1" width="23" height="13">
   <data encoding="csv">
@@ -48,10 +48,10 @@
   <object id="10" name="level_exit" x="343.238" y="28.0831">
    <point/>
   </object>
-  <object id="12" name="rock" x="335.66" y="36.5526">
+  <object id="13" name="lava_blob" x="90.9357" y="112.778">
    <point/>
   </object>
-  <object id="13" name="lava_blob" x="90.9357" y="112.778">
+  <object id="14" name="rock" x="338.78" y="30.7577">
    <point/>
   </object>
  </objectgroup>
