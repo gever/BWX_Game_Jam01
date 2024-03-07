@@ -3,6 +3,7 @@ import pymunk
 
 from entity_base import BaseEntity
 from entity_waterblob import WaterBlob
+from entity_rock import Rock
 
 def load():
     global assets
@@ -52,7 +53,7 @@ class LavaBlob(BaseEntity):
             'pos': self.body.position,
             'anchor': assets.anchor,
         }
-    
+
     def handle_entity_collision(self, other_entity):
         if (not self.paused or not self.stone) and not self.paused and not self.stone:
             # TODO: trigger player death noise
@@ -63,6 +64,10 @@ class LavaBlob(BaseEntity):
             # TODO: trigger water blob death noise
             if isinstance(other_entity, WaterBlob):
                 other_entity.remove()
+
+            if isinstance(other_entity, Rock):
+                other_entity.remove()
+                self.remove()
 
     def act(self,dt):
         self.timer += dt*5
@@ -83,7 +88,7 @@ class LavaBlob(BaseEntity):
         #else:
             #if self.in_lava_frame == 0 or self.in_lava_frame == 4:
         #    self.inlava = False
-        
+
         if player:
             dist = player.body.position.get_distance(self.body.position)
             if dist < 80:
@@ -119,6 +124,6 @@ class LavaBlob(BaseEntity):
                     self.time_until_death -= dt
                     if self.time_until_death <0:
                         self.paused = True
-                        
+
             else:
                 self.body.velocity = (0,0)
