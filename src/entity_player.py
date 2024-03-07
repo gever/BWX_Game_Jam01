@@ -63,7 +63,7 @@ class Player(BaseEntity):
                     multiplier += PLAYER_SPEED_BOOST
                     self.stamina = self.stamina - 10
             else:
-                self.stamina = self.stamina + .1
+                self.stamina = self.stamina + 1
                 if self.stamina > MAX_STAMINA:
                     self.stamina = MAX_STAMINA
             desired_velo = desired_velo.normalized() * multiplier
