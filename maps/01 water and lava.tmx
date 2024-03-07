@@ -41,7 +41,7 @@
   <object id="1" name="player_spawn" x="175.1" y="52.7">
    <point/>
   </object>
-  <object id="2" name="level_exit" x="344.99" y="21.75">
+  <object id="2" name="level_exit" x="344.49" y="30.75">
    <point/>
   </object>
   <object id="12" name="skull_monster" x="37" y="87">

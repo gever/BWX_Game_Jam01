@@ -41,7 +41,7 @@
   <object id="1" name="player_spawn" x="135.004" y="155.234">
    <point/>
   </object>
-  <object id="3" name="level_exit" x="344.035" y="89.11">
+  <object id="3" name="level_exit" x="344.035" y="92.11">
    <point/>
   </object>
   <object id="4" name="pickaxe" x="32.9958" y="124.647">
