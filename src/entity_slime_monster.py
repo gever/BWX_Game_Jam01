@@ -41,7 +41,7 @@ class SlimeMonster(BaseEntity):
         }
 
     def act(self, dt):
-        self.anim_phase += dt
+        self.anim_phase += dt*4
         self.current_anim = 'left' if (self.body.velocity.x > 0) else 'right'
 
         MAX_SPEED = 100
