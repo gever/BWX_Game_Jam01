@@ -11,6 +11,7 @@ SFX_MAP = {
 
 MUSIC_PLAYLIST = [
     'eerie.mp3',
+    'caveBarBlues.wav',
     'backround music 1.wav',
     'chillCaveMusicRemaster.wav',
 ]
