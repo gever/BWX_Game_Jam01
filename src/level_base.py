@@ -10,6 +10,7 @@ from map import TiledMap
 from entity_player import Player
 from entities_loader import ENTITY_MAP
 from player_state import player_state
+from lighting import create_light_surface
 
 class BaseLevel:
     def __init__(self, map_fn):
@@ -126,7 +127,7 @@ class BaseLevel:
         self.space.step(dt)
 
     # returns new pygame surface, which will be scaled to fit the display
-    def render(self):
+    def render(self, apply_lighting=True):
         # render map to a temporary surface
         surface = self.map.render_map_to_new_surface()
 
@@ -141,6 +142,19 @@ class BaseLevel:
         # render all entities
         for info in render_infos:
             surface.blit(info['sprite'], info['render_pos'])
+
+        # render lighting
+        if apply_lighting:
+            lights = []
+            for entity in self.entities:
+                if entity.is_player():
+                    lights.append({
+                        'x': entity.body.position.x,
+                        'y': entity.body.position.y,
+                        'r': 100,
+                    })
+            light_surface = create_light_surface(surface.get_width(), surface.get_height(), lights)
+            surface.blit(light_surface, (0, 0), special_flags=pygame.BLEND_MULT)
 
         return surface
 

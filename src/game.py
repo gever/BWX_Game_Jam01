@@ -7,6 +7,7 @@ from config import *
 from levels_loader import load_levels
 from entities_loader import load_entities
 from level_base import BaseLevel
+from lighting import load_light_texture
 
 # pygame setup
 pygame.init()
@@ -20,12 +21,14 @@ clock = pygame.time.Clock()
 font = pygame.font.Font(None, 16)
 running = True
 show_fps = False
+apply_lighting = True
 init_audio()
 
 # start background music
 get_audio().start_music()
 
 # load all entities and levels
+load_light_texture()
 entities = load_entities()
 levels = load_levels()
 
@@ -64,6 +67,8 @@ while running:
                 # demonstrate changing tile layer visibility
                 tmx_data = current_level.map.set_layer_visibility('Tile Layer 2', False)
                 current_level._create_tile_physics()
+            elif event.key == pygame.K_l:
+                apply_lighting = not apply_lighting
             elif event.key == pygame.K_MINUS:
                 screen = pygame.display.set_mode((960, 540))
             elif event.key == pygame.K_PLUS:
@@ -89,7 +94,7 @@ while running:
     if current_level.level_complete():
         switch_level((current_level_idx + 1) % len(levels))
 
-    render_surface = current_level.render()
+    render_surface = current_level.render(apply_lighting)
 
     # render FPS
     if show_fps:
