@@ -56,8 +56,5 @@
   <object id="30" name="rock" x="80" y="80">
    <point/>
   </object>
-  <object id="31" name="charging_monster" x="46.6514" y="97.1903">
-   <point/>
-  </object>
  </objectgroup>
 </map>
