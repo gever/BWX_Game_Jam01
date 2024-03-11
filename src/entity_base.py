@@ -46,12 +46,7 @@ class BaseEntity:
         player = self.get_nearest_player()
 
         if player:
-            pos_diff = player.body.position - self.body.position
-            if pos_diff.length > 0:
-                desired_velocity = pos_diff.normalized() * max_speed
-            else:
-                desired_velocity = pymunk.Vec2d(0, 0)
-            self.apply_force_to_achieve_velocity(desired_velocity, strength)
+            self.move_towards(player.body.position, max_speed, strength)
 
     def get_current_tile_props(self):
         return self.level._get_tile_props_by_coords(int(self.body.position.x/TILE_SIZE), int(self.body.position.y/TILE_SIZE))
