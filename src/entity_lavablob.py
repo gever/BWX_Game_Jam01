@@ -54,6 +54,9 @@ class LavaBlob(BaseEntity):
             'anchor': assets.anchor,
         }
 
+    def get_lighting(self):
+        return None if self.stone else (50 if self.paused else 100)
+
     def handle_entity_collision(self, other_entity):
         if (not self.paused or not self.stone) and not self.paused and not self.stone:
             # TODO: trigger player death noise
