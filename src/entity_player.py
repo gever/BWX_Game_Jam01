@@ -83,3 +83,6 @@ class Player(BaseEntity):
 
     def act(self, dt):
         self.die_if_tile_kills_you()
+
+    def get_lighting(self):
+        return 100

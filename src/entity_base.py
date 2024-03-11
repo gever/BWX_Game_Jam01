@@ -81,5 +81,10 @@ class BaseEntity:
         # not safe to ignore by default
         raise NotImplementedError
 
+    # return radius number or None
+    def get_lighting(self):
+        # safe to ignore by default
+        return None
+
     def is_player(self):
         return False

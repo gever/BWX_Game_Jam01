@@ -146,13 +146,24 @@ class BaseLevel:
         # render lighting
         if apply_lighting:
             lights = []
+
             for entity in self.entities:
-                if entity.is_player():
+                radius = entity.get_lighting()
+                if radius is not None:
                     lights.append({
                         'x': entity.body.position.x,
                         'y': entity.body.position.y,
-                        'r': 100,
+                        'r': radius,
                     })
+
+            for tile in self.visible_tiles:
+                if tile['props'] and tile['props'].get('light'):
+                    lights.append({
+                        'x': tile['x'] * TILE_SIZE + TILE_SIZE/2,
+                        'y': tile['y'] * TILE_SIZE + TILE_SIZE/2,
+                        'r': tile['props']['light'],
+                    })
+
             light_surface = create_light_surface(surface.get_width(), surface.get_height(), lights)
             surface.blit(light_surface, (0, 0), special_flags=pygame.BLEND_MULT)
 

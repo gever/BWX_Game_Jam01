@@ -4,16 +4,19 @@
  <tile id="45">
   <properties>
    <property name="kills you" type="bool" value="true"/>
+   <property name="light" type="float" value="30"/>
   </properties>
  </tile>
  <tile id="46">
   <properties>
    <property name="kills you" type="bool" value="true"/>
+   <property name="light" type="float" value="30"/>
   </properties>
  </tile>
  <tile id="47">
   <properties>
    <property name="kills you" type="bool" value="true"/>
+   <property name="light" type="float" value="30"/>
   </properties>
  </tile>
  <tile id="66">
