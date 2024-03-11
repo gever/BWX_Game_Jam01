@@ -30,7 +30,7 @@ class Player(BaseEntity):
         self.current_anim = 'right'
         self.anim_phase = 0
         self.stamina = MAX_STAMINA
-
+        self.desired_velo = Vec2(0,0)
 
     def get_render_info(self):
         anim = assets.anims[self.current_anim]
@@ -43,20 +43,20 @@ class Player(BaseEntity):
 
     def handle_input(self, keys, events, dt):
         # determine desired player velocity based on keyboard input
-        desired_velo = Vec2()
+        self.desired_velo = Vec2()
         if keys[pygame.K_LEFT] or keys[pygame.K_a]:
-            desired_velo += Vec2(-1, 0)
+            self.desired_velo += Vec2(-1, 0)
             self.current_anim = 'left'
         if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
-            desired_velo += Vec2(1, 0)
+            self.desired_velo += Vec2(1, 0)
             self.current_anim = 'right'
         if keys[pygame.K_UP] or keys[pygame.K_w]:
-            desired_velo += Vec2(0, -1)
+            self.desired_velo += Vec2(0, -1)
         if keys[pygame.K_DOWN] or keys[pygame.K_s]:
-            desired_velo += Vec2(0, 1)
+            self.desired_velo += Vec2(0, 1)
 
         # normalize and scale desired velocity
-        if not desired_velo.is_zero():
+        if not self.desired_velo.is_zero():
             multiplier = PLAYER_SPEED
             if keys[pygame.K_SPACE]:
                 if self.stamina >= 30:
@@ -66,13 +66,13 @@ class Player(BaseEntity):
                 self.stamina = self.stamina + 1
                 if self.stamina > MAX_STAMINA:
                     self.stamina = MAX_STAMINA
-            desired_velo = desired_velo.normalized() * multiplier
+            self.desired_velo = self.desired_velo.normalized() * multiplier
 
         # apply force to player body to make its velocity approach the desired velocity
-        self.apply_force_to_achieve_velocity(desired_velo, PLAYER_MOVEMENT_STRENGTH)
+        self.apply_force_to_achieve_velocity(self.desired_velo, PLAYER_MOVEMENT_STRENGTH)
 
         # # update player sprite frame
-        if desired_velo.is_zero():
+        if self.desired_velo.is_zero():
             self.anim_phase = 0
         else:
             PLAYER_WALKING_ANIM_TIME = 0.2

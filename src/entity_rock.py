@@ -31,11 +31,14 @@ class Rock(BaseEntity):
     def handle_entity_collision(self, other_entity):
         if other_entity.is_player():
             if player_state.inventory_contains('pickaxe'):
-                player_state.remove_from_inventory('pickaxe')
+                # drop/break the pickaxe
+                
                 get_audio().play_sfx('mine_rock')
                 self.touch_time = time.time()
-                
+
     def act(self, dt):
-        if self.touch_time is not None:
+        if self.touch_time:
             if time.time() - self.touch_time >= 1:
+                pickaxe = player_state.get_item('pickaxe')
+                pickaxe.dropped() # TODO: animate this
                 self.remove()

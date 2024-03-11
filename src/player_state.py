@@ -19,5 +19,11 @@ class PlayerState:
     def remove_from_inventory(self, label):
         # self.inventory.remove(label)
         del self.inventory[label]
+    
+    def get_item(self, label):
+        if label in self.inventory:
+            return self.inventory[label]
+        else:
+            return None
 
 player_state = PlayerState()
