@@ -1,5 +1,6 @@
 import pygame
 import pymunk
+from pymunk import Vec2d
 
 from entity_rock import Rock
 from entity_base import BaseEntity
@@ -53,6 +54,7 @@ class ChargingMonster(BaseEntity):
             if player and player.body.position.get_distance(self.body.position) < 80:
                 pos_diff = player.body.position - self.body.position
                 self.charging_velo = pos_diff.normalized() * MAX_SPEED
+            self.apply_force_to_achieve_velocity(Vec2d.zero(), MOVEMENT_STRENGTH)
         else:
             self.apply_force_to_achieve_velocity(self.charging_velo, MOVEMENT_STRENGTH)
         
