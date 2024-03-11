@@ -4,19 +4,20 @@ class PlayerState:
 
     def reset(self):
         self.health = 5
-        self.inventory = []
+        self.inventory = {}
 
     def apply_damage(self):
         self.health -= 1
         print(self.health)
 
-    def add_to_inventory(self, item):
-        self.inventory.append(item)
+    def add_to_inventory(self, label, item):
+        self.inventory[label] = item
 
-    def inventory_contains(self, item):
-        return item in self.inventory
+    def inventory_contains(self, label):
+        return label in self.inventory
 
-    def remove_from_inventory(self, item):
-        self.inventory.remove(item)
+    def remove_from_inventory(self, label):
+        # self.inventory.remove(label)
+        del self.inventory[label]
 
 player_state = PlayerState()

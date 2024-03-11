@@ -34,6 +34,7 @@ class Rock(BaseEntity):
                 player_state.remove_from_inventory('pickaxe')
                 get_audio().play_sfx('mine_rock')
                 self.touch_time = time.time()
+                
     def act(self, dt):
         if self.touch_time is not None:
             if time.time() - self.touch_time >= 1:
