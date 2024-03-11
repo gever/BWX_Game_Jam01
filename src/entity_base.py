@@ -72,6 +72,10 @@ class BaseEntity:
         # safe to ignore by default
         pass
 
+    def handle_tile_collision(self):
+        # safe to ignore by default
+        pass
+
     def get_render_info(self):
         # not safe to ignore by default
         raise NotImplementedError

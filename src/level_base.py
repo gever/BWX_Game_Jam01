@@ -38,6 +38,9 @@ class BaseLevel:
         entity_entity_collision_handler = self.space.add_collision_handler(COLLISION_TYPE_ENTITY, COLLISION_TYPE_ENTITY)
         entity_entity_collision_handler.begin = self._handle_entity_entity_collision
 
+        entity_tile_collision_handler = self.space.add_collision_handler(COLLISION_TYPE_ENTITY, COLLISION_TYPE_IMPASSABLE_TILE)
+        entity_tile_collision_handler.begin = self._handle_entity_tile_collision
+
         # create tile physicspython game.py
         self.tile_physics_objs = [] # both bodies and shapes
         self._create_tile_physics()
@@ -56,6 +59,12 @@ class BaseLevel:
             entity2 = arbiter.shapes[1].body.entity
             entity1.handle_entity_collision(entity2)
             entity2.handle_entity_collision(entity1)
+        return True
+
+    def _handle_entity_tile_collision(self, arbiter, space, data):
+        if hasattr(arbiter.shapes[0].body, 'entity'):
+            entity = arbiter.shapes[0].body.entity
+            entity.handle_tile_collision()
         return True
 
     def _create_tile_physics(self):
