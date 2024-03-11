@@ -44,11 +44,5 @@
   <object id="2" name="level_exit" x="344.49" y="30.75">
    <point/>
   </object>
-  <object id="12" name="skull_monster" x="37" y="87">
-   <point/>
-  </object>
-  <object id="13" name="charging_monster" x="282.079" y="186.248">
-   <point/>
-  </object>
  </objectgroup>
 </map>
