@@ -51,7 +51,7 @@
   <object id="9" name="rock" x="240" y="148.679">
    <point/>
   </object>
-  <object id="24" name="lava_blob" x="347.45" y="21.41">
+  <object id="24" name="lava_blob" x="335.08" y="31.6597">
    <ellipse/>
   </object>
   <object id="25" name="pickaxe" x="240.443" y="144">
