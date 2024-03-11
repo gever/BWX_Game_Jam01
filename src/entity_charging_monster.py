@@ -24,6 +24,7 @@ class ChargingMonster(BaseEntity):
         super().__init__(level, initial_pos)
         self.timer = 0
         self.charging_velo = None
+        self.chasing = False
 
     def get_render_info(self):
         frame = int(self.timer) % len(assets.spritelist)
@@ -51,7 +52,8 @@ class ChargingMonster(BaseEntity):
         #dist = player.body.position.get_distance(self.body.position)
         if self.charging_velo is None:
             player = self.get_nearest_player()
-            if player and player.body.position.get_distance(self.body.position) < 80:
+            if player and player.body.position.get_distance(self.body.position) < 80 or self.chasing == True:
+                self.chasing = True
                 pos_diff = player.body.position - self.body.position
                 self.charging_velo = pos_diff.normalized() * MAX_SPEED
             self.apply_force_to_achieve_velocity(Vec2d.zero(), MOVEMENT_STRENGTH)
