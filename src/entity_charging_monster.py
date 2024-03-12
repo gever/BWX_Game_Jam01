@@ -25,6 +25,8 @@ class ChargingMonster(BaseEntity):
         self.timer = 0
         self.charging_velo = None
         self.chasing = False
+        self.timertillpause = 1.5
+        self.timepaused = None
 
     def get_render_info(self):
         frame = int(self.timer) % len(assets.spritelist)
@@ -42,22 +44,31 @@ class ChargingMonster(BaseEntity):
     
     def handle_tile_collision(self):
         self.charging_velo = None
+        self.timertillpause = -1
         
     def act(self, dt):
         self.timer += dt*4
-        MAX_SPEED = 85
-        MOVEMENT_STRENGTH = 15
-        #player = self.get_nearest_player()
-        #self.move_towards_charge_location(MAX_SPEED, MOVEMENT_STRENGTH)
-        #dist = player.body.position.get_distance(self.body.position)
-        if self.charging_velo is None:
-            player = self.get_nearest_player()
-            if player and player.body.position.get_distance(self.body.position) < 80 or self.chasing == True:
-                self.chasing = True
-                pos_diff = player.body.position - self.body.position
-                self.charging_velo = pos_diff.normalized() * MAX_SPEED
-            self.apply_force_to_achieve_velocity(Vec2d.zero(), MOVEMENT_STRENGTH)
+        MAX_SPEED = 150
+        MOVEMENT_STRENGTH = 7
+        if not self.timepaused:
+            if self.charging_velo is None:
+                player = self.get_nearest_player()
+                if player and player.body.position.get_distance(self.body.position) < 150 or self.chasing:
+                    self.chasing = True
+                    pos_diff = player.body.position - self.body.position
+                    self.charging_velo = pos_diff.normalized() * MAX_SPEED
+                self.apply_force_to_achieve_velocity(Vec2d.zero(), MOVEMENT_STRENGTH)
+            else:
+                self.apply_force_to_achieve_velocity(self.charging_velo, MOVEMENT_STRENGTH)
+                self.timertillpause -=dt
+                if self.timertillpause < 0:
+                    self.timertillpause = 1.5
+                    self.charging_velo = None
+                    self.timepaused = .5
         else:
-            self.apply_force_to_achieve_velocity(self.charging_velo, MOVEMENT_STRENGTH)
+            self.timepaused -= dt
+            self.apply_force_to_achieve_velocity(Vec2d.zero(), MOVEMENT_STRENGTH)
+            if self.timepaused < 0:
+                self.timepaused = None
         
 
