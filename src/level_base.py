@@ -28,9 +28,6 @@ class BaseLevel:
         self.player_spawn_point = self.map.get_object_by_name('player_spawn')
         assert self.player_spawn_point, 'No player spawn found in map: %s' % self.map_fn
 
-        self.exit_point = self.map.get_object_by_name('level_exit')
-        assert self.exit_point, 'No level exit found in map: %s' % self.map_fn
-
         # create physics space
         self.space = pymunk.Space()
 
@@ -107,13 +104,19 @@ class BaseLevel:
             self.reset()
 
     def level_complete(self):
-        for entity in self.entities:
-            if entity.is_player():
-                player_position = entity.body.position
-                distance = player_position.get_distance((self.exit_point.x, self.exit_point.y))
-                if distance <= 10:
-                    return True
-        return False
+        for obj in self.map.list_all_objects():
+            if obj.name == 'level_exit':
+                any_player_near_exit = False
+                for entity in self.entities:
+                    if entity.is_player():
+                        player_position = entity.body.position
+                        distance = player_position.get_distance((obj.x, obj.y))
+                        if distance <= 10:
+                            any_player_near_exit = True
+                            break
+                if not any_player_near_exit:
+                    return False
+        return True
 
     def _make_tile_physics_body(self, coords):
         (x, y) = coords
