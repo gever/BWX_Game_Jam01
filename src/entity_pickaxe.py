@@ -20,7 +20,6 @@ class Pickaxe(BaseEntity):
         super().__init__(level, initial_pos, radius=4, static=True)
         self.carrier = None
         self.broken = False
-
     def get_render_info(self):
         return {
             'sprite': assets.broken_sprite if self.broken else assets.sprite,
@@ -37,13 +36,15 @@ class Pickaxe(BaseEntity):
         if other_entity.is_player():
             # self.remove()
             self.carrier = other_entity
+            self.shape.sensor = True
+            #self.level.space.remove(self.body, self.shape)
             player_state.add_to_inventory('pickaxe', self)
     
     def dropped(self):
         if self.carrier:
             px, py = self.carrier.body.position
             vx, vy = self.carrier.desired_velo
-            self.body.position = (px-(vx*2), py-(vy*2))
+            self.body.position = (px-(vx*2), py-(-vy*2))
             self.carrier = None
             player_state.remove_from_inventory('pickaxe')
             self.broken = True
