@@ -1,4 +1,5 @@
 import time
+import math
 
 import pygame
 
@@ -111,8 +112,20 @@ while running:
     # this will also 'blit' the temp surface to the display
     scaled_render_surface = pygame.transform.scale_by(render_surface, scale)
 
+    seeing_double = current_level.get_seeing_double() and ENABLE_SEEING_DOUBLE
+
+    if seeing_double:
+        # darken scaled_render_surface
+        scaled_render_surface.fill((128, 128, 128), special_flags=pygame.BLEND_RGB_MULT)
+
+    # fill screen with black (otherwise "seeing double" effect leaves weird edges)
+    screen.fill((0, 0, 0))
+
     # copy the scaled temp surface to the display (centered)
     screen.blit(scaled_render_surface, (x_offset, y_offset))
+
+    if seeing_double:
+        screen.blit(scaled_render_surface, (x_offset + math.cos(2*time.time()) * 8, y_offset + math.sin(2*time.time()) * 8), special_flags=pygame.BLEND_RGB_ADD)
 
     # "flip" the display to update what the user sees
     pygame.display.flip()

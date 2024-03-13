@@ -118,6 +118,13 @@ class BaseLevel:
                     return False
         return True
 
+    def get_seeing_double(self):
+        player_count = 0
+        for entity in self.entities:
+            if entity.is_player():
+                player_count += 1
+        return player_count > 1
+
     def _make_tile_physics_body(self, coords):
         (x, y) = coords
         tile_body = pymunk.Body(body_type=pymunk.Body.STATIC)
