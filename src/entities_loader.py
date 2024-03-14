@@ -7,6 +7,7 @@ import entity_lavablob
 import entity_waterblob
 import entity_charging_monster
 import entity_doubler
+import entity_crate
 
 def load_entities():
     entity_player.load()
@@ -18,6 +19,7 @@ def load_entities():
     entity_waterblob.load()
     entity_charging_monster.load()
     entity_doubler.load()
+    entity_crate.load()
 
 # maps strings found in the map files to entity classes
 ENTITY_MAP = {
@@ -30,4 +32,5 @@ ENTITY_MAP = {
     'water_blob': entity_waterblob.WaterBlob,
     'charging_monster': entity_charging_monster.ChargingMonster,
     'doubler': entity_doubler.Doubler,
+    'crate': entity_crate.Crate,
 }
