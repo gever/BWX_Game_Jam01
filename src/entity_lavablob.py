@@ -33,7 +33,7 @@ class LavaBlobAssets:
 
 class LavaBlob(BaseEntity):
     def __init__(self, level, initial_pos):
-        super().__init__(level, initial_pos)
+        super().__init__(level, initial_pos, square=True)
         self.chasing = False
         self.time_until_death = 1.5
         self.paused = False
