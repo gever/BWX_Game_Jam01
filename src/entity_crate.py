@@ -18,7 +18,7 @@ class CrateAssets:
 
 class Crate(BaseEntity):
     def __init__(self, level, initial_pos):
-        super().__init__(level, initial_pos, radius=8, square=True)
+        super().__init__(level, initial_pos, radius=7, square=True)
 
     def get_render_info(self):
         return {
@@ -26,6 +26,6 @@ class Crate(BaseEntity):
             'pos': self.body.position,
             'anchor': assets.anchor,
         }
-    
+
     def act(self,dt):
         self.apply_force_to_achieve_velocity(pymunk.Vec2d(0,0),strength=50)
