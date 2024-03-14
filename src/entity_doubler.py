@@ -30,7 +30,19 @@ class Doubler(BaseEntity):
 
     def handle_entity_collision(self, other_entity):
         if other_entity.is_player():
-            new_player = Player(self.level, (self.body.position.x, self.body.position.y))
+            # by default, spawn new player at the same position as the doubler
+            spawn_pos = (self.body.position.x, self.body.position.y)
+
+            # is there another doubler?
+            other_doubler = None
+            for entity in self.level.entities:
+                if isinstance(entity, Doubler) and entity != self:
+                    other_doubler = entity
+            if other_doubler:
+                other_doubler.remove()
+                spawn_pos = (other_doubler.body.position.x, other_doubler.body.position.y)
+
+            new_player = Player(self.level, spawn_pos)
             self.level.entities.append(new_player)
             self.remove()
 
