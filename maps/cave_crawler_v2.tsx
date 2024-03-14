@@ -19,6 +19,11 @@
    <property name="light" type="float" value="30"/>
   </properties>
  </tile>
+ <tile id="63">
+  <properties>
+   <property name="light" type="float" value="90"/>
+  </properties>
+ </tile>
  <tile id="66">
   <properties>
    <property name="water" type="bool" value="true"/>
