@@ -44,7 +44,7 @@ class Pickaxe(BaseEntity):
         if self.carrier:
             px, py = self.carrier.body.position
             vx, vy = self.carrier.desired_velo
-            self.body.position = (px-(vx*2), py-(-vy*2))
+            self.body.position = (px-(vx/5), py-(vy/5))
             self.carrier = None
             player_state.remove_from_inventory('pickaxe')
             self.broken = True
