@@ -18,7 +18,7 @@ class CrateAssets:
 
 class Crate(BaseEntity):
     def __init__(self, level, initial_pos):
-        super().__init__(level, initial_pos, radius=7, square=True)
+        super().__init__(level, initial_pos, radius=6, square=True)
 
     def get_render_info(self):
         return {
