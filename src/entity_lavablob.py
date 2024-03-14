@@ -1,5 +1,4 @@
 import pygame
-import pymunk
 
 from entity_base import BaseEntity
 from entity_waterblob import WaterBlob

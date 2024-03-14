@@ -69,7 +69,12 @@ class Player(BaseEntity):
             self.desired_velo = self.desired_velo.normalized() * multiplier
 
         # apply force to player body to make its velocity approach the desired velocity
-        self.apply_force_to_achieve_velocity(self.desired_velo, PLAYER_MOVEMENT_STRENGTH)
+        velo_mult = 1
+        tile_props = self.get_current_tile_props()
+        if tile_props and tile_props.get('water'):
+            velo_mult = 0.5
+
+        self.apply_force_to_achieve_velocity(self.desired_velo*velo_mult, PLAYER_MOVEMENT_STRENGTH)
 
         # # update player sprite frame
         if self.desired_velo.is_zero():
