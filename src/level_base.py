@@ -1,4 +1,5 @@
 import os
+import random
 
 import pygame
 import pymunk
@@ -11,6 +12,7 @@ from entity_player import Player
 from entities_loader import ENTITY_MAP
 from player_state import player_state
 from lighting import create_light_surface
+from entity_particle_lava import LavaParticle
 
 class BaseLevel:
     def __init__(self, map_fn):
@@ -140,6 +142,13 @@ class BaseLevel:
         # override this in a derived class to do something extra before the simulation step
         for entity in self.entities:
             entity.act(dt)
+
+        for tile in self.visible_tiles:
+            if tile['props'] and tile['props'].get('kills you'):
+                # should be lava
+                if random.random() < 0.01:
+                    particle = LavaParticle(self, (tile['x']*TILE_SIZE + TILE_SIZE/2, tile['y']*TILE_SIZE + TILE_SIZE/2), (random.uniform(-50, 50), random.uniform(-100, 0)))
+                    self.entities.append(particle)
 
     def advance_simulation(self, dt):
         self.before_advance_simulation(dt)

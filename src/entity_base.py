@@ -5,7 +5,7 @@ from config import *
 from collision_types import *
 
 class BaseEntity:
-    def __init__(self, level, initial_pos, *, radius=6, square = False, mass=1, static=False):
+    def __init__(self, level, initial_pos, *, radius=6, square = False, mass=1, static=False, collision_type=COLLISION_TYPE_ENTITY, sensor=False):
         self.level = level
         self.initial_pos = initial_pos
 
@@ -13,8 +13,10 @@ class BaseEntity:
         self.body.position = self.initial_pos
         self.body.entity = self
         self.shape = pymunk.Poly(self.body, [(-radius,-radius),(radius,-radius),(radius,radius),(-radius,radius)]) if square else pymunk.Circle(self.body, radius)
-        self.shape.collision_type = COLLISION_TYPE_ENTITY
+        self.shape.collision_type = collision_type
         self.shape.elasticity = 0
+        if sensor:
+            self.shape.sensor = True
         self.level.space.add(self.body, self.shape)
 
     def apply_force_to_achieve_velocity(self, desired_velo, strength):
