@@ -45,6 +45,7 @@ class ChargingMonster(BaseEntity):
     def handle_tile_collision(self):
         self.charging_velo = None
         self.timertillpause = -1
+        self.die_if_tile_kills_you()
         
     def act(self, dt):
         self.timer += dt*4
