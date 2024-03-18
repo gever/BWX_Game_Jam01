@@ -12,8 +12,8 @@ def load():
 
 class CrateAssets:
     def __init__(self):
-        spritesheet = pygame.image.load('../gfx/2D Dungeon Asset Pack_v5.2/character and tileset/Dungeon_item_props_v2.png').convert_alpha()
-        self.sprite = spritesheet.subsurface((112, 48, 16, 16))
+        spritesheet = pygame.image.load('../gfx/Crate.png').convert_alpha()
+        self.sprite = spritesheet.subsurface((0, 0, 16, 16))
         self.anchor = (8, 8)
 
 class Crate(BaseEntity):

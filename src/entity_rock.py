@@ -20,6 +20,7 @@ class Rock(BaseEntity):
     def __init__(self, level, initial_pos):
         super().__init__(level, initial_pos, radius=13, static=True,square=True)
         self.touch_time = None
+        self.beinghit = False 
 
     def get_render_info(self):
         return {
@@ -30,11 +31,13 @@ class Rock(BaseEntity):
 
     def handle_entity_collision(self, other_entity):
         if other_entity.is_player():
-            if player_state.inventory_contains('pickaxe'):
-                # drop/break the pickaxe
-                
-                get_audio().play_sfx('mine_rock')
-                self.touch_time = time.time()
+            if not self.beinghit:
+                if player_state.inventory_contains('pickaxe'):
+                    # drop/break the pickaxe
+                    
+                    get_audio().play_sfx('mine_rock')
+                    self.touch_time = time.time()
+                    self.beinghit = True
 
     def act(self, dt):
         if self.touch_time:
