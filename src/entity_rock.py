@@ -1,7 +1,7 @@
 import pygame
 import pymunk
 import time
-
+import random
 from entity_base import BaseEntity
 from player_state import player_state
 from audio import get_audio
@@ -12,8 +12,13 @@ def load():
 
 class RockAssets:
     def __init__(self):
-        spritesheet = pygame.image.load('../gfx/Boulder.png').convert_alpha()
-        self.sprite = spritesheet.subsurface((0, 0, 32, 32))
+        sprite_picker = random.randint(0,1)
+        if sprite_picker == 0:
+            spritesheet = pygame.image.load('../gfx/Boulder.png').convert_alpha()
+            self.sprite = spritesheet.subsurface((0, 0, 32, 32))
+        elif sprite_picker == 1:
+            spritesheet = pygame.image.load('../gfx/Boulder02.png').convert_alpha()
+            self.sprite = spritesheet.subsurface((0, 0, 32, 32))
         self.anchor = (17, 15)
 
 class Rock(BaseEntity):
