@@ -28,7 +28,7 @@ class LavaBlobAssets:
             #sleep()
             in_lava_frame = blank_spritesheet.subsurface(((17*i), 0, 16, 12))
             self.inlavaspritelist.append(in_lava_frame)
-        self.anchor = (8, 14)
+        self.anchor = (8, 5)
 
 class LavaBlob(BaseEntity):
     def __init__(self, level, initial_pos):
