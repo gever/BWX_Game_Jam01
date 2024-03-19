@@ -23,6 +23,8 @@ class BaseLevel:
         self.heart_sprite = pygame.image.load('../gfx/Heart.png').convert_alpha()
         self.reset()
 
+        self.reset_queued = False
+
     def reset(self):
         self.entities = []
 
@@ -103,7 +105,7 @@ class BaseLevel:
 
         # if there are no more players, the level is over
         if not any([entity.is_player() for entity in self.entities]):
-            self.reset()
+            self.reset_queued = True
 
     def level_complete(self):
         for obj in self.map.list_all_objects():
@@ -153,6 +155,10 @@ class BaseLevel:
     def advance_simulation(self, dt):
         self.before_advance_simulation(dt)
         self.space.step(dt)
+
+        if self.reset_queued:
+            self.reset()
+            self.reset_queued = False
 
     # returns new pygame surface, which will be scaled to fit the display
     def render(self, apply_lighting=True):
