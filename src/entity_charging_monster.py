@@ -16,7 +16,7 @@ class ChargingMonsterAssets:
         self.anchor = (8, 8)
         self.spritelist = []
         for i in [0,1]:
-            frame = spritesheet.subsurface(((16*i), 0, 30, 16))
+            frame = spritesheet.subsurface(((30*i), 0, 30, 16))
             self.spritelist.append(frame)
 
 class ChargingMonster(BaseEntity):
