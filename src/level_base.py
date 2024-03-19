@@ -20,7 +20,7 @@ class BaseLevel:
 
         # load Tiled map
         self.map = TiledMap(os.path.join('../maps', map_fn))
-
+        self.heart_sprite = pygame.image.load('../gfx/Heart.png').convert_alpha()
         self.reset()
 
     def reset(self):
@@ -49,7 +49,7 @@ class BaseLevel:
             if obj.name in ENTITY_MAP:
                 entity = ENTITY_MAP[obj.name](self, (obj.x, obj.y))
                 self.entities.append(entity)
-
+        
         player_state.reset()
 
     def _handle_entity_entity_collision(self, arbiter, space, data):
@@ -195,6 +195,11 @@ class BaseLevel:
             light_surface = create_light_surface(surface.get_width(), surface.get_height(), lights)
             surface.blit(light_surface, (0, 0), special_flags=pygame.BLEND_MULT)
 
+            live_counter = player_state.total_lives
+            lives_offset = 0
+            for lives in range(live_counter):
+                surface.blit(self.heart_sprite, (lives_offset, 0))
+                lives_offset += 16
         return surface
 
     def stop(self):
