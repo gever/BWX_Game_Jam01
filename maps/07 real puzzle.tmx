@@ -51,7 +51,11 @@
   <object id="9" name="rock" x="231.797" y="122.139">
    <point/>
   </object>
+<<<<<<< HEAD:maps/07 real puzzle.tmx
   <object id="24" name="lava_blob" x="347.45" y="21.41">
+=======
+  <object id="24" name="lava_blob" x="323.009" y="41.0845">
+>>>>>>> 9ae4417 (level fix):maps/second lava blob rock level.tmx
    <ellipse/>
   </object>
   <object id="25" name="pickaxe" x="232.24" y="117.46">
