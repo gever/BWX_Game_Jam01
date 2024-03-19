@@ -12,13 +12,12 @@ def load():
 
 class RockAssets:
     def __init__(self):
-        sprite_picker = random.randint(0,1)
-        if sprite_picker == 0:
-            spritesheet = pygame.image.load('../gfx/Boulder.png').convert_alpha()
-            self.sprite = spritesheet.subsurface((0, 0, 32, 32))
-        elif sprite_picker == 1:
-            spritesheet = pygame.image.load('../gfx/Boulder02.png').convert_alpha()
-            self.sprite = spritesheet.subsurface((0, 0, 32, 32))
+    
+        spritesheet1 = pygame.image.load('../gfx/Boulder.png').convert_alpha()
+        self.sprite1 = spritesheet1.subsurface((0, 0, 32, 32))
+            
+        spritesheet2 = pygame.image.load('../gfx/Boulder02.png').convert_alpha()
+        self.sprite2 = spritesheet2.subsurface((0, 0, 32, 32))
         self.anchor = (17, 15)
 
 class Rock(BaseEntity):
@@ -26,10 +25,15 @@ class Rock(BaseEntity):
         super().__init__(level, initial_pos, radius=13, static=True,square=True)
         self.touch_time = None
         self.beinghit = False 
+        self.sprite_picker = random.randint(0,1)
+        if self.sprite_picker == 0:
+            self.sprite = assets.sprite1
+        else:
+            self.sprite = assets.sprite2
 
     def get_render_info(self):
         return {
-            'sprite': assets.sprite,
+            'sprite': self.sprite,
             'pos': self.body.position,
             'anchor': assets.anchor,
         }
