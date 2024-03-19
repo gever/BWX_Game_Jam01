@@ -11,12 +11,12 @@ def load():
 
 class ChargingMonsterAssets:
     def __init__(self):
-        spritesheet = pygame.image.load('../gfx/2D Dungeon Asset Pack_v5.2/character and tileset/Dungeon_Enemy_v2.png').convert_alpha()
-        self.sprite = spritesheet.subsurface((0, 0, 16, 12))
+        spritesheet = pygame.image.load('../gfx/Beetle.png').convert_alpha()
+        self.sprite = spritesheet.subsurface((0, 0, 64, 16))
         self.anchor = (8, 8)
         self.spritelist = []
-        for i in range (0,1):
-            frame = spritesheet.subsurface(((17*i +1), 0, 12, 15))
+        for i in [0,1]:
+            frame = spritesheet.subsurface(((16*i), 0, 30, 16))
             self.spritelist.append(frame)
 
 class ChargingMonster(BaseEntity):
