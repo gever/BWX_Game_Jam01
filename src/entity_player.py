@@ -24,7 +24,7 @@ class PlayerAssets:
             'right': sprites[2:4],
         }
         for i in range(0, 2):
-            swim_frames = swim_spritesheet.subsurface(((17*i + 1), 1, 16, 20))
+            swim_frames = swim_spritesheet.subsurface(((17*i + 1), 1, 16, 35))
             swim_sprites.append(swim_frames)
         self.swim_anims = {
             'swim_left': swim_sprites[0:1],
