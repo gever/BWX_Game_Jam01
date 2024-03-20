@@ -3,6 +3,7 @@ import pymunk
 
 from config import *
 from collision_types import *
+from player_state import player_state
 
 class BaseEntity:
     def __init__(self, level, initial_pos, *, radius=6, square = False, mass=1, static=False, collision_type=COLLISION_TYPE_ENTITY, sensor=False):

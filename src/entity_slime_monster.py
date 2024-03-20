@@ -45,7 +45,7 @@ class SlimeMonster(BaseEntity):
         self.current_anim = 'left' if (self.body.velocity.x > 0) else 'right'
 
         MAX_SPEED = 100
-        MOVEMENT_STRENGTH = 110
+        MOVEMENT_STRENGTH = 20
         self.move_towards_player(MAX_SPEED, MOVEMENT_STRENGTH)
 
         self.die_if_tile_kills_you()

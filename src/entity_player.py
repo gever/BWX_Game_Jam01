@@ -4,6 +4,7 @@ import pymunk
 from config import *
 from entity_base import BaseEntity
 from vec2 import Vec2
+from player_state import player_state
 
 def load():
     global assets
@@ -12,13 +13,22 @@ def load():
 class PlayerAssets:
     def __init__(self):
         spritesheet = pygame.image.load('../gfx/player_sprite.png').convert_alpha()
+        swim_spritesheet = pygame.image.load('../gfx/Swimming_player_sprite.png').convert_alpha()
         sprites = []
+        swim_sprites = []
         for i in range(0, 4):
             frame = spritesheet.subsurface(((17*i + 1), 1, 16, 20))
             sprites.append(frame)
         self.anims = {
             'left': list(reversed(sprites[0:2])),
             'right': sprites[2:4],
+        }
+        for i in range(0, 2):
+            swim_frames = swim_spritesheet.subsurface(((17*i + 1), 1, 16, 20))
+            swim_sprites.append(swim_frames)
+        self.swim_anims = {
+            'swim_left': swim_sprites[0:1],
+            'swim_right': swim_sprites[1:2],
         }
         self.anchor = (7, 16)
 
@@ -28,15 +38,19 @@ class Player(BaseEntity):
         super().__init__(level, initial_pos)
 
         self.current_anim = 'right'
+        self.swim_anim = 'swim_right'
         self.anim_phase = 0
         self.stamina = MAX_STAMINA
         self.desired_velo = Vec2(0,0)
+        self.in_water = False
 
     def get_render_info(self):
         anim = assets.anims[self.current_anim]
+        swim_anim = assets.swim_anims[self.swim_anim]
         frame = int(self.anim_phase * len(anim)) % len(anim)
+        swim_frame = int(self.anim_phase * len(swim_anim)) % len(swim_anim)
         return {
-            'sprite': anim[frame],
+            'sprite': anim[frame] if self.in_water == False else (swim_anim[swim_frame]),
             'pos': self.body.position,
             'anchor': assets.anchor,
         }
@@ -47,9 +61,11 @@ class Player(BaseEntity):
         if keys[pygame.K_LEFT] or keys[pygame.K_a]:
             self.desired_velo += Vec2(-1, 0)
             self.current_anim = 'left'
+            self.swim_anim = 'swim_left'
         if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
             self.desired_velo += Vec2(1, 0)
             self.current_anim = 'right'
+            self.swim_anim = 'swim_right'
         if keys[pygame.K_UP] or keys[pygame.K_w]:
             self.desired_velo += Vec2(0, -1)
         if keys[pygame.K_DOWN] or keys[pygame.K_s]:
@@ -72,8 +88,10 @@ class Player(BaseEntity):
         velo_mult = 1
         tile_props = self.get_current_tile_props()
         if tile_props and tile_props.get('water'):
+            self.in_water = True
             velo_mult = 0.5
-
+        else:
+            self.in_water = False
         self.apply_force_to_achieve_velocity(self.desired_velo*velo_mult, PLAYER_MOVEMENT_STRENGTH)
 
         # # update player sprite frame
@@ -91,3 +109,7 @@ class Player(BaseEntity):
 
     def get_lighting(self):
         return 100
+    
+    def remove(self):
+        super().remove()
+        player_state.total_lives -= 1

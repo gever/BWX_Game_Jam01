@@ -1,14 +1,14 @@
 class PlayerState:
     def __init__(self):
         self.reset()
-        self.total_lives = 3
+        self.total_lives = 5
     def reset(self):
         self.health = 5
         self.inventory = {}
     def restart(self):
         self.health = 5
         self.inventory = {}
-        self.total_lives = 3
+        self.total_lives = 5
     def apply_damage(self):
         self.health -= 1
         print(self.health)

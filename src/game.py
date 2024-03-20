@@ -9,6 +9,7 @@ from levels_loader import load_levels
 from entities_loader import load_entities
 from level_base import BaseLevel
 from lighting import load_light_texture
+from player_state import player_state
 
 # pygame setup
 pygame.init()
@@ -63,6 +64,7 @@ while running:
             if event.key == pygame.K_f:
                 show_fps = not show_fps
             elif event.key == pygame.K_r:
+                player_state.total_lives -= 1
                 current_level.reset()
             elif event.key == pygame.K_t:
                 # demonstrate changing tile layer visibility
@@ -96,6 +98,11 @@ while running:
         switch_level((current_level_idx + 1) % len(levels))
 
     render_surface = current_level.render(apply_lighting)
+
+    if player_state.total_lives == 0:
+        current_level_idx = 0
+        switch_level((current_level_idx) % len(levels))
+        player_state.restart()
 
     # render FPS
     if show_fps:
