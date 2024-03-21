@@ -1,7 +1,7 @@
 import pygame
 import pymunk
 from pymunk import Vec2d
-
+ 
 from entity_rock import Rock
 from entity_base import BaseEntity
 
@@ -13,7 +13,7 @@ class ChargingMonsterAssets:
     def __init__(self):
         spritesheet = pygame.image.load('../gfx/Beetle.png').convert_alpha()
         self.sprite = spritesheet.subsurface((0, 0, 64, 16))
-        self.anchor = (8, 8)
+        self.anchor = (15, 8)
         self.spritelist = []
         for i in [0,1]:
             frame = spritesheet.subsurface(((30*i), 0, 30, 16))
@@ -21,7 +21,7 @@ class ChargingMonsterAssets:
 
 class ChargingMonster(BaseEntity):
     def __init__(self, level, initial_pos):
-        super().__init__(level, initial_pos)
+        super().__init__(level, initial_pos,radius=15)
         self.timer = 0
         self.charging_velo = None
         self.chasing = False
