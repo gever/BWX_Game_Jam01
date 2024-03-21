@@ -52,5 +52,7 @@ class Rock(BaseEntity):
         if self.touch_time:
             if time.time() - self.touch_time >= 1:
                 pickaxe = player_state.get_item('pickaxe')
+                if pickaxe == None:
+                    return
                 pickaxe.dropped() # TODO: animate this
                 self.remove()
