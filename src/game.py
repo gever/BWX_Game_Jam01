@@ -100,6 +100,7 @@ while running:
     render_surface = current_level.render(apply_lighting)
 
     if player_state.total_lives == 0:
+        get_audio().play_sfx('death')
         current_level_idx = 0
         switch_level((current_level_idx) % len(levels))
         player_state.restart()
