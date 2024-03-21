@@ -2,6 +2,7 @@ import pygame
 import pymunk
 import time
 
+from audio import get_audio
 from config import *
 from entity_base import BaseEntity
 from vec2 import Vec2
@@ -123,6 +124,7 @@ class Player(BaseEntity):
         tile_props = self.get_current_tile_props()
         if tile_props and tile_props.get('kills you'):
             self.dead = True
+            
 
     def act(self, dt):
         self.die_if_tile_kills_you()
@@ -138,3 +140,4 @@ class Player(BaseEntity):
     def remove(self):
         super().remove()
         player_state.total_lives -= 1
+        get_audio().play_sfx('death')
