@@ -6,6 +6,13 @@ audio_engine = None
 SFX_MAP = {
     'mine_rock': 'miningNoises.wav',
     'death': 'death.wav',
+    'fs1': 'footstep_1.wav',
+    'fs2': 'footstep_2.wav',
+    'fs3': 'footstep_3.wav',
+    'fs4': 'footstep_4.wav',
+    'fsw1': 'footstep_water_1.wav',
+    'fsw2': 'footstep_water_2.wav',
+    'fsw3': 'footstep_water_3.wav',
 }
 
 MUSIC_PLAYLIST = [

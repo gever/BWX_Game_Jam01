@@ -1,6 +1,7 @@
 import pygame
 import pymunk
 import time
+import random
 
 from audio import get_audio
 from config import *
@@ -56,6 +57,8 @@ class Player(BaseEntity):
         self.in_water = False
         self.dead = False
         self.death_counter = 0
+        self.time_until_next_step = 0
+        self.last_step_sound = None
 
     def get_render_info(self):
         anim = assets.anims[self.current_anim]
@@ -113,9 +116,24 @@ class Player(BaseEntity):
         # # update player sprite frame
         if self.desired_velo.is_zero():
             self.anim_phase = 0
+            self.time_until_next_step = 0
         else:
             PLAYER_WALKING_ANIM_TIME = 0.2
             self.anim_phase += dt / PLAYER_WALKING_ANIM_TIME
+
+            self.time_until_next_step -= dt
+            if self.time_until_next_step <= 0:
+                self.time_until_next_step += 0.3 + 0.1*random.random()
+                if self.in_water:
+                    choices = ['fsw1', 'fsw2', 'fsw3']
+                else:
+                    choices = ['fs1', 'fs2', 'fs3', 'fs4']
+
+                if self.last_step_sound in choices:
+                    choices.remove(self.last_step_sound)
+                sfx = random.choice(choices)
+                self.last_step_sound = sfx
+                get_audio().play_sfx(sfx)
 
     def is_player(self):
         return True
@@ -124,7 +142,7 @@ class Player(BaseEntity):
         tile_props = self.get_current_tile_props()
         if tile_props and tile_props.get('kills you'):
             self.dead = True
-            
+
 
     def act(self, dt):
         self.die_if_tile_kills_you()
@@ -136,7 +154,7 @@ class Player(BaseEntity):
 
     def get_lighting(self):
         return 100
-    
+
     def remove(self):
         super().remove()
         player_state.total_lives -= 1
