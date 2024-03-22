@@ -140,9 +140,9 @@ class Player(BaseEntity):
 
     def die_if_tile_kills_you(self):
         tile_props = self.get_current_tile_props()
-        if tile_props and tile_props.get('kills you'):
+        if tile_props and tile_props.get('kills you') and not self.dead:
             self.dead = True
-
+            get_audio().play_sfx('death')
 
     def act(self, dt):
         self.die_if_tile_kills_you()
@@ -158,4 +158,4 @@ class Player(BaseEntity):
     def remove(self):
         super().remove()
         player_state.total_lives -= 1
-        get_audio().play_sfx('death')
+
