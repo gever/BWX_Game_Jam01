@@ -30,12 +30,3 @@ def load_levels():
             levels.append(BaseLevel(map_fn))
 
     return levels
-
-    # return [
-    #     LevelButtonAndBridge(),
-    #     LevelLavaAndKey(),
-    #     LevelDungeon(),
-    #     LevelDungeon2(),
-    #     LevelPuzzleRoom(),
-    #     LevelMaze(),
-    # ]
