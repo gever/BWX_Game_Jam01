@@ -1,7 +1,7 @@
 import pygame
 import pymunk
 from pymunk import Vec2d
- 
+
 from entity_rock import Rock
 from entity_base import BaseEntity
 
@@ -37,16 +37,15 @@ class ChargingMonster(BaseEntity):
         }
     def handle_entity_collision(self, other_entity):
         if other_entity.is_player():
-            other_entity.remove()
-            return
+            other_entity.kill()
         if isinstance(other_entity, Rock):
             other_entity.remove()
-    
+
     def handle_tile_collision(self):
         self.charging_velo = None
         self.timertillpause = -1
         self.die_if_tile_kills_you()
-        
+
     def act(self, dt):
         self.timer += dt*4
         MAX_SPEED = 150
@@ -71,5 +70,5 @@ class ChargingMonster(BaseEntity):
             self.apply_force_to_achieve_velocity(Vec2d.zero(), MOVEMENT_STRENGTH)
             if self.timepaused < 0:
                 self.timepaused = None
-        
+
 

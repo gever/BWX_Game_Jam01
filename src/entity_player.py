@@ -42,6 +42,7 @@ class PlayerAssets:
             'dead': dead_sprites[0:1],
         }
         self.anchor = (7, 16)
+        self.dead_anchor = (13, 12)
 
 # It is convenient to create an instance of the player in each level, rather than "moving" the player between levels:
 class Player(BaseEntity):
@@ -70,7 +71,7 @@ class Player(BaseEntity):
         return {
             'sprite': anim[frame] if self.in_water == False and self.dead == False else (dead_anim[dead_frame]) if self.dead else(swim_anim[swim_frame]),
             'pos': self.body.position,
-            'anchor': assets.anchor,
+            'anchor': assets.dead_anchor if self.dead else assets.anchor,
         }
 
     def handle_input(self, keys, events, dt):
@@ -138,11 +139,15 @@ class Player(BaseEntity):
     def is_player(self):
         return True
 
-    def die_if_tile_kills_you(self):
-        tile_props = self.get_current_tile_props()
-        if tile_props and tile_props.get('kills you') and not self.dead:
+    def kill(self):
+        if not self.dead:
             self.dead = True
             get_audio().play_sfx('death')
+
+    def die_if_tile_kills_you(self):
+        tile_props = self.get_current_tile_props()
+        if tile_props and tile_props.get('kills you'):
+            self.kill()
 
     def act(self, dt):
         self.die_if_tile_kills_you()
