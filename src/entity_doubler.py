@@ -42,6 +42,9 @@ class Doubler(BaseEntity):
                 other_doubler.remove()
                 spawn_pos = (other_doubler.body.position.x, other_doubler.body.position.y)
 
+            get_audio().play_sfx('doubler')
+            get_audio().play_sfx('eating')
+
             new_player = Player(self.level, spawn_pos)
             self.level.entities.append(new_player)
             self.remove()
