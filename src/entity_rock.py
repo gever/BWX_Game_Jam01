@@ -56,3 +56,4 @@ class Rock(BaseEntity):
                     return
                 pickaxe.dropped() # TODO: animate this
                 self.remove()
+                self.beinghit = False
