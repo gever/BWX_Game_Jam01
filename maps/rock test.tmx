@@ -1,1318 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="433">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="482">
  <tileset firstgid="1" source="cave_crawler_v2.tsx"/>
  <layer id="1" name="Tile Layer 1" width="23" height="13">
   <data encoding="csv">
 95,95,95,95,95,95,95,95,95,95,95,95,95,95,95,95,95,95,95,95,95,95,95,
+95,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,95,95,
+95,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,95,95,95,
+95,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,95,95,95,95,
+95,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,95,95,95,95,95,
+95,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,95,95,95,95,95,95,
 95,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,
-95,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,
-95,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,
-95,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,
-95,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,
-95,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,
-95,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,
-95,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,
-95,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,
-95,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,
-95,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,
+95,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,95,95,95,95,95,95,
+95,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,95,95,95,95,95,
+95,46,78,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,95,95,95,95,
+95,46,46,46,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,95,95,95,
+95,46,46,46,77,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,95,95,95,
 95,95,95,95,95,95,95,95,95,95,95,95,95,95,95,95,95,95,95,95,95,95,95
 </data>
  </layer>
+ <layer id="4" name="Tile Layer 2" width="23" height="13">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,66,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,66,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,92,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,3,1610612754,92,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,17,0,18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
  <objectgroup id="2" name="Object Layer 1">
-  <object id="1" name="rock" x="21.5625" y="32.5329">
+  <object id="433" name="rock" x="327.22" y="107.813">
    <point/>
   </object>
-  <object id="2" name="rock" x="63.5526" y="35.9375">
+  <object id="435" name="rock" x="310.954" y="108.569">
    <point/>
   </object>
-  <object id="3" name="rock" x="41.6118" y="34.4243">
+  <object id="436" name="rock" x="295.822" y="108.947">
    <point/>
   </object>
-  <object id="4" name="rock" x="42.7467" y="36.3158">
+  <object id="437" name="rock" x="280.691" y="108.947">
    <point/>
   </object>
-  <object id="5" name="rock" x="41.9901" y="43.8816">
+  <object id="438" name="rock" x="264.803" y="108.947">
    <point/>
   </object>
-  <object id="6" name="rock" x="45.3947" y="41.2336">
+  <object id="439" name="rock" x="52.9605" y="47.6645">
    <point/>
   </object>
-  <object id="7" name="rock" x="45.3947" y="41.2336">
+  <object id="440" name="rock" x="91.9243" y="133.536">
    <point/>
   </object>
-  <object id="8" name="rock" x="46.9079" y="41.6118">
+  <object id="441" name="rock" x="204.276" y="160.395">
    <point/>
   </object>
-  <object id="9" name="rock" x="54.4737" y="43.5033">
+  <object id="442" name="rock" x="194.441" y="82.4671">
    <point/>
   </object>
-  <object id="10" name="rock" x="83.2237" y="58.6349">
+  <object id="443" name="rock" x="138.454" y="161.53">
    <point/>
   </object>
-  <object id="11" name="rock" x="82.4671" y="58.6349">
+  <object id="444" name="rock" x="174.77" y="108.191">
    <point/>
   </object>
-  <object id="12" name="rock" x="30.2632" y="55.6086">
+  <object id="445" name="rock" x="107.813" y="64.6875">
    <point/>
   </object>
-  <object id="13" name="rock" x="43.5033" y="51.8257">
+  <object id="446" name="rock" x="219.786" y="33.6678">
    <point/>
   </object>
-  <object id="14" name="rock" x="36.6941" y="42.7467">
+  <object id="447" name="rock" x="276.53" y="172.122">
    <point/>
   </object>
-  <object id="15" name="rock" x="31.398" y="38.9638">
+  <object id="448" name="rock" x="154.72" y="39.3421">
    <point/>
   </object>
-  <object id="16" name="rock" x="27.2368" y="56.7434">
+  <object id="449" name="rock" x="31.7763" y="82.0888">
    <point/>
   </object>
-  <object id="17" name="rock" x="36.3158" y="62.0395">
+  <object id="450" name="rock" x="94.1941" y="180.066">
    <point/>
   </object>
-  <object id="18" name="rock" x="21.5625" y="97.2204">
+  <object id="451" name="rock" x="254.967" y="56.7434">
    <point/>
   </object>
-  <object id="19" name="rock" x="71.1184" y="90.0329">
+  <object id="452" name="rock" x="219.408" y="104.786">
    <point/>
   </object>
-  <object id="20" name="rock" x="82.8454" y="73.7664">
+  <object id="453" name="rock" x="129.753" y="87.3849">
    <point/>
   </object>
-  <object id="21" name="rock" x="69.227" y="66.9572">
+  <object id="454" name="rock" x="231.135" y="177.796">
    <point/>
   </object>
-  <object id="22" name="rock" x="44.2599" y="63.9309">
+  <object id="455" name="rock" x="174.77" y="175.905">
    <point/>
   </object>
-  <object id="23" name="rock" x="40.477" y="68.0921">
+  <object id="456" name="rock" x="135.049" y="116.891">
    <point/>
   </object>
-  <object id="24" name="rock" x="36.6941" y="76.0362">
+  <object id="457" name="rock" x="70.3618" y="84.3586">
    <point/>
   </object>
-  <object id="25" name="rock" x="27.9934" y="66.2007">
+  <object id="458" name="rock" x="63.5526" y="151.316">
    <point/>
   </object>
-  <object id="26" name="rock" x="25.3454" y="62.0395">
+  <object id="461" name="pickaxe" x="52.9605" y="114.622">
    <point/>
   </object>
-  <object id="27" name="rock" x="20.4276" y="56.3651">
+  <object id="462" name="pickaxe" x="32.5329" y="80.1974">
    <point/>
   </object>
-  <object id="28" name="rock" x="23.4539" y="49.1776">
+  <object id="463" name="pickaxe" x="108.191" y="63.1743">
    <point/>
   </object>
-  <object id="29" name="rock" x="21.5625" y="68.0921">
+  <object id="464" name="pickaxe" x="135.049" y="113.487">
    <point/>
   </object>
-  <object id="30" name="rock" x="49.5559" y="68.0921">
+  <object id="465" name="pickaxe" x="90.7895" y="175.905">
    <point/>
   </object>
-  <object id="31" name="rock" x="68.8487" y="44.2599">
+  <object id="466" name="pickaxe" x="90.7895" y="175.905">
    <point/>
   </object>
-  <object id="32" name="rock" x="45.0164" y="55.2303">
+  <object id="467" name="pickaxe" x="206.546" y="156.234">
    <point/>
   </object>
-  <object id="33" name="rock" x="62.0395" y="54.0954">
+  <object id="468" name="pickaxe" x="196.332" y="76.0362">
    <point/>
   </object>
-  <object id="34" name="rock" x="33.6678" y="81.7105">
+  <object id="469" name="pickaxe" x="222.434" y="32.9112">
    <point/>
   </object>
-  <object id="35" name="rock" x="90.4112" y="58.6349">
+  <object id="470" name="pickaxe" x="222.434" y="32.9112">
    <point/>
   </object>
-  <object id="36" name="rock" x="86.6283" y="67.3355">
+  <object id="471" name="pickaxe" x="155" y="36.5">
    <point/>
   </object>
-  <object id="37" name="rock" x="69.6053" y="67.7138">
+  <object id="472" name="pickaxe" x="155" y="36.5">
    <point/>
   </object>
-  <object id="38" name="rock" x="55.6086" y="86.6283">
+  <object id="473" name="pickaxe" x="155" y="36">
    <point/>
   </object>
-  <object id="39" name="rock" x="45.773" y="82.8454">
+  <object id="474" name="pickaxe" x="276" y="167">
    <point/>
   </object>
-  <object id="40" name="rock" x="34.8026" y="80.1974">
+  <object id="475" name="pickaxe" x="218.5" y="99.5">
    <point/>
   </object>
-  <object id="41" name="rock" x="46.5296" y="90.7895">
+  <object id="476" name="pickaxe" x="72.5" y="86.5">
    <point/>
   </object>
-  <object id="42" name="rock" x="65.0658" y="85.4934">
+  <object id="477" name="pickaxe" x="139" y="159.5">
    <point/>
   </object>
-  <object id="43" name="rock" x="71.1184" y="83.2237">
+  <object id="478" name="pickaxe" x="137" y="162">
    <point/>
   </object>
-  <object id="44" name="rock" x="99.1118" y="63.9309">
+  <object id="479" name="pickaxe" x="137" y="162.5">
    <point/>
   </object>
-  <object id="45" name="rock" x="93.0592" y="39.7204">
+  <object id="480" name="player_spawn" x="23.5" y="137.5">
    <point/>
   </object>
-  <object id="46" name="rock" x="93.4375" y="29.1283">
-   <point/>
-  </object>
-  <object id="47" name="rock" x="83.602" y="28.3717">
-   <point/>
-  </object>
-  <object id="48" name="rock" x="67.3355" y="38.9638">
-   <point/>
-  </object>
-  <object id="49" name="rock" x="61.2829" y="53.3388">
-   <point/>
-  </object>
-  <object id="50" name="rock" x="84.7368" y="48.0428">
-   <point/>
-  </object>
-  <object id="51" name="rock" x="48.4211" y="57.1217">
-   <point/>
-  </object>
-  <object id="52" name="rock" x="117.27" y="41.6118">
-   <point/>
-  </object>
-  <object id="53" name="rock" x="74.523" y="55.9868">
-   <point/>
-  </object>
-  <object id="54" name="rock" x="57.8783" y="63.5526">
-   <point/>
-  </object>
-  <object id="55" name="rock" x="62.7961" y="64.6875">
-   <point/>
-  </object>
-  <object id="56" name="rock" x="127.484" y="57.5">
-   <point/>
-  </object>
-  <object id="57" name="rock" x="146.02" y="46.9079">
-   <point/>
-  </object>
-  <object id="58" name="rock" x="110.461" y="47.2862">
-   <point/>
-  </object>
-  <object id="59" name="rock" x="111.595" y="35.1809">
-   <point/>
-  </object>
-  <object id="60" name="rock" x="102.516" y="29.1283">
-   <point/>
-  </object>
-  <object id="61" name="rock" x="96.8421" y="31.0197">
-   <point/>
-  </object>
-  <object id="62" name="rock" x="127.105" y="32.9112">
-   <point/>
-  </object>
-  <object id="63" name="rock" x="161.53" y="32.1546">
-   <point/>
-  </object>
-  <object id="64" name="rock" x="153.964" y="37.4507">
-   <point/>
-  </object>
-  <object id="65" name="rock" x="152.829" y="42.7467">
-   <point/>
-  </object>
-  <object id="66" name="rock" x="157.368" y="46.5296">
-   <point/>
-  </object>
-  <object id="67" name="rock" x="141.859" y="50.3125">
-   <point/>
-  </object>
-  <object id="68" name="rock" x="147.155" y="52.2039">
-   <point/>
-  </object>
-  <object id="69" name="rock" x="145.263" y="59.3914">
-   <point/>
-  </object>
-  <object id="70" name="rock" x="151.316" y="63.9309">
-   <point/>
-  </object>
-  <object id="71" name="rock" x="123.322" y="64.3092">
-   <point/>
-  </object>
-  <object id="72" name="rock" x="117.27" y="61.6612">
-   <point/>
-  </object>
-  <object id="73" name="rock" x="111.595" y="65.8224">
-   <point/>
-  </object>
-  <object id="74" name="rock" x="105.543" y="68.0921">
-   <point/>
-  </object>
-  <object id="75" name="rock" x="102.895" y="73.7664">
-   <point/>
-  </object>
-  <object id="76" name="rock" x="101.382" y="78.3059">
-   <point/>
-  </object>
-  <object id="77" name="rock" x="130.51" y="88.898">
-   <point/>
-  </object>
-  <object id="78" name="rock" x="170.23" y="78.6842">
-   <point/>
-  </object>
-  <object id="79" name="rock" x="148.668" y="75.2796">
-   <point/>
-  </object>
-  <object id="80" name="rock" x="139.589" y="79.0625">
-   <point/>
-  </object>
-  <object id="81" name="rock" x="138.454" y="75.6579">
-   <point/>
-  </object>
-  <object id="82" name="rock" x="108.191" y="86.6283">
-   <point/>
-  </object>
-  <object id="83" name="rock" x="82.0888" y="83.2237">
-   <point/>
-  </object>
-  <object id="84" name="rock" x="79.0625" y="102.138">
-   <point/>
-  </object>
-  <object id="85" name="rock" x="78.3059" y="104.03">
-   <point/>
-  </object>
-  <object id="86" name="rock" x="57.5" y="99.4901">
-   <point/>
-  </object>
-  <object id="87" name="rock" x="42.7467" y="101.382">
-   <point/>
-  </object>
-  <object id="88" name="rock" x="40.8553" y="102.138">
-   <point/>
-  </object>
-  <object id="89" name="rock" x="37.0724" y="102.516">
-   <point/>
-  </object>
-  <object id="90" name="rock" x="37.0724" y="102.516">
-   <point/>
-  </object>
-  <object id="91" name="rock" x="31.7763" y="109.704">
-   <point/>
-  </object>
-  <object id="92" name="rock" x="29.8849" y="115.378">
-   <point/>
-  </object>
-  <object id="93" name="rock" x="29.1283" y="117.648">
-   <point/>
-  </object>
-  <object id="94" name="rock" x="28.75" y="128.997">
-   <point/>
-  </object>
-  <object id="95" name="rock" x="29.1283" y="144.507">
-   <point/>
-  </object>
-  <object id="96" name="rock" x="26.8586" y="156.234">
-   <point/>
-  </object>
-  <object id="97" name="rock" x="19.6711" y="135.049">
-   <point/>
-  </object>
-  <object id="98" name="rock" x="17.4013" y="97.2204">
-   <point/>
-  </object>
-  <object id="99" name="rock" x="21.1842" y="83.602">
-   <point/>
-  </object>
-  <object id="100" name="rock" x="40.477" y="144.885">
-   <point/>
-  </object>
-  <object id="101" name="rock" x="41.2336" y="124.079">
-   <point/>
-  </object>
-  <object id="102" name="rock" x="49.1776" y="111.974">
-   <point/>
-  </object>
-  <object id="103" name="rock" x="58.6349" y="134.293">
-   <point/>
-  </object>
-  <object id="104" name="rock" x="66.2007" y="107.813">
-   <point/>
-  </object>
-  <object id="105" name="rock" x="72.6316" y="138.076">
-   <point/>
-  </object>
-  <object id="106" name="rock" x="67.3355" y="113.487">
-   <point/>
-  </object>
-  <object id="107" name="rock" x="47.6645" y="113.109">
-   <point/>
-  </object>
-  <object id="108" name="rock" x="53.7171" y="135.806">
-   <point/>
-  </object>
-  <object id="109" name="rock" x="42.3684" y="136.184">
-   <point/>
-  </object>
-  <object id="110" name="rock" x="51.8257" y="120.674">
-   <point/>
-  </object>
-  <object id="111" name="rock" x="53.3388" y="112.73">
-   <point/>
-  </object>
-  <object id="112" name="rock" x="72.2533" y="116.513">
-   <point/>
-  </object>
-  <object id="113" name="rock" x="73.3882" y="128.997">
-   <point/>
-  </object>
-  <object id="114" name="rock" x="79.0625" y="131.645">
-   <point/>
-  </object>
-  <object id="115" name="rock" x="49.9342" y="138.076">
-   <point/>
-  </object>
-  <object id="116" name="rock" x="96.8421" y="130.51">
-   <point/>
-  </object>
-  <object id="117" name="rock" x="95.3289" y="118.783">
-   <point/>
-  </object>
-  <object id="118" name="rock" x="83.9803" y="90.7895">
-   <point/>
-  </object>
-  <object id="119" name="rock" x="113.487" y="90.0329">
-   <point/>
-  </object>
-  <object id="120" name="rock" x="89.6546" y="104.786">
-   <point/>
-  </object>
-  <object id="121" name="rock" x="102.895" y="110.461">
-   <point/>
-  </object>
-  <object id="122" name="rock" x="95.3289" y="98.3553">
-   <point/>
-  </object>
-  <object id="123" name="rock" x="93.8158" y="104.786">
-   <point/>
-  </object>
-  <object id="124" name="rock" x="94.9507" y="93.8158">
-   <point/>
-  </object>
-  <object id="125" name="rock" x="98.3553" y="72.6316">
-   <point/>
-  </object>
-  <object id="126" name="rock" x="120.674" y="102.895">
-   <point/>
-  </object>
-  <object id="127" name="rock" x="118.783" y="94.9507">
-   <point/>
-  </object>
-  <object id="128" name="rock" x="112.73" y="112.73">
-   <point/>
-  </object>
-  <object id="129" name="rock" x="141.48" y="107.056">
-   <point/>
-  </object>
-  <object id="130" name="rock" x="145.263" y="99.1118">
-   <point/>
-  </object>
-  <object id="131" name="rock" x="145.263" y="96.4638">
-   <point/>
-  </object>
-  <object id="132" name="rock" x="137.697" y="109.704">
-   <point/>
-  </object>
-  <object id="133" name="rock" x="119.918" y="119.918">
-   <point/>
-  </object>
-  <object id="134" name="rock" x="98.7336" y="124.836">
-   <point/>
-  </object>
-  <object id="135" name="rock" x="136.941" y="128.24">
-   <point/>
-  </object>
-  <object id="136" name="rock" x="127.105" y="118.405">
-   <point/>
-  </object>
-  <object id="137" name="rock" x="114.622" y="124.079">
-   <point/>
-  </object>
-  <object id="138" name="rock" x="113.487" y="127.862">
-   <point/>
-  </object>
-  <object id="139" name="rock" x="136.563" y="124.836">
-   <point/>
-  </object>
-  <object id="140" name="rock" x="150.181" y="118.026">
-   <point/>
-  </object>
-  <object id="141" name="rock" x="150.938" y="117.27">
-   <point/>
-  </object>
-  <object id="142" name="rock" x="150.938" y="117.27">
-   <point/>
-  </object>
-  <object id="143" name="rock" x="151.316" y="116.891">
-   <point/>
-  </object>
-  <object id="144" name="rock" x="153.964" y="115.378">
-   <point/>
-  </object>
-  <object id="145" name="rock" x="158.882" y="113.109">
-   <point/>
-  </object>
-  <object id="146" name="rock" x="163.421" y="111.217">
-   <point/>
-  </object>
-  <object id="147" name="rock" x="165.313" y="109.704">
-   <point/>
-  </object>
-  <object id="148" name="rock" x="168.339" y="108.569">
-   <point/>
-  </object>
-  <object id="149" name="rock" x="170.987" y="107.434">
-   <point/>
-  </object>
-  <object id="150" name="rock" x="172.878" y="105.921">
-   <point/>
-  </object>
-  <object id="151" name="rock" x="173.635" y="105.543">
-   <point/>
-  </object>
-  <object id="152" name="rock" x="174.013" y="105.164">
-   <point/>
-  </object>
-  <object id="153" name="rock" x="174.77" y="103.651">
-   <point/>
-  </object>
-  <object id="154" name="rock" x="176.661" y="101.382">
-   <point/>
-  </object>
-  <object id="155" name="rock" x="178.174" y="98.3553">
-   <point/>
-  </object>
-  <object id="156" name="rock" x="179.688" y="95.7072">
-   <point/>
-  </object>
-  <object id="157" name="rock" x="180.444" y="90.0329">
-   <point/>
-  </object>
-  <object id="158" name="rock" x="178.553" y="85.1151">
-   <point/>
-  </object>
-  <object id="159" name="rock" x="171.743" y="81.3322">
-   <point/>
-  </object>
-  <object id="160" name="rock" x="162.286" y="80.1974">
-   <point/>
-  </object>
-  <object id="161" name="rock" x="152.451" y="81.7105">
-   <point/>
-  </object>
-  <object id="162" name="rock" x="146.02" y="87.3849">
-   <point/>
-  </object>
-  <object id="163" name="rock" x="142.993" y="94.9507">
-   <point/>
-  </object>
-  <object id="164" name="rock" x="144.128" y="100.247">
-   <point/>
-  </object>
-  <object id="165" name="rock" x="163.043" y="97.977">
-   <point/>
-  </object>
-  <object id="166" name="rock" x="174.013" y="92.3026">
-   <point/>
-  </object>
-  <object id="167" name="rock" x="189.523" y="82.8454">
-   <point/>
-  </object>
-  <object id="168" name="rock" x="197.467" y="77.5493">
-   <point/>
-  </object>
-  <object id="169" name="rock" x="198.602" y="76.4145">
-   <point/>
-  </object>
-  <object id="170" name="rock" x="197.467" y="76.4145">
-   <point/>
-  </object>
-  <object id="171" name="rock" x="184.605" y="79.4408">
-   <point/>
-  </object>
-  <object id="172" name="rock" x="161.908" y="85.1151">
-   <point/>
-  </object>
-  <object id="173" name="rock" x="150.938" y="87.0066">
-   <point/>
-  </object>
-  <object id="174" name="rock" x="166.447" y="80.1974">
-   <point/>
-  </object>
-  <object id="175" name="rock" x="188.01" y="71.4967">
-   <point/>
-  </object>
-  <object id="176" name="rock" x="204.655" y="66.2007">
-   <point/>
-  </object>
-  <object id="177" name="rock" x="206.924" y="64.3092">
-   <point/>
-  </object>
-  <object id="178" name="rock" x="201.628" y="63.5526">
-   <point/>
-  </object>
-  <object id="179" name="rock" x="176.661" y="61.6612">
-   <point/>
-  </object>
-  <object id="180" name="rock" x="149.046" y="61.2829">
-   <point/>
-  </object>
-  <object id="181" name="rock" x="149.424" y="61.2829">
-   <point/>
-  </object>
-  <object id="182" name="rock" x="170.987" y="60.5263">
-   <point/>
-  </object>
-  <object id="183" name="rock" x="201.25" y="58.6349">
-   <point/>
-  </object>
-  <object id="184" name="rock" x="230.378" y="54.4737">
-   <point/>
-  </object>
-  <object id="185" name="rock" x="231.513" y="54.4737">
-   <point/>
-  </object>
-  <object id="186" name="rock" x="220.543" y="52.9605">
-   <point/>
-  </object>
-  <object id="187" name="rock" x="186.497" y="46.9079">
-   <point/>
-  </object>
-  <object id="188" name="rock" x="170.609" y="43.125">
-   <point/>
-  </object>
-  <object id="189" name="rock" x="169.852" y="43.125">
-   <point/>
-  </object>
-  <object id="190" name="rock" x="174.013" y="42.7467">
-   <point/>
-  </object>
-  <object id="191" name="rock" x="196.332" y="43.5033">
-   <point/>
-  </object>
-  <object id="192" name="rock" x="248.536" y="46.1513">
-   <point/>
-  </object>
-  <object id="193" name="rock" x="276.151" y="47.6645">
-   <point/>
-  </object>
-  <object id="194" name="rock" x="267.829" y="46.9079">
-   <point/>
-  </object>
-  <object id="195" name="rock" x="234.918" y="42.7467">
-   <point/>
-  </object>
-  <object id="196" name="rock" x="194.441" y="39.3421">
-   <point/>
-  </object>
-  <object id="197" name="rock" x="178.931" y="39.3421">
-   <point/>
-  </object>
-  <object id="198" name="rock" x="183.092" y="39.3421">
-   <point/>
-  </object>
-  <object id="199" name="rock" x="208.816" y="36.6941">
-   <point/>
-  </object>
-  <object id="200" name="rock" x="263.289" y="29.5066">
-   <point/>
-  </object>
-  <object id="201" name="rock" x="289.77" y="30.6414">
-   <point/>
-  </object>
-  <object id="202" name="rock" x="293.174" y="36.3158">
-   <point/>
-  </object>
-  <object id="203" name="rock" x="281.447" y="43.8816">
-   <point/>
-  </object>
-  <object id="204" name="rock" x="252.319" y="40.8553">
-   <point/>
-  </object>
-  <object id="205" name="rock" x="234.161" y="37.8289">
-   <point/>
-  </object>
-  <object id="206" name="rock" x="240.592" y="37.0724">
-   <point/>
-  </object>
-  <object id="207" name="rock" x="272.747" y="40.0987">
-   <point/>
-  </object>
-  <object id="208" name="rock" x="312.845" y="46.1513">
-   <point/>
-  </object>
-  <object id="209" name="rock" x="322.303" y="49.9342">
-   <point/>
-  </object>
-  <object id="210" name="rock" x="303.766" y="53.7171">
-   <point/>
-  </object>
-  <object id="211" name="rock" x="271.234" y="55.2303">
-   <point/>
-  </object>
-  <object id="212" name="rock" x="222.056" y="57.5">
-   <point/>
-  </object>
-  <object id="213" name="rock" x="225.839" y="58.6349">
-   <point/>
-  </object>
-  <object id="214" name="rock" x="263.668" y="58.6349">
-   <point/>
-  </object>
-  <object id="215" name="rock" x="300.74" y="60.9046">
-   <point/>
-  </object>
-  <object id="216" name="rock" x="303.388" y="64.3092">
-   <point/>
-  </object>
-  <object id="217" name="rock" x="268.207" y="74.9013">
-   <point/>
-  </object>
-  <object id="218" name="rock" x="212.599" y="90.7895">
-   <point/>
-  </object>
-  <object id="219" name="rock" x="194.819" y="94.5724">
-   <point/>
-  </object>
-  <object id="220" name="rock" x="245.888" y="90.7895">
-   <point/>
-  </object>
-  <object id="221" name="rock" x="300.74" y="86.25">
-   <point/>
-  </object>
-  <object id="222" name="rock" x="312.845" y="80.5757">
-   <point/>
-  </object>
-  <object id="223" name="rock" x="279.178" y="73.7664">
-   <point/>
-  </object>
-  <object id="224" name="rock" x="216.003" y="73.7664">
-   <point/>
-  </object>
-  <object id="225" name="rock" x="186.875" y="76.0362">
-   <point/>
-  </object>
-  <object id="226" name="rock" x="220.921" y="73.7664">
-   <point/>
-  </object>
-  <object id="227" name="rock" x="293.931" y="71.1184">
-   <point/>
-  </object>
-  <object id="228" name="rock" x="327.22" y="66.9572">
-   <point/>
-  </object>
-  <object id="229" name="rock" x="264.424" y="60.5263">
-   <point/>
-  </object>
-  <object id="230" name="rock" x="205.033" y="60.9046">
-   <point/>
-  </object>
-  <object id="231" name="rock" x="192.928" y="62.4178">
-   <point/>
-  </object>
-  <object id="232" name="rock" x="226.595" y="64.6875">
-   <point/>
-  </object>
-  <object id="233" name="rock" x="285.987" y="66.2007">
-   <point/>
-  </object>
-  <object id="234" name="rock" x="309.819" y="65.8224">
-   <point/>
-  </object>
-  <object id="235" name="rock" x="278.799" y="64.3092">
-   <point/>
-  </object>
-  <object id="236" name="rock" x="228.487" y="65.0658">
-   <point/>
-  </object>
-  <object id="237" name="rock" x="206.924" y="71.875">
-   <point/>
-  </object>
-  <object id="238" name="rock" x="248.536" y="75.6579">
-   <point/>
-  </object>
-  <object id="239" name="rock" x="301.497" y="74.523">
-   <point/>
-  </object>
-  <object id="240" name="rock" x="313.224" y="71.4967">
-   <point/>
-  </object>
-  <object id="241" name="rock" x="275.016" y="64.3092">
-   <point/>
-  </object>
-  <object id="242" name="rock" x="224.326" y="59.7697">
-   <point/>
-  </object>
-  <object id="243" name="rock" x="215.247" y="57.8783">
-   <point/>
-  </object>
-  <object id="244" name="rock" x="253.076" y="57.5">
-   <point/>
-  </object>
-  <object id="245" name="rock" x="305.28" y="57.5">
-   <point/>
-  </object>
-  <object id="246" name="rock" x="299.227" y="54.0954">
-   <point/>
-  </object>
-  <object id="247" name="rock" x="256.48" y="44.6382">
-   <point/>
-  </object>
-  <object id="248" name="rock" x="203.898" y="36.6941">
-   <point/>
-  </object>
-  <object id="249" name="rock" x="184.605" y="35.5592">
-   <point/>
-  </object>
-  <object id="250" name="rock" x="199.359" y="39.7204">
-   <point/>
-  </object>
-  <object id="251" name="rock" x="246.645" y="46.5296">
-   <point/>
-  </object>
-  <object id="252" name="rock" x="285.609" y="49.9342">
-   <point/>
-  </object>
-  <object id="253" name="rock" x="254.589" y="43.5033">
-   <point/>
-  </object>
-  <object id="254" name="rock" x="185.74" y="35.1809">
-   <point/>
-  </object>
-  <object id="255" name="rock" x="147.911" y="34.0461">
-   <point/>
-  </object>
-  <object id="256" name="rock" x="164.934" y="37.8289">
-   <point/>
-  </object>
-  <object id="257" name="rock" x="219.03" y="46.1513">
-   <point/>
-  </object>
-  <object id="258" name="rock" x="276.151" y="51.8257">
-   <point/>
-  </object>
-  <object id="259" name="rock" x="289.013" y="52.2039">
-   <point/>
-  </object>
-  <object id="260" name="rock" x="261.398" y="47.2862">
-   <point/>
-  </object>
-  <object id="261" name="rock" x="207.303" y="44.6382">
-   <point/>
-  </object>
-  <object id="262" name="rock" x="208.816" y="51.4474">
-   <point/>
-  </object>
-  <object id="263" name="rock" x="265.181" y="61.6612">
-   <point/>
-  </object>
-  <object id="264" name="rock" x="332.516" y="64.3092">
-   <point/>
-  </object>
-  <object id="265" name="rock" x="338.947" y="62.0395">
-   <point/>
-  </object>
-  <object id="266" name="rock" x="284.474" y="54.4737">
-   <point/>
-  </object>
-  <object id="267" name="rock" x="233.405" y="53.7171">
-   <point/>
-  </object>
-  <object id="268" name="rock" x="226.595" y="53.7171">
-   <point/>
-  </object>
-  <object id="269" name="rock" x="266.316" y="52.5822">
-   <point/>
-  </object>
-  <object id="270" name="rock" x="298.849" y="51.8257">
-   <point/>
-  </object>
-  <object id="271" name="rock" x="299.605" y="51.8257">
-   <point/>
-  </object>
-  <object id="272" name="rock" x="278.421" y="52.2039">
-   <point/>
-  </object>
-  <object id="273" name="rock" x="260.263" y="59.0132">
-   <point/>
-  </object>
-  <object id="274" name="rock" x="257.237" y="66.2007">
-   <point/>
-  </object>
-  <object id="275" name="rock" x="281.826" y="72.2533">
-   <point/>
-  </object>
-  <object id="276" name="rock" x="321.546" y="72.6316">
-   <point/>
-  </object>
-  <object id="277" name="rock" x="314.737" y="70.7401">
-   <point/>
-  </object>
-  <object id="278" name="rock" x="267.072" y="63.9309">
-   <point/>
-  </object>
-  <object id="279" name="rock" x="226.217" y="63.5526">
-   <point/>
-  </object>
-  <object id="280" name="rock" x="238.322" y="63.5526">
-   <point/>
-  </object>
-  <object id="281" name="rock" x="276.53" y="66.9572">
-   <point/>
-  </object>
-  <object id="282" name="rock" x="285.609" y="69.9836">
-   <point/>
-  </object>
-  <object id="283" name="rock" x="278.799" y="77.5493">
-   <point/>
-  </object>
-  <object id="284" name="rock" x="268.964" y="81.7105">
-   <point/>
-  </object>
-  <object id="285" name="rock" x="248.914" y="83.9803">
-   <point/>
-  </object>
-  <object id="286" name="rock" x="243.997" y="85.1151">
-   <point/>
-  </object>
-  <object id="287" name="rock" x="267.072" y="86.25">
-   <point/>
-  </object>
-  <object id="288" name="rock" x="297.714" y="88.1414">
-   <point/>
-  </object>
-  <object id="289" name="rock" x="301.118" y="89.6546">
-   <point/>
-  </object>
-  <object id="290" name="rock" x="248.914" y="90.0329">
-   <point/>
-  </object>
-  <object id="291" name="rock" x="220.921" y="91.9243">
-   <point/>
-  </object>
-  <object id="292" name="rock" x="233.026" y="93.4375">
-   <point/>
-  </object>
-  <object id="293" name="rock" x="284.474" y="96.8421">
-   <point/>
-  </object>
-  <object id="294" name="rock" x="338.947" y="98.7336">
-   <point/>
-  </object>
-  <object id="295" name="rock" x="345.378" y="98.7336">
-   <point/>
-  </object>
-  <object id="296" name="rock" x="310.576" y="97.5987">
-   <point/>
-  </object>
-  <object id="297" name="rock" x="270.099" y="100.247">
-   <point/>
-  </object>
-  <object id="298" name="rock" x="252.319" y="102.138">
-   <point/>
-  </object>
-  <object id="299" name="rock" x="262.533" y="100.247">
-   <point/>
-  </object>
-  <object id="300" name="rock" x="304.523" y="99.1118">
-   <point/>
-  </object>
-  <object id="301" name="rock" x="318.141" y="99.1118">
-   <point/>
-  </object>
-  <object id="302" name="rock" x="307.171" y="99.1118">
-   <point/>
-  </object>
-  <object id="303" name="rock" x="267.072" y="97.977">
-   <point/>
-  </object>
-  <object id="304" name="rock" x="233.405" y="99.1118">
-   <point/>
-  </object>
-  <object id="305" name="rock" x="231.513" y="99.1118">
-   <point/>
-  </object>
-  <object id="306" name="rock" x="261.02" y="97.5987">
-   <point/>
-  </object>
-  <object id="307" name="rock" x="303.01" y="96.0855">
-   <point/>
-  </object>
-  <object id="308" name="rock" x="276.53" y="94.1941">
-   <point/>
-  </object>
-  <object id="309" name="rock" x="197.467" y="90.4112">
-   <point/>
-  </object>
-  <object id="310" name="rock" x="131.645" y="96.4638">
-   <point/>
-  </object>
-  <object id="311" name="rock" x="134.293" y="106.299">
-   <point/>
-  </object>
-  <object id="312" name="rock" x="191.414" y="110.839">
-   <point/>
-  </object>
-  <object id="313" name="rock" x="247.401" y="109.704">
-   <point/>
-  </object>
-  <object id="314" name="rock" x="273.125" y="110.461">
-   <point/>
-  </object>
-  <object id="315" name="rock" x="263.668" y="114.622">
-   <point/>
-  </object>
-  <object id="316" name="rock" x="169.474" y="117.648">
-   <point/>
-  </object>
-  <object id="317" name="rock" x="150.938" y="120.296">
-   <point/>
-  </object>
-  <object id="318" name="rock" x="172.5" y="119.918">
-   <point/>
-  </object>
-  <object id="319" name="rock" x="239.079" y="114.622">
-   <point/>
-  </object>
-  <object id="320" name="rock" x="285.609" y="111.217">
-   <point/>
-  </object>
-  <object id="321" name="rock" x="267.072" y="114.622">
-   <point/>
-  </object>
-  <object id="322" name="rock" x="201.25" y="121.053">
-   <point/>
-  </object>
-  <object id="323" name="rock" x="156.234" y="125.97">
-   <point/>
-  </object>
-  <object id="324" name="rock" x="181.579" y="129.375">
-   <point/>
-  </object>
-  <object id="325" name="rock" x="261.02" y="133.158">
-   <point/>
-  </object>
-  <object id="326" name="rock" x="295.066" y="136.563">
-   <point/>
-  </object>
-  <object id="327" name="rock" x="265.181" y="135.428">
-   <point/>
-  </object>
-  <object id="328" name="rock" x="178.931" y="129.375">
-   <point/>
-  </object>
-  <object id="329" name="rock" x="117.648" y="130.51">
-   <point/>
-  </object>
-  <object id="330" name="rock" x="119.918" y="131.645">
-   <point/>
-  </object>
-  <object id="331" name="rock" x="178.174" y="134.671">
-   <point/>
-  </object>
-  <object id="332" name="rock" x="257.993" y="142.615">
-   <point/>
-  </object>
-  <object id="333" name="rock" x="229.622" y="142.615">
-   <point/>
-  </object>
-  <object id="334" name="rock" x="170.987" y="139.589">
-   <point/>
-  </object>
-  <object id="335" name="rock" x="138.832" y="139.211">
-   <point/>
-  </object>
-  <object id="336" name="rock" x="136.941" y="139.211">
-   <point/>
-  </object>
-  <object id="337" name="rock" x="166.069" y="140.345">
-   <point/>
-  </object>
-  <object id="338" name="rock" x="206.168" y="140.724">
-   <point/>
-  </object>
-  <object id="339" name="rock" x="216.003" y="139.967">
-   <point/>
-  </object>
-  <object id="340" name="rock" x="177.039" y="130.51">
-   <point/>
-  </object>
-  <object id="341" name="rock" x="73.3882" y="125.214">
-   <point/>
-  </object>
-  <object id="342" name="rock" x="66.5789" y="128.618">
-   <point/>
-  </object>
-  <object id="343" name="rock" x="89.2763" y="133.536">
-   <point/>
-  </object>
-  <object id="344" name="rock" x="141.48" y="136.941">
-   <point/>
-  </object>
-  <object id="345" name="rock" x="175.526" y="135.049">
-   <point/>
-  </object>
-  <object id="346" name="rock" x="171.743" y="132.401">
-   <point/>
-  </object>
-  <object id="347" name="rock" x="135.428" y="138.076">
-   <point/>
-  </object>
-  <object id="348" name="rock" x="97.2204" y="138.076">
-   <point/>
-  </object>
-  <object id="349" name="rock" x="82.8454" y="138.076">
-   <point/>
-  </object>
-  <object id="350" name="rock" x="88.5197" y="138.454">
-   <point/>
-  </object>
-  <object id="351" name="rock" x="106.678" y="139.211">
-   <point/>
-  </object>
-  <object id="352" name="rock" x="106.678" y="139.967">
-   <point/>
-  </object>
-  <object id="353" name="rock" x="90.0329" y="142.615">
-   <point/>
-  </object>
-  <object id="354" name="rock" x="75.2796" y="147.911">
-   <point/>
-  </object>
-  <object id="355" name="rock" x="74.523" y="149.803">
-   <point/>
-  </object>
-  <object id="356" name="rock" x="83.602" y="153.207">
-   <point/>
-  </object>
-  <object id="357" name="rock" x="119.918" y="155.855">
-   <point/>
-  </object>
-  <object id="358" name="rock" x="169.095" y="155.855">
-   <point/>
-  </object>
-  <object id="359" name="rock" x="202.007" y="154.342">
-   <point/>
-  </object>
-  <object id="360" name="rock" x="167.204" y="150.181">
-   <point/>
-  </object>
-  <object id="361" name="rock" x="109.326" y="148.289">
-   <point/>
-  </object>
-  <object id="362" name="rock" x="76.0362" y="146.398">
-   <point/>
-  </object>
-  <object id="363" name="rock" x="81.3322" y="145.641">
-   <point/>
-  </object>
-  <object id="364" name="rock" x="128.997" y="146.398">
-   <point/>
-  </object>
-  <object id="365" name="rock" x="194.441" y="146.776">
-   <point/>
-  </object>
-  <object id="366" name="rock" x="256.859" y="144.885">
-   <point/>
-  </object>
-  <object id="367" name="rock" x="250.806" y="144.885">
-   <point/>
-  </object>
-  <object id="368" name="rock" x="203.898" y="148.289">
-   <point/>
-  </object>
-  <object id="369" name="rock" x="179.688" y="155.099">
-   <point/>
-  </object>
-  <object id="370" name="rock" x="225.461" y="152.072">
-   <point/>
-  </object>
-  <object id="371" name="rock" x="297.714" y="139.967">
-   <point/>
-  </object>
-  <object id="372" name="rock" x="322.303" y="129.375">
-   <point/>
-  </object>
-  <object id="373" name="rock" x="292.418" y="119.918">
-   <point/>
-  </object>
-  <object id="374" name="rock" x="236.809" y="119.918">
-   <point/>
-  </object>
-  <object id="375" name="rock" x="191.793" y="128.997">
-   <point/>
-  </object>
-  <object id="376" name="rock" x="208.059" y="126.349">
-   <point/>
-  </object>
-  <object id="377" name="rock" x="239.079" y="118.405">
-   <point/>
-  </object>
-  <object id="378" name="rock" x="253.076" y="116.135">
-   <point/>
-  </object>
-  <object id="379" name="rock" x="250.806" y="116.135">
-   <point/>
-  </object>
-  <object id="380" name="rock" x="221.678" y="118.026">
-   <point/>
-  </object>
-  <object id="381" name="rock" x="158.125" y="114.622">
-   <point/>
-  </object>
-  <object id="382" name="rock" x="127.105" y="111.595">
-   <point/>
-  </object>
-  <object id="383" name="rock" x="169.852" y="102.138">
-   <point/>
-  </object>
-  <object id="384" name="rock" x="229.622" y="97.5987">
-   <point/>
-  </object>
-  <object id="385" name="rock" x="254.967" y="96.0855">
-   <point/>
-  </object>
-  <object id="386" name="rock" x="241.349" y="94.1941">
-   <point/>
-  </object>
-  <object id="387" name="rock" x="193.684" y="98.7336">
-   <point/>
-  </object>
-  <object id="388" name="rock" x="183.092" y="105.164">
-   <point/>
-  </object>
-  <object id="389" name="rock" x="210.329" y="110.461">
-   <point/>
-  </object>
-  <object id="390" name="rock" x="270.477" y="110.839">
-   <point/>
-  </object>
-  <object id="391" name="rock" x="304.523" y="110.839">
-   <point/>
-  </object>
-  <object id="392" name="rock" x="282.204" y="112.73">
-   <point/>
-  </object>
-  <object id="393" name="rock" x="248.158" y="129.753">
-   <point/>
-  </object>
-  <object id="394" name="rock" x="263.668" y="136.184">
-   <point/>
-  </object>
-  <object id="395" name="rock" x="296.957" y="138.076">
-   <point/>
-  </object>
-  <object id="396" name="rock" x="313.602" y="138.454">
-   <point/>
-  </object>
-  <object id="397" name="rock" x="307.549" y="138.454">
-   <point/>
-  </object>
-  <object id="398" name="rock" x="275.773" y="138.076">
-   <point/>
-  </object>
-  <object id="399" name="rock" x="263.668" y="141.859">
-   <point/>
-  </object>
-  <object id="400" name="rock" x="287.878" y="142.237">
-   <point/>
-  </object>
-  <object id="401" name="rock" x="316.628" y="142.237">
-   <point/>
-  </object>
-  <object id="402" name="rock" x="310.576" y="141.859">
-   <point/>
-  </object>
-  <object id="403" name="rock" x="249.293" y="135.428">
-   <point/>
-  </object>
-  <object id="404" name="rock" x="190.28" y="139.211">
-   <point/>
-  </object>
-  <object id="405" name="rock" x="197.467" y="144.128">
-   <point/>
-  </object>
-  <object id="406" name="rock" x="259.885" y="144.507">
-   <point/>
-  </object>
-  <object id="407" name="rock" x="315.493" y="140.724">
-   <point/>
-  </object>
-  <object id="408" name="rock" x="321.168" y="140.724">
-   <point/>
-  </object>
-  <object id="409" name="rock" x="279.556" y="142.615">
-   <point/>
-  </object>
-  <object id="410" name="rock" x="218.273" y="144.128">
-   <point/>
-  </object>
-  <object id="411" name="rock" x="154.72" y="142.615">
-   <point/>
-  </object>
-  <object id="412" name="rock" x="150.559" y="142.615">
-   <point/>
-  </object>
-  <object id="413" name="rock" x="148.289" y="142.615">
-   <point/>
-  </object>
-  <object id="414" name="rock" x="128.24" y="140.724">
-   <point/>
-  </object>
-  <object id="415" name="rock" x="108.947" y="140.724">
-   <point/>
-  </object>
-  <object id="416" name="rock" x="102.895" y="140.724">
-   <point/>
-  </object>
-  <object id="417" name="rock" x="102.895" y="140.724">
-   <point/>
-  </object>
-  <object id="418" name="rock" x="102.895" y="140.724">
-   <point/>
-  </object>
-  <object id="419" name="rock" x="93.8158" y="144.128">
-   <point/>
-  </object>
-  <object id="420" name="rock" x="82.0888" y="146.02">
-   <point/>
-  </object>
-  <object id="421" name="rock" x="75.2796" y="146.776">
-   <point/>
-  </object>
-  <object id="422" name="rock" x="74.9013" y="147.533">
-   <point/>
-  </object>
-  <object id="423" name="rock" x="74.9013" y="147.533">
-   <point/>
-  </object>
-  <object id="424" name="rock" x="74.1447" y="147.533">
-   <point/>
-  </object>
-  <object id="425" name="rock" x="70.7401" y="147.533">
-   <point/>
-  </object>
-  <object id="426" name="rock" x="66.5789" y="147.155">
-   <point/>
-  </object>
-  <object id="427" name="rock" x="58.2566" y="146.776">
-   <point/>
-  </object>
-  <object id="428" name="rock" x="35.5592" y="145.263">
-   <point/>
-  </object>
-  <object id="429" name="rock" x="29.8849" y="144.885">
-   <point/>
-  </object>
-  <object id="430" name="rock" x="29.8849" y="144.507">
-   <point/>
-  </object>
-  <object id="431" name="player_spawn" x="73.0099" y="177.039">
-   <point/>
-  </object>
-  <object id="432" name="level_exit" x="334.408" y="178.553">
+  <object id="481" name="level_exit" x="344" y="107">
    <point/>
   </object>
  </objectgroup>
