@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="482">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="529">
  <tileset firstgid="1" source="cave_crawler_v2.tsx"/>
  <layer id="1" name="Tile Layer 1" width="23" height="13">
   <data encoding="csv">
@@ -35,143 +35,94 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="5" name="Object Layer 2">
+  <object id="515" name="pickaxe" x="66.6667" y="127">
+   <point/>
+  </object>
+  <object id="516" name="pickaxe" x="59.3333" y="84.3333">
+   <point/>
+  </object>
+  <object id="517" name="pickaxe" x="98.3333" y="32">
+   <point/>
+  </object>
+  <object id="518" name="pickaxe" x="180" y="43.6667">
+   <point/>
+  </object>
+  <object id="519" name="pickaxe" x="227.667" y="65.6667">
+   <point/>
+  </object>
+  <object id="520" name="pickaxe" x="199.667" y="121">
+   <point/>
+  </object>
+  <object id="521" name="pickaxe" x="103" y="171.333">
+   <point/>
+  </object>
+  <object id="522" name="pickaxe" x="179.333" y="42.6667">
+   <point/>
+  </object>
+  <object id="523" name="pickaxe" x="104" y="167.667">
+   <point/>
+  </object>
+  <object id="524" name="pickaxe" x="99.3333" y="28">
+   <point/>
+  </object>
+  <object id="525" name="pickaxe" x="238" y="180.667">
+   <point/>
+  </object>
+  <object id="526" name="pickaxe" x="115" y="120.667">
+   <point/>
+  </object>
+  <object id="527" name="pickaxe" x="60.3333" y="81.6667">
+   <point/>
+  </object>
+  <object id="528" name="pickaxe" x="200.333" y="122">
+   <point/>
+  </object>
+ </objectgroup>
  <objectgroup id="2" name="Object Layer 1">
-  <object id="433" name="rock" x="327.22" y="107.813">
-   <point/>
-  </object>
-  <object id="435" name="rock" x="310.954" y="108.569">
-   <point/>
-  </object>
-  <object id="436" name="rock" x="295.822" y="108.947">
-   <point/>
-  </object>
-  <object id="437" name="rock" x="280.691" y="108.947">
-   <point/>
-  </object>
-  <object id="438" name="rock" x="264.803" y="108.947">
-   <point/>
-  </object>
-  <object id="439" name="rock" x="52.9605" y="47.6645">
-   <point/>
-  </object>
-  <object id="440" name="rock" x="91.9243" y="133.536">
-   <point/>
-  </object>
-  <object id="441" name="rock" x="204.276" y="160.395">
-   <point/>
-  </object>
-  <object id="442" name="rock" x="194.441" y="82.4671">
-   <point/>
-  </object>
-  <object id="443" name="rock" x="138.454" y="161.53">
-   <point/>
-  </object>
-  <object id="444" name="rock" x="174.77" y="108.191">
-   <point/>
-  </object>
-  <object id="445" name="rock" x="107.813" y="64.6875">
-   <point/>
-  </object>
-  <object id="446" name="rock" x="219.786" y="33.6678">
-   <point/>
-  </object>
-  <object id="447" name="rock" x="276.53" y="172.122">
-   <point/>
-  </object>
-  <object id="448" name="rock" x="154.72" y="39.3421">
-   <point/>
-  </object>
-  <object id="449" name="rock" x="31.7763" y="82.0888">
-   <point/>
-  </object>
-  <object id="450" name="rock" x="94.1941" y="180.066">
-   <point/>
-  </object>
-  <object id="451" name="rock" x="254.967" y="56.7434">
-   <point/>
-  </object>
-  <object id="452" name="rock" x="219.408" y="104.786">
-   <point/>
-  </object>
-  <object id="453" name="rock" x="129.753" y="87.3849">
-   <point/>
-  </object>
-  <object id="454" name="rock" x="231.135" y="177.796">
-   <point/>
-  </object>
-  <object id="455" name="rock" x="174.77" y="175.905">
-   <point/>
-  </object>
-  <object id="456" name="rock" x="135.049" y="116.891">
-   <point/>
-  </object>
-  <object id="457" name="rock" x="70.3618" y="84.3586">
-   <point/>
-  </object>
-  <object id="458" name="rock" x="63.5526" y="151.316">
-   <point/>
-  </object>
-  <object id="461" name="pickaxe" x="52.9605" y="114.622">
-   <point/>
-  </object>
-  <object id="462" name="pickaxe" x="32.5329" y="80.1974">
-   <point/>
-  </object>
-  <object id="463" name="pickaxe" x="108.191" y="63.1743">
-   <point/>
-  </object>
-  <object id="464" name="pickaxe" x="135.049" y="113.487">
-   <point/>
-  </object>
-  <object id="465" name="pickaxe" x="90.7895" y="175.905">
-   <point/>
-  </object>
-  <object id="466" name="pickaxe" x="90.7895" y="175.905">
-   <point/>
-  </object>
-  <object id="467" name="pickaxe" x="206.546" y="156.234">
-   <point/>
-  </object>
-  <object id="468" name="pickaxe" x="196.332" y="76.0362">
-   <point/>
-  </object>
-  <object id="469" name="pickaxe" x="222.434" y="32.9112">
-   <point/>
-  </object>
-  <object id="470" name="pickaxe" x="222.434" y="32.9112">
-   <point/>
-  </object>
-  <object id="471" name="pickaxe" x="155" y="36.5">
-   <point/>
-  </object>
-  <object id="472" name="pickaxe" x="155" y="36.5">
-   <point/>
-  </object>
-  <object id="473" name="pickaxe" x="155" y="36">
-   <point/>
-  </object>
-  <object id="474" name="pickaxe" x="276" y="167">
-   <point/>
-  </object>
-  <object id="475" name="pickaxe" x="218.5" y="99.5">
-   <point/>
-  </object>
-  <object id="476" name="pickaxe" x="72.5" y="86.5">
-   <point/>
-  </object>
-  <object id="477" name="pickaxe" x="139" y="159.5">
-   <point/>
-  </object>
-  <object id="478" name="pickaxe" x="137" y="162">
-   <point/>
-  </object>
-  <object id="479" name="pickaxe" x="137" y="162.5">
-   <point/>
-  </object>
   <object id="480" name="player_spawn" x="23.5" y="137.5">
    <point/>
   </object>
   <object id="481" name="level_exit" x="344" y="107">
+   <point/>
+  </object>
+  <object id="482" name="rock" x="263.667" y="105.667">
+   <point/>
+  </object>
+  <object id="483" name="rock" x="280" y="105">
+   <point/>
+  </object>
+  <object id="484" name="rock" x="296.667" y="107">
+   <point/>
+  </object>
+  <object id="493" name="rock" x="103.667" y="171">
+   <point/>
+  </object>
+  <object id="494" name="rock" x="200.333" y="123">
+   <point/>
+  </object>
+  <object id="495" name="rock" x="237" y="179.667">
+   <point/>
+  </object>
+  <object id="496" name="rock" x="60.3333" y="82.6667">
+   <point/>
+  </object>
+  <object id="497" name="rock" x="115" y="118.667">
+   <point/>
+  </object>
+  <object id="498" name="rock" x="178.667" y="43.3333">
+   <point/>
+  </object>
+  <object id="499" name="rock" x="97.6667" y="32.3333">
+   <point/>
+  </object>
+  <object id="500" name="rock" x="225.333" y="65.6667">
+   <point/>
+  </object>
+  <object id="501" name="rock" x="312.667" y="106">
+   <point/>
+  </object>
+  <object id="502" name="rock" x="327.667" y="106">
    <point/>
   </object>
  </objectgroup>
