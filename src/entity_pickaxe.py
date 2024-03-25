@@ -17,7 +17,7 @@ class PickaxeAssets:
 
 class Pickaxe(BaseEntity):
     def __init__(self, level, initial_pos):
-        super().__init__(level, initial_pos, radius=4, static=True)
+        super().__init__(level, initial_pos, radius=4, static=True, sensor=True)
         self.carrier = None
         self.broken = False
     def get_render_info(self):
@@ -33,13 +33,10 @@ class Pickaxe(BaseEntity):
             self.body.position = (self.carrier.body.position.x+8, self.carrier.body.position.y-12)
 
     def handle_entity_collision(self, other_entity):
-        if other_entity.is_player():
-            # self.remove()
+        if other_entity.is_player() and not self.broken and not player_state.inventory_contains('pickaxe'):
             self.carrier = other_entity
-            self.shape.sensor = True
-            #self.level.space.remove(self.body, self.shape)
             player_state.add_to_inventory('pickaxe', self)
-    
+
     def dropped(self):
         if self.carrier:
             px, py = self.carrier.body.position
