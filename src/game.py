@@ -43,6 +43,7 @@ def switch_level(new_level_idx):
     global current_level, current_level_idx
     current_level.stop()
     current_level = levels[new_level_idx]
+    print("current level:", current_level.map_fn)
     current_level.reset()
     current_level.start()
     current_level_idx = new_level_idx
