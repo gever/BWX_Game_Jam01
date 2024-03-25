@@ -8,6 +8,7 @@ from config import *
 from entity_base import BaseEntity
 from vec2 import Vec2
 from player_state import player_state
+from entity_particle_water import WaterParticle
 
 def load():
     global assets
@@ -150,6 +151,10 @@ class Player(BaseEntity):
             self.kill()
 
     def act(self, dt):
+        if self.in_water and not self.desired_velo.is_zero():
+            particle = WaterParticle(self.level, self.body.position, (random.uniform(-50, 50), random.uniform(-100, -50)))
+            self.level.entities.append(particle)
+        
         self.die_if_tile_kills_you()
         if self.dead:
             self.desired_velo = Vec2(0,0)
