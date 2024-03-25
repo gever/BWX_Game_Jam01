@@ -48,10 +48,10 @@
   <object id="5" name="rock" x="76.9955" y="35.3892">
    <point/>
   </object>
-  <object id="6" name="level_end" x="57.3879" y="23.9116">
+  <object id="6" name="level_exit" x="57.3879" y="23.9116">
    <point/>
   </object>
-  <object id="7" name="level_end" x="86.5601" y="149.687">
+  <object id="7" name="level_exit" x="86.5601" y="149.687">
    <point/>
   </object>
   <object id="8" name="player_spawn" x="325.676" y="138.209">
