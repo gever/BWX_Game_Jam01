@@ -138,11 +138,15 @@ class Player(BaseEntity):
     def is_player(self):
         return True
 
-    def die_if_tile_kills_you(self):
-        tile_props = self.get_current_tile_props()
-        if tile_props and tile_props.get('kills you') and not self.dead:
+    def kill(self):
+        if not self.dead:
             self.dead = True
             get_audio().play_sfx('death')
+
+    def die_if_tile_kills_you(self):
+        tile_props = self.get_current_tile_props()
+        if tile_props and tile_props.get('kills you'):
+            self.kill()
 
     def act(self, dt):
         self.die_if_tile_kills_you()

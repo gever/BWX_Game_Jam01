@@ -60,8 +60,7 @@ class LavaBlob(BaseEntity):
         if (not self.paused or not self.stone) and not self.paused and not self.stone:
             # TODO: trigger player death noise
             if other_entity.is_player():
-                other_entity.remove()
-                return
+                other_entity.kill()
 
             # TODO: trigger water blob death noise
             if isinstance(other_entity, WaterBlob):

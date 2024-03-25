@@ -1,5 +1,5 @@
 import pygame
-import pymunk 
+import pymunk
 
 from entity_base import BaseEntity
 
@@ -29,7 +29,7 @@ class SlimeMonster(BaseEntity):
 
     def handle_entity_collision(self, other_entity):
         if other_entity.is_player():
-            other_entity.remove()
+            other_entity.kill()
 
     def get_render_info(self):
         anim = assets.anims[self.current_anim]
