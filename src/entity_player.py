@@ -16,18 +16,18 @@ def load():
 
 class PlayerAssets:
     def __init__(self):
-        spritesheet = pygame.image.load('../gfx/player_sprite.png').convert_alpha()
+        spritesheet = pygame.image.load('../gfx/miner_walk_cycle.png').convert_alpha()
         swim_spritesheet = pygame.image.load('../gfx/Swimming_player_sprite.png').convert_alpha()
         death_player_spritesheet = pygame.image.load('../gfx/Dead_Player.png').convert_alpha()
         sprites = []
         swim_sprites = []
         dead_sprites = []
         for i in range(0, 4):
-            frame = spritesheet.subsurface(((17*i + 1), 1, 16, 20))
+            frame = spritesheet.subsurface((16*i, 0, 16, 22))
             sprites.append(frame)
         self.anims = {
-            'left': list(reversed(sprites[0:2])),
-            'right': sprites[2:4],
+            'left': sprites[2:4],
+            'right': sprites[0:2],
         }
         for i in range(0, 2):
             swim_frames = swim_spritesheet.subsurface(((17*i + 1), 1, 16, 35))
