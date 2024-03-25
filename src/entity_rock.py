@@ -5,6 +5,7 @@ import random
 from entity_base import BaseEntity
 from player_state import player_state
 from audio import get_audio
+from entity_particle_rock import RockParticle
 
 def load():
     global assets
@@ -55,5 +56,8 @@ class Rock(BaseEntity):
                 if pickaxe == None:
                     return
                 pickaxe.dropped() # TODO: animate this
+                for i in range(50):
+                    particle = RockParticle(self.level, self.body.position, (random.uniform(-50, 50), random.uniform(-100, 0)))
+                    self.level.entities.append(particle)
                 self.remove()
                 self.beinghit = False
