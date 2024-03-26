@@ -1,6 +1,8 @@
 import pygame
 import pymunk 
+import random
 
+from entity_particle_water import WaterParticle
 from entity_base import BaseEntity
 
 def load():
@@ -33,6 +35,10 @@ class WaterBlob(BaseEntity):
     def act(self, dt):
         self.timer += dt*7
         tile_props = self.get_current_tile_props()
+        if random.random() < 0.04:
+                    particle = WaterParticle(self.level, self.body.position, (random.uniform(-50, 50), random.uniform(-100, 0)))
+                    self.level.entities.append(particle)
+
         if tile_props and tile_props.get('water'):
             MAX_SPEED = 100
             MOVEMENT_STRENGTH = 40
