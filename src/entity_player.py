@@ -163,8 +163,9 @@ class Player(BaseEntity):
 
     def act(self, dt):
         if self.in_water and not self.desired_velo.is_zero():
-            particle = WaterParticle(self.level, self.body.position, (random.uniform(-50, 50), random.uniform(-100, -50)))
-            self.level.entities.append(particle)
+            for i in range(10):
+                particle = WaterParticle(self.level, self.body.position, (random.uniform(-50, 50), random.uniform(-100, -50)))
+                self.level.entities.append(particle)
         
         self.die_if_tile_kills_you()
         if self.dead:

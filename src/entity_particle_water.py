@@ -9,7 +9,7 @@ def load():
 class WaterParticleAssets:
     def __init__(self):
         spritesheet = pygame.image.load('../gfx/Splosh Effect.png').convert_alpha()
-        self.sprite = spritesheet.subsurface((1, 2, 5, 5))
+        self.sprite = spritesheet.subsurface((4, 3, 1, 1))
         self.anchor = (1, 1)
 
 class WaterParticle(ParticleEntity):
