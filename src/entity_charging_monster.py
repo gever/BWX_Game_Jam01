@@ -13,7 +13,7 @@ class ChargingMonsterAssets:
     def __init__(self):
         spritesheet = pygame.image.load('../gfx/Beetle.png').convert_alpha()
         self.sprite = spritesheet.subsurface((0, 0, 64, 16))
-        self.anchor = (15, 8)
+        self.anchor = (3,  30)
         self.spritelist = []
         for i in [0,1]:
             frame = spritesheet.subsurface(((30*i), 0, 30, 16))
