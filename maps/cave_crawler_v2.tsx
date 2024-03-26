@@ -7,9 +7,9 @@
    <property name="light" type="float" value="30"/>
   </properties>
   <animation>
-   <frame tileid="45" duration="500"/>
-   <frame tileid="46" duration="500"/>
-   <frame tileid="47" duration="500"/>
+   <frame tileid="45" duration="300"/>
+   <frame tileid="46" duration="300"/>
+   <frame tileid="47" duration="300"/>
   </animation>
  </tile>
  <tile id="46">
@@ -28,6 +28,10 @@
   <properties>
    <property name="light" type="float" value="50"/>
   </properties>
+  <animation>
+   <frame tileid="48" duration="1000"/>
+   <frame tileid="63" duration="1000"/>
+  </animation>
  </tile>
  <tile id="63">
   <properties>
