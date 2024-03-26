@@ -13,6 +13,30 @@ class PlayerState:
         self.health -= 1
         print(self.health)
 
+    def konami_check(self, event, key):
+        while event in pygame.event.get(): 
+            if event.type == pygame.KEYUP or event.type == pygame.K_w:
+                print("You pressed the right key!")
+                if event.type == pygame.KEYDOWN or event.type == pygame.K_s:
+                    print("You pressed the right key!")
+                    if event.type == pygame.KEYDOWN or event.type == pygame.K_s:
+                        print("You pressed the right key!")
+                        if event.type == pygame.KEYLEFT or event.type == pygame.K_a:
+                            print("You pressed the right key!")
+                            if event.type == pygame.KEYRIGHT or event.type == pygame.K_d:
+                                print("You pressed the right key!")
+                                if event.type == pygame.KEYLEFT or event.type == pygame.K_a:
+                                    print("You pressed the right key!")
+                                    if event.type == pygame.KEYRIGHT or event.type == pygame.K_d:
+                                        print("You pressed the right key!")
+                                        if event.type == pygame.K_x:
+                                            print("You pressed the right key!")
+                                            if event.type == pygame.K_z:
+                                                print("You pressed the right key!")
+                                                if event.type == pygame.K_RETURN:
+                                                    print("You pressed the right key!")
+                                                    self.konami = True
+    
     def add_to_inventory(self, label, item):
         self.inventory[label] = item
 
