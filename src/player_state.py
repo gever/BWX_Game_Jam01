@@ -2,6 +2,7 @@ class PlayerState:
     def __init__(self):
         self.reset()
         self.total_lives = 5
+        self.konami = False
     def reset(self):
         self.health = 5
         self.inventory = {}
@@ -14,7 +15,7 @@ class PlayerState:
         print(self.health)
 
     def konami_check(self, event, key):
-        while event in pygame.event.get(): 
+        while event in pygame.event.get():
             if event.type == pygame.KEYUP or event.type == pygame.K_w:
                 print("You pressed the right key!")
                 if event.type == pygame.KEYDOWN or event.type == pygame.K_s:
@@ -36,7 +37,7 @@ class PlayerState:
                                                 if event.type == pygame.K_RETURN:
                                                     print("You pressed the right key!")
                                                     self.konami = True
-    
+
     def add_to_inventory(self, label, item):
         self.inventory[label] = item
 
