@@ -11,27 +11,41 @@ def load():
 
 class ChargingMonsterAssets:
     def __init__(self):
-        spritesheet = pygame.image.load('../gfx/Beetle.png').convert_alpha()
-        self.sprite = spritesheet.subsurface((0, 0, 64, 16))
-        self.anchor = (32,  20)
-        self.spritelist = []
+        left_spritesheet = pygame.image.load('../gfx/Beetle.png').convert_alpha()
+        left_spritelist = []
         for i in [0,1]:
-            frame = spritesheet.subsurface(((30*i), 0, 30, 16))
-            self.spritelist.append(frame)
+            frame = left_spritesheet.subsurface(((30*i), 0, 30, 16))
+            left_spritelist.append(frame)
+
+        right_spritelist = left_spritelist.copy()
+        right_spritesheet = pygame.image.load('../gfx/beetle pointing left.png').convert_alpha()
+        right_spritelist = []
+        for i in [0,1]:
+            frame = right_spritesheet.subsurface(((30*i) + 3, 0, 30, 16))
+            right_spritelist.append(frame)
+
+        self.anchor = (18,  9)
+
+        self.anims = {
+            'left': left_spritelist,
+            'right': right_spritelist,
+        }
 
 class ChargingMonster(BaseEntity):
     def __init__(self, level, initial_pos):
-        super().__init__(level, initial_pos,radius=15)
+        super().__init__(level, initial_pos, radius=10)
         self.timer = 0
         self.charging_velo = None
         self.chasing = False
         self.timertillpause = 1.5
         self.timepaused = None
+        self.current_anim = 'right'
 
     def get_render_info(self):
-        frame = int(self.timer) % len(assets.spritelist)
+        anim = assets.anims[self.current_anim]
+        frame = int(self.timer) % 2
         return {
-            'sprite': assets.spritelist[frame],
+            'sprite': anim[frame],
             'pos': self.body.position,
             'anchor': assets.anchor,
         }
@@ -46,6 +60,7 @@ class ChargingMonster(BaseEntity):
         self.timertillpause = -1
 
     def act(self, dt):
+        self.current_anim = 'right' if (self.body.velocity.x > 0) else 'left'
         self.timer += dt*4
         MAX_SPEED = 150
         MOVEMENT_STRENGTH = 7
