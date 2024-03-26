@@ -33,6 +33,21 @@
    <frame tileid="63" duration="1000"/>
   </animation>
  </tile>
+ <tile id="49">
+  <properties>
+   <property name="light" type="float" value="50"/>
+  </properties>
+ </tile>
+ <tile id="50">
+  <properties>
+   <property name="light" type="float" value="50"/>
+  </properties>
+ </tile>
+ <tile id="51">
+  <properties>
+   <property name="light" type="float" value="50"/>
+  </properties>
+ </tile>
  <tile id="63">
   <properties>
    <property name="light" type="float" value="50"/>
