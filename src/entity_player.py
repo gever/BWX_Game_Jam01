@@ -50,8 +50,6 @@ class Player(BaseEntity):
     # keeping track of where we are facing even if we aren't moving
     FACING_R = 10
     FACING_L = 11
-    FACING_U = 12
-    FACING_D = 13
 
     def __init__(self, level, initial_pos):
         super().__init__(level, initial_pos)
@@ -98,10 +96,8 @@ class Player(BaseEntity):
                 self.facing = self.FACING_R
             if keys[pygame.K_UP] or keys[pygame.K_w]:
                 self.desired_velo += Vec2(0, -1)
-                self.facing = self.FACING_U
             if keys[pygame.K_DOWN] or keys[pygame.K_s]:
                 self.desired_velo += Vec2(0, 1)
-                self.facing = self.FACING_D
 
         # normalize and scale desired velocity
         if not self.desired_velo.is_zero():
