@@ -54,8 +54,15 @@ class Pickaxe(BaseEntity):
     def dropped(self):
         if self.carrier:
             px, py = self.carrier.body.position
-            vx, vy = self.carrier.desired_velo
-            self.body.position = (px-(vx/5), py-(vy/5))
+            #self.body.position = (px-(vx/5), py-(vy/5))
+            if self.carrier.FACING_U:
+                self.body.position = (px, py + 25)
+            if self.carrier.FACING_R:
+                self.body.position = (px + 25, py)
+            if self.carrier.FACING_D:
+                self.body.position = (px, py - 25)
+            if self.carrier.FACING_L:
+                self.body.position = (px - 25, py)
             self.carrier = None
             player_state.remove_from_inventory('pickaxe')
             self.broken = True
