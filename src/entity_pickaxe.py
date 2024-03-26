@@ -12,6 +12,7 @@ class PickaxeAssets:
     def __init__(self):
         spritesheet = pygame.image.load('../gfx/Pickaxe.png').convert_alpha()
         self.sprite = spritesheet.subsurface((0, 0, 16, 16))
+        self.sprite_left = pygame.transform.flip(self.sprite, True, False)
         self.broken_sprite = spritesheet.subsurface((16, 0, 16, 16))
         self.anchor = (8, 8)
 
@@ -21,6 +22,13 @@ class Pickaxe(BaseEntity):
         self.carrier = None
         self.broken = False
     def get_render_info(self):
+        if self.carrier:
+            if self.carrier.facing == self.carrier.FACING_L:
+                return {
+                    'sprite': assets.sprite_left,
+                    'pos': self.body.position,
+                    'anchor': assets.anchor,
+                }
         return {
             'sprite': assets.broken_sprite if self.broken else assets.sprite,
             'pos': self.body.position,
@@ -30,7 +38,13 @@ class Pickaxe(BaseEntity):
     # update pick position to match player
     def act(self, dt):
         if self.carrier:
-            self.body.position = (self.carrier.body.position.x+8, self.carrier.body.position.y-12)
+            if self.carrier.facing == self.carrier.FACING_R:
+                self.body.position = (self.carrier.body.position.x+8, self.carrier.body.position.y-6)
+            elif self.carrier.facing == self.carrier.FACING_L:
+                self.body.position = (self.carrier.body.position.x-8, self.carrier.body.position.y-6)
+            else:
+                self.body.position = (self.carrier.body.position.x+8, self.carrier.body.position.y-6)
+
 
     def handle_entity_collision(self, other_entity):
         if other_entity.is_player() and not self.broken and not player_state.inventory_contains('pickaxe'):

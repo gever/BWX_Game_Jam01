@@ -47,6 +47,12 @@ class PlayerAssets:
 
 # It is convenient to create an instance of the player in each level, rather than "moving" the player between levels:
 class Player(BaseEntity):
+    # keeping track of where we are facing even if we aren't moving
+    FACING_R = 10
+    FACING_L = 11
+    FACING_U = 12
+    FACING_D = 13
+
     def __init__(self, level, initial_pos):
         super().__init__(level, initial_pos)
 
@@ -61,6 +67,7 @@ class Player(BaseEntity):
         self.death_counter = 0
         self.time_until_next_step = 0
         self.last_step_sound = None
+        self.facing = self.FACING_R
 
     def get_render_info(self):
         anim = assets.anims[self.current_anim]
@@ -83,14 +90,18 @@ class Player(BaseEntity):
                 self.desired_velo += Vec2(-1, 0)
                 self.current_anim = 'left'
                 self.swim_anim = 'swim_left'
+                self.facing = self.FACING_L
             if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
                 self.desired_velo += Vec2(1, 0)
                 self.current_anim = 'right'
                 self.swim_anim = 'swim_right'
+                self.facing = self.FACING_R
             if keys[pygame.K_UP] or keys[pygame.K_w]:
                 self.desired_velo += Vec2(0, -1)
+                self.facing = self.FACING_U
             if keys[pygame.K_DOWN] or keys[pygame.K_s]:
                 self.desired_velo += Vec2(0, 1)
+                self.facing = self.FACING_D
 
         # normalize and scale desired velocity
         if not self.desired_velo.is_zero():
@@ -163,7 +174,24 @@ class Player(BaseEntity):
                 self.remove()
 
     def get_lighting(self):
-        return 100
+        return 70
+    
+    def get_lighting_offset(self):
+        light_delta = 30
+        light_dir = None
+        if self.desired_velo.is_zero():
+            if self.facing == self.FACING_R:
+                return (light_delta, 0)
+            elif self.facing == self.FACING_L:
+                return (-light_delta, 0)
+            elif self.facing == self.FACING_U:
+                return (0, -light_delta)
+            else:
+                return (light_delta, 0)
+        else:
+            light_dir = self.desired_velo.normalized()
+            light_dir *= light_delta     # how far away the bright spot of our headlamp is
+            return light_dir
 
     def remove(self):
         super().remove()

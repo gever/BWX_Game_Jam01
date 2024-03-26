@@ -183,10 +183,11 @@ class BaseLevel:
 
             for entity in self.entities:
                 radius = entity.get_lighting()
+                offset = entity.get_lighting_offset()
                 if radius is not None:
                     lights.append({
-                        'x': entity.body.position.x,
-                        'y': entity.body.position.y,
+                        'x': entity.body.position.x + offset[0],
+                        'y': entity.body.position.y + offset[1],
                         'r': radius,
                     })
 
