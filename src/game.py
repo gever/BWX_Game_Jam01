@@ -22,6 +22,7 @@ screen = pygame.display.set_mode((screen_width, screen_height)) # this should pr
 clock = pygame.time.Clock()
 font = pygame.font.Font(None, 16)
 running = True
+set_values = True
 show_fps = False
 apply_lighting = True
 init_audio()
@@ -85,6 +86,9 @@ while running:
                 unhandled_events.append(event)
         else:
             unhandled_events.append(event)
+    player_state.konami_check()
+    if player_state.konami == True:
+        player_state.total_lives = 1000
 
     # check keyboard input (currently pressed keys)
     keys = pygame.key.get_pressed()
