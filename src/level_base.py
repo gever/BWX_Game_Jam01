@@ -27,6 +27,10 @@ class BaseLevel:
 
         self.reset_queued = False
 
+    # override in derived class to do something extra when the level is reset
+    def reset_extra(self):
+        pass
+
     def reset(self):
         self.entities = []
 
@@ -53,8 +57,10 @@ class BaseLevel:
             if obj.name in ENTITY_MAP:
                 entity = ENTITY_MAP[obj.name](self, (obj.x, obj.y))
                 self.entities.append(entity)
-        
+
         player_state.reset()
+
+        self.reset_extra()
 
     def _handle_entity_entity_collision(self, arbiter, space, data):
         if hasattr(arbiter.shapes[0].body, 'entity') and hasattr(arbiter.shapes[1].body, 'entity'):
@@ -142,8 +148,14 @@ class BaseLevel:
         for entity in self.entities:
             entity.handle_input(keys, events, dt)
 
-    def before_advance_simulation(self, dt):
-        # override this in a derived class to do something extra before the simulation step
+    def is_start_level(self):
+        return False
+
+    # override this in a derived class to do something extra before the simulation step
+    def extra_advance_simulation(self, dt):
+        pass
+
+    def advance_simulation(self, dt):
         for entity in self.entities:
             entity.act(dt)
 
@@ -154,19 +166,15 @@ class BaseLevel:
                     particle = LavaParticle(self, (tile['x']*TILE_SIZE + TILE_SIZE/2, tile['y']*TILE_SIZE + TILE_SIZE/2), (random.uniform(-50, 50), random.uniform(-100, 0)))
                     self.entities.append(particle)
 
-    def advance_simulation(self, dt):
-        self.before_advance_simulation(dt)
+        self.extra_advance_simulation(dt)
+
         self.space.step(dt)
 
         if self.reset_queued:
             self.reset()
             self.reset_queued = False
 
-    # returns new pygame surface, which will be scaled to fit the display
-    def render(self, apply_lighting=True):
-        # render map to a temporary surface
-        surface = self.map.render_map_to_new_surface()
-
+    def render_entities(self, surface):
         render_infos = [entity.get_render_info() for entity in self.entities]
         for info in render_infos:
             render_pos = (info['pos'][0] - info['anchor'][0], info['pos'][1] - info['anchor'][1])
@@ -178,6 +186,13 @@ class BaseLevel:
         # render all entities
         for info in render_infos:
             surface.blit(info['sprite'], info['render_pos'])
+
+    # returns new pygame surface, which will be scaled to fit the display
+    def render(self, apply_lighting=True):
+        # render map to a temporary surface
+        surface = self.map.render_map_to_new_surface()
+
+        self.render_entities(surface)
 
         # render lighting
         if apply_lighting:

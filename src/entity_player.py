@@ -120,7 +120,7 @@ class Player(BaseEntity):
             velo_mult = 0.5
         else:
             self.in_water = False
-        self.apply_force_to_achieve_velocity(self.desired_velo*velo_mult, PLAYER_MOVEMENT_STRENGTH)
+        self.apply_force_to_achieve_velocity(self.desired_velo*velo_mult, PLAYER_MOVEMENT_STRENGTH, x_only=self.level.is_start_level())
 
         # # update player sprite frame
         if self.desired_velo.is_zero():
@@ -162,7 +162,7 @@ class Player(BaseEntity):
             for i in range(10):
                 particle = WaterParticle(self.level, self.body.position, (random.uniform(-50, 50), random.uniform(-100, -50)))
                 self.level.entities.append(particle)
-        
+
         self.die_if_tile_kills_you()
         if self.dead:
             self.desired_velo = Vec2(0,0)
@@ -172,7 +172,7 @@ class Player(BaseEntity):
 
     def get_lighting(self):
         return 70
-    
+
     def get_lighting_offset(self):
         light_delta = 30
         light_dir = None

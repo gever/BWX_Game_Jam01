@@ -20,9 +20,11 @@ class BaseEntity:
             self.shape.sensor = True
         self.level.space.add(self.body, self.shape)
 
-    def apply_force_to_achieve_velocity(self, desired_velo, strength):
+    def apply_force_to_achieve_velocity(self, desired_velo, strength, x_only=False):
         velocity_diff = desired_velo - Vec2(self.body.velocity[0], self.body.velocity[1])
         movement_force = velocity_diff * strength
+        if x_only:
+            movement_force.y = 0
         self.body.apply_force_at_local_point((movement_force.x, movement_force.y))
 
     def move_towards(self, target_pos, max_speed, strength):
