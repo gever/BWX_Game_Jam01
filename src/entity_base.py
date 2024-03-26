@@ -88,5 +88,9 @@ class BaseEntity:
         # safe to ignore by default
         return None
 
+    # return lighting offset or None
+    def get_lighting_offset(self):
+        return (0,0)
+
     def is_player(self):
         return False

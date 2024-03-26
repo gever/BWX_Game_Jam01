@@ -1,8 +1,10 @@
 import pygame
+import random
 
 from entity_base import BaseEntity
 from entity_waterblob import WaterBlob
 from entity_rock import Rock
+from entity_particle_lava import LavaParticle
 
 def load():
     global assets
@@ -60,8 +62,7 @@ class LavaBlob(BaseEntity):
         if (not self.paused or not self.stone) and not self.paused and not self.stone:
             # TODO: trigger player death noise
             if other_entity.is_player():
-                other_entity.remove()
-                return
+                other_entity.kill()
 
             # TODO: trigger water blob death noise
             if isinstance(other_entity, WaterBlob):
@@ -90,6 +91,11 @@ class LavaBlob(BaseEntity):
         #else:
             #if self.in_lava_frame == 0 or self.in_lava_frame == 4:
         #    self.inlava = False
+        if self.paused == False:
+            if self.stone == False:    
+                if random.random() < 0.15:
+                    particle = LavaParticle(self.level, self.body.position, (random.uniform(-50, 50), random.uniform(-100, 0)))
+                    self.level.entities.append(particle)
 
         if player:
             dist = player.body.position.get_distance(self.body.position)

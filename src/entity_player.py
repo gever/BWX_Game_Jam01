@@ -8,6 +8,7 @@ from config import *
 from entity_base import BaseEntity
 from vec2 import Vec2
 from player_state import player_state
+from entity_particle_water import WaterParticle
 
 def load():
     global assets
@@ -15,18 +16,18 @@ def load():
 
 class PlayerAssets:
     def __init__(self):
-        spritesheet = pygame.image.load('../gfx/player_sprite.png').convert_alpha()
+        spritesheet = pygame.image.load('../gfx/miner_walk_cycle.png').convert_alpha()
         swim_spritesheet = pygame.image.load('../gfx/Swimming_player_sprite.png').convert_alpha()
         death_player_spritesheet = pygame.image.load('../gfx/Dead_Player.png').convert_alpha()
         sprites = []
         swim_sprites = []
         dead_sprites = []
         for i in range(0, 4):
-            frame = spritesheet.subsurface(((17*i + 1), 1, 16, 20))
+            frame = spritesheet.subsurface((16*i, 0, 16, 22))
             sprites.append(frame)
         self.anims = {
-            'left': list(reversed(sprites[0:2])),
-            'right': sprites[2:4],
+            'left': sprites[2:4],
+            'right': sprites[0:2],
         }
         for i in range(0, 2):
             swim_frames = swim_spritesheet.subsurface(((17*i + 1), 1, 16, 35))
@@ -42,9 +43,16 @@ class PlayerAssets:
             'dead': dead_sprites[0:1],
         }
         self.anchor = (7, 16)
+        self.dead_anchor = (13, 12)
 
 # It is convenient to create an instance of the player in each level, rather than "moving" the player between levels:
 class Player(BaseEntity):
+    # keeping track of where we are facing even if we aren't moving
+    FACING_R = 10
+    FACING_L = 11
+    FACING_U = 12
+    FACING_D = 13
+
     def __init__(self, level, initial_pos):
         super().__init__(level, initial_pos)
 
@@ -59,6 +67,7 @@ class Player(BaseEntity):
         self.death_counter = 0
         self.time_until_next_step = 0
         self.last_step_sound = None
+        self.facing = self.FACING_R
 
     def get_render_info(self):
         anim = assets.anims[self.current_anim]
@@ -70,7 +79,7 @@ class Player(BaseEntity):
         return {
             'sprite': anim[frame] if self.in_water == False and self.dead == False else (dead_anim[dead_frame]) if self.dead else(swim_anim[swim_frame]),
             'pos': self.body.position,
-            'anchor': assets.anchor,
+            'anchor': assets.dead_anchor if self.dead else assets.anchor,
         }
 
     def handle_input(self, keys, events, dt):
@@ -81,14 +90,18 @@ class Player(BaseEntity):
                 self.desired_velo += Vec2(-1, 0)
                 self.current_anim = 'left'
                 self.swim_anim = 'swim_left'
+                self.facing = self.FACING_L
             if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
                 self.desired_velo += Vec2(1, 0)
                 self.current_anim = 'right'
                 self.swim_anim = 'swim_right'
+                self.facing = self.FACING_R
             if keys[pygame.K_UP] or keys[pygame.K_w]:
                 self.desired_velo += Vec2(0, -1)
+                self.facing = self.FACING_U
             if keys[pygame.K_DOWN] or keys[pygame.K_s]:
                 self.desired_velo += Vec2(0, 1)
+                self.facing = self.FACING_D
 
         # normalize and scale desired velocity
         if not self.desired_velo.is_zero():
@@ -138,13 +151,21 @@ class Player(BaseEntity):
     def is_player(self):
         return True
 
-    def die_if_tile_kills_you(self):
-        tile_props = self.get_current_tile_props()
-        if tile_props and tile_props.get('kills you') and not self.dead:
+    def kill(self):
+        if not self.dead:
             self.dead = True
             get_audio().play_sfx('death')
 
+    def die_if_tile_kills_you(self):
+        tile_props = self.get_current_tile_props()
+        if tile_props and tile_props.get('kills you'):
+            self.kill()
+
     def act(self, dt):
+        if self.in_water and not self.desired_velo.is_zero():
+            particle = WaterParticle(self.level, self.body.position, (random.uniform(-50, 50), random.uniform(-100, -50)))
+            self.level.entities.append(particle)
+        
         self.die_if_tile_kills_you()
         if self.dead:
             self.desired_velo = Vec2(0,0)
@@ -153,7 +174,24 @@ class Player(BaseEntity):
                 self.remove()
 
     def get_lighting(self):
-        return 100
+        return 70
+    
+    def get_lighting_offset(self):
+        light_delta = 30
+        light_dir = None
+        if self.desired_velo.is_zero():
+            if self.facing == self.FACING_R:
+                return (light_delta, 0)
+            elif self.facing == self.FACING_L:
+                return (-light_delta, 0)
+            elif self.facing == self.FACING_U:
+                return (0, -light_delta)
+            else:
+                return (light_delta, 0)
+        else:
+            light_dir = self.desired_velo.normalized()
+            light_dir *= light_delta     # how far away the bright spot of our headlamp is
+            return light_dir
 
     def remove(self):
         super().remove()
