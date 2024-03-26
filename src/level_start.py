@@ -1,6 +1,7 @@
 import pygame
 import pymunk
 
+from audio import get_audio
 from level_base import BaseLevel
 from collision_types import COLLISION_TYPE_IMPASSABLE_TILE
 
@@ -10,7 +11,10 @@ class Level(BaseLevel):
 
         self.overlay_image = pygame.image.load('../gfx/starting_screen.png').convert_alpha()
 
+
     def reset_extra(self):
+        self.player_falling = False
+
         ledge_body = pymunk.Body(1, float('inf'), body_type=pymunk.Body.STATIC)
         ledge_body.position = (0, 0)
         ledge_shape = pymunk.Poly(ledge_body, [(0, 35), (70, 35), (70, 50), (0, 50)])
@@ -38,6 +42,9 @@ class Level(BaseLevel):
         for entity in self.entities:
             if entity.is_player():
                 entity.body.apply_force_at_local_point((0, entity.body.mass*400))
+                if entity.body.velocity.y > 50 and not self.player_falling:
+                    self.player_falling = True
+                    get_audio().play_sfx('falling')
 
     def render(self, apply_lighting):
         # render map to a temporary surface
