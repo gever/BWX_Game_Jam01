@@ -219,8 +219,6 @@ class BaseLevel:
             light_surface = create_light_surface(surface.get_width(), surface.get_height(), lights)
             surface.blit(light_surface, (0, 0), special_flags=pygame.BLEND_MULT)
             live_counter = player_state.total_lives
-            if player_state.konami:
-                live_counter = 1000
             lives_offset = 0
             for lives in range(live_counter):
                 surface.blit(self.heart_sprite, (lives_offset, 0))
