@@ -18,7 +18,7 @@ class PlayerAssets:
     def __init__(self):
         spritesheet = pygame.image.load('../gfx/miner_walk_cycle.png').convert_alpha()
         swim_spritesheet = pygame.image.load('../gfx/Swimming_player_sprite.png').convert_alpha()
-        death_player_spritesheet = pygame.image.load('../gfx/Dead_Player.png').convert_alpha()
+        death_player_spritesheet = pygame.image.load('../gfx/new dead player.png').convert_alpha()
         sprites = []
         swim_sprites = []
         dead_sprites = []
