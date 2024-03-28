@@ -10,7 +10,6 @@ from vec2 import Vec2
 from player_state import player_state
 from entity_particle_water import WaterParticle
 
-
 def load():
     global assets
     assets = PlayerAssets()
@@ -19,7 +18,7 @@ class PlayerAssets:
     def __init__(self):
         spritesheet = pygame.image.load('../gfx/miner_walk_cycle.png').convert_alpha()
         swim_spritesheet = pygame.image.load('../gfx/Swimming_player_sprite.png').convert_alpha()
-        death_player_spritesheet = pygame.image.load('../gfx/new dead player.png').convert_alpha()
+        death_player_spritesheet = pygame.image.load('../gfx/new final dead player.png').convert_alpha()
         sprites = []
         swim_sprites = []
         dead_sprites = []
@@ -38,7 +37,7 @@ class PlayerAssets:
             'swim_right': swim_sprites[1:2],
         }
         for i in range(0, 1):
-            dead_frames = death_player_spritesheet.subsurface((0, 1, 24, 16))
+            dead_frames = death_player_spritesheet.subsurface((0, 0, 16, 16))
             dead_sprites.append(dead_frames)
         self.dead_anims = {
             'dead': dead_sprites[0:1],
@@ -55,7 +54,6 @@ class Player(BaseEntity):
     def __init__(self, level, initial_pos):
         super().__init__(level, initial_pos)
 
-
         self.current_anim = 'right'
         self.swim_anim = 'swim_right'
         self.dead_anim = 'dead'
@@ -68,7 +66,6 @@ class Player(BaseEntity):
         self.time_until_next_step = 0
         self.last_step_sound = None
         self.facing = self.FACING_R
-        self.lighting = 70
 
     def get_render_info(self):
         anim = assets.anims[self.current_anim]
@@ -101,12 +98,6 @@ class Player(BaseEntity):
                 self.desired_velo += Vec2(0, -1)
             if keys[pygame.K_DOWN] or keys[pygame.K_s]:
                 self.desired_velo += Vec2(0, 1)
-            if keys[pygame.K_k]:
-                self.lighting += 5
-            if keys[pygame.K_j]:
-                if not self.lighting < 2:
-                    self.lighting -= 5
-                
 
         # normalize and scale desired velocity
         if not self.desired_velo.is_zero():
@@ -180,7 +171,7 @@ class Player(BaseEntity):
                 self.remove()
 
     def get_lighting(self):
-        return self.lighting
+        return 70
 
     def get_lighting_offset(self):
         light_delta = 30
