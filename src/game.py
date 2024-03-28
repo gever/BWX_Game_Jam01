@@ -22,7 +22,7 @@ screen = pygame.display.set_mode((screen_width, screen_height)) # this should pr
 clock = pygame.time.Clock()
 font = pygame.font.Font(None, 16)
 running = True
-set_values = True
+set_checks = True
 show_fps = False
 apply_lighting = True
 init_audio()
@@ -57,7 +57,7 @@ while running:
 
     get_audio().update_music()
 
-    if set_values:
+    if set_checks:
         konami = False
         check_1 = False
         check_2 = False
@@ -71,7 +71,7 @@ while running:
         check_10 = False
         checks_done = False
         any_check = False
-        set_values = False
+        set_checks = False
 
     # poll for events
     unhandled_events = []
