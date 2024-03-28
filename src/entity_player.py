@@ -10,6 +10,7 @@ from vec2 import Vec2
 from player_state import player_state
 from entity_particle_water import WaterParticle
 
+
 def load():
     global assets
     assets = PlayerAssets()
@@ -54,6 +55,7 @@ class Player(BaseEntity):
     def __init__(self, level, initial_pos):
         super().__init__(level, initial_pos)
 
+
         self.current_anim = 'right'
         self.swim_anim = 'swim_right'
         self.dead_anim = 'dead'
@@ -66,6 +68,7 @@ class Player(BaseEntity):
         self.time_until_next_step = 0
         self.last_step_sound = None
         self.facing = self.FACING_R
+        self.lighting = 70
 
     def get_render_info(self):
         anim = assets.anims[self.current_anim]
@@ -98,6 +101,12 @@ class Player(BaseEntity):
                 self.desired_velo += Vec2(0, -1)
             if keys[pygame.K_DOWN] or keys[pygame.K_s]:
                 self.desired_velo += Vec2(0, 1)
+            if keys[pygame.K_k]:
+                self.lighting += 5
+            if keys[pygame.K_j]:
+                if not self.lighting < 2:
+                    self.lighting -= 5
+                
 
         # normalize and scale desired velocity
         if not self.desired_velo.is_zero():
@@ -171,7 +180,7 @@ class Player(BaseEntity):
                 self.remove()
 
     def get_lighting(self):
-        return 70
+        return self.lighting
 
     def get_lighting_offset(self):
         light_delta = 30
