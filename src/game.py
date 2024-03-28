@@ -85,20 +85,20 @@ while running:
                 any_check = False
             if event.key == pygame.K_f:
                 show_fps = not show_fps
-            if event.key == pygame.K_SPACE and check_10:
+            if event.key == pygame.K_w and check_10:
                 konami = True
                 checks_done = True
-            elif event.key != pygame.K_SPACE and check_10:
+            elif event.key != pygame.K_w and check_10:
                 check_10 = False
-            elif event.key == pygame.K_q and check_9:
+            elif event.key == pygame.K_d and check_9:
                 check_10 = True
                 check_9 = False
-            elif event.key != pygame.K_q and check_9:
+            elif event.key != pygame.K_d and check_9:
                 check_9 = False
-            elif event.key == pygame.K_e and check_8:
+            elif event.key == pygame.K_a and check_8:
                 check_9 = True
                 check_8 = False
-            elif event.key != pygame.K_e and check_8:
+            elif event.key != pygame.K_a and check_8:
                 check_8 = False
             elif event.key == pygame.K_d and check_7:
                 check_8 = True
