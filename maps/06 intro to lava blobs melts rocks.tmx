@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="23">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="24">
  <tileset firstgid="1" source="cave_crawler_v2.tsx"/>
  <layer id="1" name="Tile Layer 1" width="23" height="13">
   <data encoding="csv">
@@ -25,7 +25,7 @@
 0,77,0,0,0,0,78,78,0,0,0,2684354642,2684354655,16,0,107,62,79,79,0,0,81,96,
 0,77,0,0,0,76,0,0,77,0,0,76,95,31,107,78,78,62,62,0,0,76,0,
 0,77,0,0,0,0,79,79,0,0,0,76,95,2684354655,96,95,95,77,0,0,0,76,0,
-0,77,0,0,0,78,78,78,78,78,0,0,79,79,95,2684354655,82,0,0,0,0,76,2684354655,
+0,77,0,0,0,78,78,78,78,78,0,0,79,2684354642,95,2684354655,82,0,0,0,0,76,2684354655,
 0,77,0,0,91,2,2,2,2,2,92,78,0,0,79,79,0,0,0,0,0,76,2684354655,
 0,77,78,91,1,0,0,17,0,0,18,0,77,0,0,0,0,0,0,0,0,76,0,
 0,76,96,2684354655,31,32,17,16,0,0,18,0,77,0,61,0,0,0,91,2,2,92,96,
@@ -54,16 +54,19 @@
   <object id="14" name="rock" x="338.78" y="30.7577">
    <point/>
   </object>
-  <object id="19" name="rock" x="290.885" y="75.8082">
+  <object id="19" name="rock" x="298.058" y="80.1123">
    <point/>
   </object>
-  <object id="20" name="rock" x="316.155" y="85.5714">
+  <object id="20" name="rock" x="329.067" y="84.6149">
    <point/>
   </object>
   <object id="21" name="lava_blob" x="219.671" y="53.9846">
    <point/>
   </object>
-  <object id="22" name="rock" x="337.978" y="98.4932">
+  <object id="22" name="rock" x="310.241" y="108.536">
+   <point/>
+  </object>
+  <object id="23" name="rock" x="277.853" y="97.0812">
    <point/>
   </object>
  </objectgroup>
