@@ -139,6 +139,7 @@ while running:
                 check_1 = True
             elif event.key == pygame.K_r:
                 player_state.total_lives -= 1
+                print("level reset")
                 current_level.reset()
             elif event.key == pygame.K_t:
                 # demonstrate changing tile layer visibility
