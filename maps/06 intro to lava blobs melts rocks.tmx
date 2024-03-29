@@ -48,10 +48,7 @@
   <object id="10" name="level_exit" x="343.238" y="28.0831">
    <point/>
   </object>
-  <object id="13" name="lava_blob" x="90.9357" y="112.778">
-   <point/>
-  </object>
-  <object id="14" name="rock" x="338.78" y="30.7577">
+  <object id="13" name="lava_blob" x="86.3258" y="117.388">
    <point/>
   </object>
   <object id="19" name="rock" x="298.058" y="80.1123">
@@ -60,7 +57,7 @@
   <object id="20" name="rock" x="329.067" y="84.6149">
    <point/>
   </object>
-  <object id="21" name="lava_blob" x="219.671" y="53.9846">
+  <object id="21" name="lava_blob" x="220.38" y="55.403">
    <point/>
   </object>
   <object id="22" name="rock" x="310.241" y="108.536">
