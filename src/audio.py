@@ -16,6 +16,7 @@ SFX_MAP = {
     'eating': 'eating a shroom.wav',
     'doubler': 'stock_doubler_sfx.mp3',
     'falling': 'falling.wav',
+    'pick_hit': '1 pick hit.wav'
 }
 
 MUSIC_PLAYLIST = [

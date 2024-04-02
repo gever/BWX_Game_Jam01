@@ -43,6 +43,10 @@ class Rock(BaseEntity):
         if other_entity.is_player():
             if player_state.inventory_contains('pickaxe'):
                 self.hits += 1
+                for i in range(5):
+                    particle = RockParticle(self.level, self.body.position, (random.uniform(-50, 50), random.uniform(-100, 0)))
+                    self.level.entities.append(particle)
+                get_audio().play_sfx('pick_hit')
 
                 if self.hits >= 3:
                     self.remove()
@@ -54,8 +58,6 @@ class Rock(BaseEntity):
                         particle = RockParticle(self.level, self.body.position, (random.uniform(-50, 50), random.uniform(-100, 0)))
                         self.level.entities.append(particle)
                     self.remove()
-
-                    get_audio().play_sfx('mine_rock')
                     
     def act(self, dt):
         pass
