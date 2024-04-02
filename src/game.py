@@ -57,7 +57,7 @@ while running:
 
     get_audio().update_music()
 
-    if set_checks:
+    if set_checks or player_state.reset_konami:
         konami = False
         check_1 = False
         check_2 = False
@@ -69,8 +69,8 @@ while running:
         check_8 = False
         check_9 = False
         check_10 = False
-        checks_done = False
         any_check = False
+        checks_done = False
         set_checks = False
 
     # poll for events
@@ -139,7 +139,6 @@ while running:
                 check_1 = True
             elif event.key == pygame.K_r:
                 player_state.total_lives -= 1
-                print("level reset")
                 current_level.reset()
             elif event.key == pygame.K_t:
                 # demonstrate changing tile layer visibility
@@ -161,7 +160,7 @@ while running:
             unhandled_events.append(event)
     if konami:
         konami = False
-        player_state.total_lives = 1000
+        player_state.total_lives = 23
 
     # check keyboard input (currently pressed keys)
     keys = pygame.key.get_pressed()

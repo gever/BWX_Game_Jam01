@@ -5,10 +5,12 @@ class PlayerState:
     def reset(self):
         self.health = 5
         self.inventory = {}
+        self.reset_konami = False
     def restart(self):
         self.health = 5
         self.inventory = {}
         self.total_lives = 5
+        self.reset_konami = True
     def apply_damage(self):
         self.health -= 1
         print(self.health)

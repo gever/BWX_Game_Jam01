@@ -192,6 +192,5 @@ class Player(BaseEntity):
 
     def remove(self):
         super().remove()
-        print("death")
         player_state.total_lives -= 1
 
