@@ -27,6 +27,7 @@ class Rock(BaseEntity):
         self.touch_time = None 
         self.sprite_picker = random.randint(0,1)
         self.hits = 0
+        self.pick_axe_uses = 3
         if self.sprite_picker == 0:
             self.sprite = assets.sprite1
         else:
@@ -43,21 +44,25 @@ class Rock(BaseEntity):
         if other_entity.is_player():
             if player_state.inventory_contains('pickaxe'):
                 self.hits += 1
+                self.pick_axe_uses -= 1
+                
+                if self.pick_axe_uses <= 0:
+                    pickaxe = player_state.get_item('pickaxe')
+                    if pickaxe == None:
+                        return
+                    pickaxe.dropped() # TODO: animate this
+               
                 for i in range(5):
                     particle = RockParticle(self.level, self.body.position, (random.uniform(-50, 50), random.uniform(-100, 0)))
                     self.level.entities.append(particle)
                 get_audio().play_sfx('pick_hit')
 
                 if self.hits >= 3:
-                    self.remove()
-                    pickaxe = player_state.get_item('pickaxe')
-                    if pickaxe == None:
-                        return
-                    pickaxe.dropped() # TODO: animate this
                     for i in range(50):
                         particle = RockParticle(self.level, self.body.position, (random.uniform(-50, 50), random.uniform(-100, 0)))
                         self.level.entities.append(particle)
                     self.remove()
+                    self.pick_axe_uses = 3
                     
     def act(self, dt):
         pass
