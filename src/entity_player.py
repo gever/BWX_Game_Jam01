@@ -19,9 +19,11 @@ class PlayerAssets:
         spritesheet = pygame.image.load('../gfx/miner_walk_cycle.png').convert_alpha()
         swim_spritesheet = pygame.image.load('../gfx/Swimming_player_sprite.png').convert_alpha()
         death_player_spritesheet = pygame.image.load('../gfx/new final dead player.png').convert_alpha()
+        #lava_death_player_spritesheet = pygame.image.load('../gfx/')
         sprites = []
         swim_sprites = []
         dead_sprites = []
+        #lava_death_sprites = []
         for i in range(0, 4):
             frame = spritesheet.subsurface((16*i, 0, 16, 22))
             sprites.append(frame)
@@ -150,12 +152,19 @@ class Player(BaseEntity):
     def kill(self):
         if not self.dead:
             self.dead = True
+            self.normal_death = True
             get_audio().play_sfx('death')
+
+    def lava_kill(self):
+        if not self.dead:
+            self.dead = True
+            self.lava_death = True
+            get_audio().play_sfx('lava_death')
 
     def die_if_tile_kills_you(self):
         tile_props = self.get_current_tile_props()
         if tile_props and tile_props.get('kills you'):
-            self.kill()
+            self.lava_kill()
 
     def act(self, dt):
         if self.in_water and not self.desired_velo.is_zero():
