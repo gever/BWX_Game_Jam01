@@ -21,12 +21,15 @@ def load_levels():
         # this seems inefficient but is not a big deal.
         temp_map = TiledMap(os.path.join('../maps', map_fn))
         subclass_name = temp_map.tmx_data.properties.get('subclass')
+        current_level = None
         if subclass_name:
             imp = __import__(subclass_name, globals(), locals(), ['Level'], 0)
             Level = getattr(imp, 'Level')
             print('map %r has subclass %r' % (map_fn, subclass_name))
-            levels.append(Level(map_fn))
+            current_level = Level(map_fn)
         else:
-            levels.append(BaseLevel(map_fn))
+            current_level = BaseLevel(map_fn)
+        levels.append( current_level )
+        current_level.filename = map_fn
 
     return levels

@@ -140,6 +140,11 @@ while running:
             elif event.key == pygame.K_r:
                 player_state.total_lives -= 1
                 current_level.reset()
+            elif event.key == pygame.K_u:
+                if run_test_levels == False:
+                    run_test_levels = True
+                elif run_test_levels == True:
+                    run_test_levels = False
             elif event.key == pygame.K_t:
                 # demonstrate changing tile layer visibility
                 tmx_data = current_level.map.set_layer_visibility('Tile Layer 2', False)
