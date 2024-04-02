@@ -24,9 +24,9 @@ class RockAssets:
 class Rock(BaseEntity):
     def __init__(self, level, initial_pos):
         super().__init__(level, initial_pos, radius=13, static=True,square=True)
-        self.touch_time = None
-        self.beinghit = False 
+        self.touch_time = None 
         self.sprite_picker = random.randint(0,1)
+        self.hits = 0
         if self.sprite_picker == 0:
             self.sprite = assets.sprite1
         else:
@@ -41,23 +41,32 @@ class Rock(BaseEntity):
 
     def handle_entity_collision(self, other_entity):
         if other_entity.is_player():
-            if not self.beinghit:
-                if player_state.inventory_contains('pickaxe'):
-                    # drop/break the pickaxe
-                    
-                    get_audio().play_sfx('mine_rock')
-                    self.touch_time = time.time()
-                    self.beinghit = True
+            if player_state.inventory_contains('pickaxe'):
+                self.hits += 1
 
+                if self.hits >= 3:
+                    self.remove()
+                    pickaxe = player_state.get_item('pickaxe')
+                    if pickaxe == None:
+                        return
+                    pickaxe.dropped() # TODO: animate this
+                    for i in range(50):
+                        particle = RockParticle(self.level, self.body.position, (random.uniform(-50, 50), random.uniform(-100, 0)))
+                        self.level.entities.append(particle)
+                    self.remove()
+
+                    get_audio().play_sfx('mine_rock')
+                    
     def act(self, dt):
-        if self.touch_time:
-            if time.time() - self.touch_time >= 1:
-                pickaxe = player_state.get_item('pickaxe')
-                if pickaxe == None:
-                    return
-                pickaxe.dropped() # TODO: animate this
-                for i in range(50):
-                    particle = RockParticle(self.level, self.body.position, (random.uniform(-50, 50), random.uniform(-100, 0)))
-                    self.level.entities.append(particle)
-                self.remove()
-                self.beinghit = False
+        pass
+        #if self.touch_time:
+            #if time.time() - self.touch_time >= 1:
+            #    pickaxe = player_state.get_item('pickaxe')
+            #    if pickaxe == None:
+            #        return
+            #    pickaxe.dropped() # TODO: animate this
+            #    for i in range(50):
+            #        particle = RockParticle(self.level, self.body.position, (random.uniform(-50, 50), random.uniform(-100, 0)))
+            #        self.level.entities.append(particle)
+            #    self.remove()
+
