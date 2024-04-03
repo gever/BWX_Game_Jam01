@@ -23,7 +23,12 @@ def load_levels():
         temp_map = TiledMap(os.path.join('../maps', map_fn))
         subclass_name = temp_map.tmx_data.properties.get('subclass')
         current_level = None
-        if subclass_name:
+        if subclass_name == 'level_start':
+            imp = __import__(subclass_name, globals(), locals(), ['Level'], 0)
+            Level = getattr(imp, 'Level')
+            print('map %r has subclass %r' % (map_fn, subclass_name))
+            current_level = Level(map_fn)
+        elif subclass_name == 'level_end':
             imp = __import__(subclass_name, globals(), locals(), ['Level'], 0)
             Level = getattr(imp, 'Level')
             print('map %r has subclass %r' % (map_fn, subclass_name))

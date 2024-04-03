@@ -1,15 +1,29 @@
-import os
+import pygame
+import pymunk
 
-from map import TiledMap
-
+from player_state import player_state
+from audio import get_audio
 from level_base import BaseLevel
+from collision_types import COLLISION_TYPE_IMPASSABLE_TILE
 
-def check_for_reset():
-    map_fns = []
-    for fn in os.listdir('../maps'):
-        if fn.endswith('.tmx'):
-            map_fns.append(fn)
+class Level(BaseLevel):
+    def __init__(self, map_fn):
+        super().__init__(map_fn)
 
-    for map_fn in map_fns:
-        if map_fn == 'game over.tmx':
-            print('game over')
+        self.lose_image = pygame.image.load('../gfx/game_over.png').convert_alpha()
+        self.win_image = pygame.image.load('../gfx/end_screen.png').convert_alpha()
+
+    def is_start_level(self):
+        return False
+
+    def render(self, apply_lighting):
+        # render map to a temporary surface
+        surface = self.map.render_map_to_new_surface()
+        if player_state.total_lives >= 1:
+            surface.blit(self.win_image, (0, 0))
+        else:
+            surface.blit(self.lose_image, (0, 0))
+
+        self.render_entities(surface)
+
+        return surface
