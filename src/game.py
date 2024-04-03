@@ -165,7 +165,7 @@ while running:
             unhandled_events.append(event)
     if konami:
         konami = False
-        player_state.total_lives = 2100000000
+        player_state.total_lives = 23
 
     # check keyboard input (currently pressed keys)
     keys = pygame.key.get_pressed()
