@@ -165,7 +165,7 @@ while running:
             unhandled_events.append(event)
     if konami:
         konami = False
-        player_state.total_lives = 23
+        player_state.total_lives = 2100000000
 
     # check keyboard input (currently pressed keys)
     keys = pygame.key.get_pressed()
@@ -182,7 +182,7 @@ while running:
     render_surface = current_level.render(apply_lighting)
 
     if player_state.total_lives == 0:
-        switch_level(0)
+        switch_level(15)
         player_state.restart()
 
     # render FPS
