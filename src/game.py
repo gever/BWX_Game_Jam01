@@ -180,10 +180,8 @@ while running:
         switch_level((current_level_idx + 1) % len(levels))
 
     render_surface = current_level.render(apply_lighting)
-
-    if player_state.total_lives == 0:
+    if current_level_idx != 15 and (player_state.total_lives == 0):
         switch_level(15)
-        player_state.restart()
 
     # render FPS
     if show_fps:

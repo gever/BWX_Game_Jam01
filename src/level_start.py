@@ -1,6 +1,7 @@
 import pygame
 import pymunk
 
+from player_state import player_state
 from audio import get_audio
 from level_base import BaseLevel
 from collision_types import COLLISION_TYPE_IMPASSABLE_TILE
@@ -28,6 +29,7 @@ class Level(BaseLevel):
         ledge_shape.collision_type = COLLISION_TYPE_IMPASSABLE_TILE
         ledge_shape.elasticity = 0
         self.space.add(ledge_body, ledge_shape)
+        player_state.restart()
 
     def is_start_level(self):
         return True
