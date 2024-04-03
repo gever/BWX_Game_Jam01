@@ -25,6 +25,7 @@ running = True
 set_checks = True
 show_fps = False
 apply_lighting = True
+run_test_levels = False
 init_audio()
 
 # start background music
@@ -33,12 +34,19 @@ get_audio().start_music()
 # load all entities and levels
 load_light_texture()
 entities = load_entities()
-levels = load_levels()
+loader_instance = load_levels()
+levels, main_levels = load_levels()
 
 current_level_idx = 0
 current_level = levels[current_level_idx]
 current_level.reset()
 current_level.start()
+
+def find_next_level(fb):
+    if run_test_levels:
+        switch_level((current_level_idx + fb) % len(levels))
+    else:
+        switch_level((current_level_idx + fb) % len(main_levels))
 
 def switch_level(new_level_idx):
     global current_level, current_level_idx
@@ -156,9 +164,9 @@ while running:
             elif event.key == pygame.K_PLUS:
                 screen = pygame.display.set_mode((screen_width, screen_height))
             elif event.key == pygame.K_LEFTBRACKET:
-                switch_level((current_level_idx - 1) % len(levels))
+                find_next_level(-1)
             elif event.key == pygame.K_RIGHTBRACKET:
-                switch_level((current_level_idx + 1) % len(levels))
+                find_next_level(1)
             else:
                 unhandled_events.append(event)
         else:
@@ -177,8 +185,7 @@ while running:
     current_level.handle_input(keys, unhandled_events, dt)
     current_level.advance_simulation(dt)
     if current_level.level_complete():
-        switch_level((current_level_idx + 1) % len(levels))
-
+        find_next_level(1)
     render_surface = current_level.render(apply_lighting)
 
     if player_state.total_lives == 0:
