@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="529">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="545">
  <tileset firstgid="1" source="cave_crawler_v2.tsx"/>
  <layer id="1" name="Tile Layer 1" width="23" height="13">
   <data encoding="csv">
@@ -35,50 +35,6 @@
 2684354656,0,0,0,2684354655,0,3221225567,0,0,0,96,51,0,2684354655,0,2684354655,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="5" name="Object Layer 2">
-  <object id="515" name="pickaxe" x="66.6667" y="127">
-   <point/>
-  </object>
-  <object id="516" name="pickaxe" x="61.3508" y="79.4336">
-   <point/>
-  </object>
-  <object id="517" name="pickaxe" x="98.3333" y="32">
-   <point/>
-  </object>
-  <object id="518" name="pickaxe" x="180" y="43.6667">
-   <point/>
-  </object>
-  <object id="519" name="pickaxe" x="227.667" y="65.6667">
-   <point/>
-  </object>
-  <object id="520" name="pickaxe" x="199.667" y="121">
-   <point/>
-  </object>
-  <object id="521" name="pickaxe" x="103" y="171.333">
-   <point/>
-  </object>
-  <object id="522" name="pickaxe" x="179.333" y="42.6667">
-   <point/>
-  </object>
-  <object id="523" name="pickaxe" x="104" y="167.667">
-   <point/>
-  </object>
-  <object id="524" name="pickaxe" x="97.8922" y="28.8647">
-   <point/>
-  </object>
-  <object id="525" name="pickaxe" x="238" y="180.667">
-   <point/>
-  </object>
-  <object id="526" name="pickaxe" x="115" y="120.667">
-   <point/>
-  </object>
-  <object id="527" name="pickaxe" x="60.3333" y="81.6667">
-   <point/>
-  </object>
-  <object id="528" name="pickaxe" x="200.333" y="122">
-   <point/>
-  </object>
- </objectgroup>
  <objectgroup id="2" name="Object Layer 1">
   <object id="480" name="player_spawn" x="25.4129" y="106.415">
    <point/>
@@ -123,6 +79,45 @@
    <point/>
   </object>
   <object id="502" name="rock" x="327.667" y="106">
+   <point/>
+  </object>
+  <object id="529" name="pickaxe" x="97.7068" y="30.8396">
+   <point/>
+  </object>
+  <object id="530" name="pickaxe" x="178.697" y="44.386">
+   <point/>
+  </object>
+  <object id="531" name="pickaxe" x="178.273" y="42.6391">
+   <point/>
+  </object>
+  <object id="532" name="pickaxe" x="115" y="119.323">
+   <point/>
+  </object>
+  <object id="533" name="pickaxe" x="115.288" y="119.035">
+   <point/>
+  </object>
+  <object id="534" name="pickaxe" x="115.288" y="119.035">
+   <point/>
+  </object>
+  <object id="535" name="pickaxe" x="103.759" y="170.05">
+   <point/>
+  </object>
+  <object id="536" name="pickaxe" x="237.206" y="179.273">
+   <point/>
+  </object>
+  <object id="537" name="pickaxe" x="237.206" y="179.273">
+   <point/>
+  </object>
+  <object id="540" name="skull_monster" x="200.313" y="120.476">
+   <point/>
+  </object>
+  <object id="541" name="pickaxe" x="71.7669" y="119.9">
+   <point/>
+  </object>
+  <object id="542" name="pickaxe" x="227.83" y="65.985">
+   <point/>
+  </object>
+  <object id="543" name="pickaxe" x="60.6617" y="80.6842">
    <point/>
   </object>
  </objectgroup>

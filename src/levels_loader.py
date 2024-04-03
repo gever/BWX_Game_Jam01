@@ -13,6 +13,7 @@ def load_levels():
     sorted_map_fns.sort()
 
     levels = []
+    main_levels = []
     for map_fn in sorted_map_fns:
         print('loading map:', map_fn)
 
@@ -31,5 +32,7 @@ def load_levels():
             current_level = BaseLevel(map_fn)
         levels.append( current_level )
         current_level.filename = map_fn
+        if current_level.filename[:2].isdigit():
+            main_levels.append( current_level )
 
-    return levels
+    return levels, main_levels
