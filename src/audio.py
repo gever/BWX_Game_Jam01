@@ -4,7 +4,7 @@ import pygame
 audio_engine = None
 
 SFX_MAP = {
-    'lava_death': 'lava sizzle.wav',
+    'lava_death': 'better sizzle.wav',
     'mine_rock': 'miningNoises.wav',
     'death': 'death.wav',
     'fs1': 'footstep_1.wav',

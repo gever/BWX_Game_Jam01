@@ -26,6 +26,7 @@ set_checks = True
 show_fps = False
 apply_lighting = True
 run_test_levels = False
+idle_timer = 0
 init_audio()
 
 # start background music
@@ -68,6 +69,13 @@ while running:
     dead = player_state.dead
 
     get_audio().update_music()
+
+
+    if current_level_idx != 0:
+        idle_timer += 1
+        if idle_timer >= 60 * 60:
+            switch_level(0)
+    
 
     if set_checks or player_state.reset_konami:
         konami = False
@@ -171,6 +179,8 @@ while running:
                 find_next_level(-1)
             elif event.key == pygame.K_RIGHTBRACKET:
                 find_next_level(1)
+            if keys[pygame.K_w] or keys[pygame.K_s] or keys[pygame.K_d] or keys[pygame.K_a]:
+                idle_timer = 0
             else:
                 unhandled_events.append(event)
         else:
