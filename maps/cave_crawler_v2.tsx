@@ -88,4 +88,9 @@
    <property name="passable" type="bool" value="false"/>
   </properties>
  </tile>
+ <tile id="120">
+  <properties>
+   <property name="passable" type="bool" value="false"/>
+  </properties>
+ </tile>
 </tileset>
