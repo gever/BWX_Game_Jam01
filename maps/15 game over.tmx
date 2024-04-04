@@ -24,7 +24,7 @@
 </data>
  </layer>
  <objectgroup id="3" name="Object Layer 1">
-  <object id="33" name="player_spawn" x="168.605" y="107.862">
+  <object id="33" name="player_spawn" x="168.029" y="107.286">
    <point/>
   </object>
   <object id="37" name="level_exit" x="167.998" y="94.2268">

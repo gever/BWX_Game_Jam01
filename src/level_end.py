@@ -13,9 +13,9 @@ class Level(BaseLevel):
         self.lose_image = pygame.image.load('../gfx/game_over.png').convert_alpha()
         self.win_image = pygame.image.load('../gfx/end_screen.png').convert_alpha()
 
-    def is_start_level(self):
-        return False
-
+    def is_end_level(self):
+        return True
+    
     def render(self, apply_lighting):
         # render map to a temporary surface
         surface = self.map.render_map_to_new_surface()

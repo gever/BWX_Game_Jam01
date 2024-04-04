@@ -31,6 +31,9 @@ class BaseLevel:
     def reset_extra(self):
         pass
 
+    def is_end_level(self):
+        return False
+
     def reset(self):
         self.entities = []
 
