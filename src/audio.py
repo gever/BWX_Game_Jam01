@@ -31,6 +31,7 @@ class AudioEngine:
     def __init__(self):
         pygame.mixer.init()
 
+        self.no_music = True
         self.sfx = {}
         for key, fn in SFX_MAP.items():
             self.sfx[key] = pygame.mixer.Sound(os.path.join('../sfx', fn))
@@ -42,13 +43,18 @@ class AudioEngine:
         self.sfx[key].play(-1 if loop else 0)
 
     def _play_music_by_idx(self, idx):
-        music_path = os.path.join('../music', MUSIC_PLAYLIST[idx])
-        print('Playing music:', music_path)
-        pygame.mixer.music.load(os.path.join('../music', music_path))
-        pygame.mixer.music.play(0)
+        if not self.no_music:
+            music_path = os.path.join('../music', MUSIC_PLAYLIST[idx])
+            print('Playing music:', music_path)
+            pygame.mixer.music.load(os.path.join('../music', music_path))
+            pygame.mixer.music.play(0)
 
     def start_music(self):
-        self._play_music_by_idx(self.music_idx)
+        if not self.no_music:
+            self._play_music_by_idx(self.music_idx)
+    def stop_music(self):
+        pygame.mixer.music.stop()
+        self.no_music = True
 
     def update_music(self):
         if not pygame.mixer.music.get_busy():

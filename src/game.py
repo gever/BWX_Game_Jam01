@@ -29,6 +29,7 @@ end_skip = False
 run_test_levels = False
 idle_timer = 0
 time_done = False
+no_music_timer = 0
 init_audio()
 
 # start background music
@@ -46,8 +47,11 @@ current_level.reset()
 current_level.start()
 
 def find_next_level(fb):
-    global time_done
+    global time_done, no_music_timer
+    if current_level_idx == 0:
+        no_music_timer = 0
     if current_level_idx == 16 and not end_skip:
+        get_audio().no_music = True
         switch_level(0)
         time_done = False
     elif current_level_idx == 15:
@@ -81,7 +85,11 @@ while running:
         idle_timer += 1
         if idle_timer >= 60 * 60:
             switch_level(0)
-    
+    if current_level_idx == 0:
+        no_music_timer += 1
+
+    if idle_timer >= 60 * 30 or (current_level_idx == 0 and no_music_timer > 60 * 7.5):
+        get_audio().stop_music()
 
     if set_checks or player_state.reset_konami:
         konami = False
@@ -190,6 +198,8 @@ while running:
                 find_next_level(1)
             if keys[pygame.K_w] or keys[pygame.K_s] or keys[pygame.K_d] or keys[pygame.K_a]:
                 idle_timer = 0
+                no_music_timer = 0
+                get_audio().no_music = False
             else:
                 unhandled_events.append(event)
         else:
