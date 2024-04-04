@@ -25,6 +25,7 @@ running = True
 set_checks = True
 show_fps = False
 apply_lighting = True
+end_skip = False
 run_test_levels = False
 idle_timer = 0
 init_audio()
@@ -44,7 +45,7 @@ current_level.reset()
 current_level.start()
 
 def find_next_level(fb):
-    if current_level_idx ==  15:
+    if current_level_idx == 16 and not end_skip:
         switch_level(0)
     elif run_test_levels:
         switch_level((current_level_idx + fb) % len(levels))
@@ -160,15 +161,18 @@ while running:
             elif event.key == pygame.K_r:
                 player_state.total_lives -= 1
                 current_level.reset()
-            elif event.key == pygame.K_u:
+            elif event.key == pygame.K_t:
                 if run_test_levels == False:
                     run_test_levels = True
+                    end_skip = True
                 elif run_test_levels == True:
                     run_test_levels = False
-            elif event.key == pygame.K_t:
-                # demonstrate changing tile layer visibility
-                tmx_data = current_level.map.set_layer_visibility('Tile Layer 2', False)
-                current_level._create_tile_physics()
+                    end_skip = False
+            #elif event.key == pygame.K_t:
+            #    # demonstrate changing tile layer visibility
+            #    # currently unused, remove at launch day if still unused   
+            #    tmx_data = current_level.map.set_layer_visibility('Tile Layer 2', False)
+            #    current_level._create_tile_physics()
             elif event.key == pygame.K_l:
                 apply_lighting = not apply_lighting
             elif event.key == pygame.K_MINUS:
@@ -237,7 +241,7 @@ while running:
 
     clock.tick(60)  # limits FPS to 60
 
-    if not player_state.total_lives and current_level_idx != 15:
-        switch_level(15)
+    if not player_state.total_lives and current_level_idx != 16:
+        switch_level(16)
 
 pygame.quit()
