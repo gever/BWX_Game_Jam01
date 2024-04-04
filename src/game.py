@@ -83,12 +83,12 @@ while running:
 
     if current_level_idx != 0:
         idle_timer += 1
-        if idle_timer >= 60 * 60:
+        if idle_timer >= 60 * 30:
             switch_level(0)
     if current_level_idx == 0:
         no_music_timer += 1
 
-    if idle_timer >= 60 * 30 or (current_level_idx == 0 and no_music_timer > 60 * 7.5):
+    if idle_timer >= 60 * 20 or (current_level_idx == 0 and no_music_timer > 60 * 7.5):
         get_audio().stop_music()
 
     if set_checks or player_state.reset_konami:
