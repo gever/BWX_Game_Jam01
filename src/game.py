@@ -229,6 +229,5 @@ while running:
 
     if not player_state.total_lives and current_level_idx != 15:
         switch_level(15)
-        player_state.total_lives = 5
 
 pygame.quit()
