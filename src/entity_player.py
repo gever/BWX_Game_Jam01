@@ -17,7 +17,7 @@ def load():
 class PlayerAssets:
     def __init__(self):
         spritesheet = pygame.image.load('../gfx/miner_walk_cycle.png').convert_alpha()
-        swim_spritesheet = pygame.image.load('../gfx/Swimming_player_sprite.png').convert_alpha()
+        swim_spritesheet = pygame.image.load('../gfx/miner_reflected_walk_cycle.png').convert_alpha()
         death_player_spritesheet = pygame.image.load('../gfx/new final dead player.png').convert_alpha()
         #lava_death_player_spritesheet = pygame.image.load('../gfx/')
         sprites = []
@@ -31,12 +31,12 @@ class PlayerAssets:
             'left': sprites[2:4],
             'right': sprites[0:2],
         }
-        for i in range(0, 2):
-            swim_frames = swim_spritesheet.subsurface(((17*i + 1), 1, 16, 35))
+        for i in range(0, 4):
+            swim_frames = swim_spritesheet.subsurface(((16*i), 0, 16, 22))
             swim_sprites.append(swim_frames)
         self.swim_anims = {
-            'swim_left': swim_sprites[0:1],
-            'swim_right': swim_sprites[1:2],
+            'swim_left': swim_sprites[0:2],
+            'swim_right': swim_sprites[2:4],
         }
         for i in range(0, 1):
             dead_frames = death_player_spritesheet.subsurface((0, 0, 16, 16))
