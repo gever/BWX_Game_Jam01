@@ -43,7 +43,9 @@ current_level.reset()
 current_level.start()
 
 def find_next_level(fb):
-    if run_test_levels:
+    if current_level_idx ==  15:
+        switch_level(0)
+    elif run_test_levels:
         switch_level((current_level_idx + fb) % len(levels))
     else:
         switch_level((current_level_idx + fb) % len(main_levels))
@@ -62,6 +64,8 @@ while running:
     # calculate time since last frame
     dt = time.time() - last_time
     last_time = time.time()
+
+    dead = player_state.dead
 
     get_audio().update_music()
 
@@ -187,8 +191,6 @@ while running:
     if current_level.level_complete():
         find_next_level(1)
     render_surface = current_level.render(apply_lighting)
-    if current_level_idx != 15 and (player_state.total_lives == 0):
-        switch_level(15)
 
     # render FPS
     if show_fps:
@@ -224,5 +226,9 @@ while running:
     pygame.display.flip()
 
     clock.tick(60)  # limits FPS to 60
+
+    if not player_state.total_lives and current_level_idx != 15:
+        switch_level(15)
+        player_state.total_lives = 5
 
 pygame.quit()

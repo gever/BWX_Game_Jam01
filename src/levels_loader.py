@@ -3,6 +3,7 @@ import os
 from map import TiledMap
 
 from level_base import BaseLevel
+from player_state import player_state
 
 def load_levels():
     # list .tmx files in maps dir
