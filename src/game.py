@@ -102,6 +102,8 @@ while running:
                 elif run_test_levels == True:
                     run_test_levels = False
                     end_skip = False
+            elif event.key == pygame.K_f:
+                show_fps = not show_fps
             #elif event.key == pygame.K_t:
             #    # demonstrate changing tile layer visibility
             #    # currently unused, remove at launch day if still unused   
