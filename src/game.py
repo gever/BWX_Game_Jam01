@@ -28,7 +28,6 @@ apply_lighting = True
 end_skip = False
 run_test_levels = False
 idle_timer = 0
-time_done = False
 no_music_timer = 0
 init_audio()
 
@@ -47,15 +46,12 @@ current_level.reset()
 current_level.start()
 
 def find_next_level(fb):
-    global time_done, no_music_timer
+    global no_music_timer
     if current_level_idx == 0:
         no_music_timer = 0
-    if current_level_idx == 16 and not end_skip:
+    if current_level_idx == 16:
+        switch_level(17)
         get_audio().no_music = True
-        switch_level(0)
-        time_done = False
-    elif current_level_idx == 15:
-        switch_level(16)
     elif run_test_levels:
         switch_level((current_level_idx + fb) % len(levels))
     else:
@@ -257,10 +253,7 @@ while running:
 
     clock.tick(60)  # limits FPS to 60
 
-    if not player_state.total_lives and current_level_idx != 16:
-        switch_level(16)
-
-    if current_level_idx == 16 and not time_done:
-        time_done = True
+    if not player_state.total_lives and current_level_idx != 17:
+        switch_level(17)
 
 pygame.quit()
