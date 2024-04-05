@@ -83,7 +83,7 @@ while running:
 
     if current_level_idx != 0:
         idle_timer += 1
-        if idle_timer >= 60 * 5:
+        if idle_timer >= 60 * 30:
             switch_level(0)
     elif current_level_idx == 0:
         idle_timer = 0
