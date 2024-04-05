@@ -49,10 +49,12 @@ def find_next_level(fb):
     global no_music_timer
     if current_level_idx == 0:
         no_music_timer = 0
-    if current_level_idx == 16:
+    elif current_level_idx == 16:
         switch_level(17)
         get_audio().no_music = True
-    elif run_test_levels:
+    elif current_level_idx == 17:
+        switch_level(0)
+    if run_test_levels:
         switch_level((current_level_idx + fb) % len(levels))
     else:
         switch_level((current_level_idx + fb) % len(main_levels))
