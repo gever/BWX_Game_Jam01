@@ -4,6 +4,7 @@ import pymunk
 from config import *
 from collision_types import *
 from player_state import player_state
+from audio import get_audio
 
 class BaseEntity:
     def __init__(self, level, initial_pos, *, radius=6, square = False, mass=1, static=False, collision_type=COLLISION_TYPE_ENTITY, sensor=False):
@@ -59,6 +60,7 @@ class BaseEntity:
     def die_if_tile_kills_you(self):
         tile_props = self.get_current_tile_props()
         if tile_props and tile_props.get('kills you'):
+            get_audio().play_sfx('lava_death')
             self.remove()
 
     def remove(self):

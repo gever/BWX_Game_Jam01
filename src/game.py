@@ -72,37 +72,19 @@ while running:
     dt = time.time() - last_time
     last_time = time.time()
 
-    dead = player_state.dead
-
     get_audio().update_music()
 
 
     if current_level_idx != 0:
         idle_timer += 1
-        if idle_timer >= 60 * 30:
+        if idle_timer >= 1800:
             switch_level(0)
     elif current_level_idx == 0:
         idle_timer = 0
         no_music_timer += 1
 
-    if idle_timer >= 60 * 20 or (current_level_idx == 0 and no_music_timer > 60 * 7.5):
+    if idle_timer >= 1200 or (current_level_idx == 0 and no_music_timer > 450):
         get_audio().stop_music()
-
-    if set_checks or player_state.reset_konami:
-        konami = False
-        check_1 = False
-        check_2 = False
-        check_3 = False
-        check_4 = False
-        check_5 = False
-        check_6 = False
-        check_7 = False
-        check_8 = False
-        check_9 = False
-        check_10 = False
-        any_check = False
-        checks_done = False
-        set_checks = False
 
     # poll for events
     unhandled_events = []
@@ -110,65 +92,7 @@ while running:
         if event.type == pygame.QUIT: # pygame.QUIT event means the user clicked X to close your window
             running = False
         elif event.type == pygame.KEYDOWN:
-            if check_1 or check_2 or check_3 or check_4 or check_5 or check_6 or check_7 or check_8 or check_9 or check_10 or checks_done:
-                any_check = True
-            else:
-                any_check = False
-            if event.key == pygame.K_f:
-                show_fps = not show_fps
-            if event.key == pygame.K_w and check_10:
-                konami = True
-                checks_done = True
-            elif event.key != pygame.K_w and check_10:
-                check_10 = False
-            elif event.key == pygame.K_d and check_9:
-                check_10 = True
-                check_9 = False
-            elif event.key != pygame.K_d and check_9:
-                check_9 = False
-            elif event.key == pygame.K_a and check_8:
-                check_9 = True
-                check_8 = False
-            elif event.key != pygame.K_a and check_8:
-                check_8 = False
-            elif event.key == pygame.K_d and check_7:
-                check_8 = True
-                check_7 = False
-            elif event.key != pygame.K_d and check_7:
-                check_7 = False
-            elif event.key == pygame.K_a and check_6:
-                check_7 = True
-                check_6 = False
-            elif event.key != pygame.K_a and check_6:
-                check_6 = False
-            elif event.key == pygame.K_d and check_5:
-                check_6 = True
-                check_5 = False
-            elif event.key != pygame.K_d and check_5:
-                check_5 = False
-            elif event.key == pygame.K_a and check_4:
-                check_5 = True
-                check_4 = True
-            elif event.key != pygame.K_a and check_4:
-                check_4 = False
-            elif event.key == pygame.K_s and check_3:
-                check_4 = True
-                check_3 = False
-            elif event.key != pygame.K_s and check_3:
-                check_3 = False
-            elif event.key == pygame.K_s and check_2:
-                check_3 = True
-                check_2 = False
-            elif event.key != pygame.K_s and check_2:
-                check_2 = False
-            elif event.key == pygame.K_w and check_1:
-                check_2 = True
-                check_1 = False
-            elif event.key != pygame.K_w and check_1:
-                check_1 = False
-            if event.key == pygame.K_w and any_check == False:
-                check_1 = True
-            elif event.key == pygame.K_r:
+            if event.key == pygame.K_r:
                 player_state.total_lives -= 1
                 current_level.reset()
             elif event.key == pygame.K_t:
@@ -201,9 +125,6 @@ while running:
                 unhandled_events.append(event)
         else:
             unhandled_events.append(event)
-    if konami:
-        konami = False
-        player_state.total_lives = 23
 
     # check keyboard input (currently pressed keys)
     keys = pygame.key.get_pressed()
