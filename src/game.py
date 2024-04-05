@@ -83,9 +83,10 @@ while running:
 
     if current_level_idx != 0:
         idle_timer += 1
-        if idle_timer >= 60 * 30:
+        if idle_timer >= 60 * 5:
             switch_level(0)
-    if current_level_idx == 0:
+    elif current_level_idx == 0:
+        idle_timer = 0
         no_music_timer += 1
 
     if idle_timer >= 60 * 20 or (current_level_idx == 0 and no_music_timer > 60 * 7.5):
