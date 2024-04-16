@@ -111,7 +111,6 @@ while running:
                 find_next_level(1)
             if event.key in (pygame.K_w, pygame.K_a, pygame.K_s, pygame.K_d):
                 idle_timer = 0
-                print('reset')
                 no_music_timer = 0
                 get_audio().no_music = False
             else:
