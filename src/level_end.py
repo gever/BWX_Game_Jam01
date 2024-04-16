@@ -1,4 +1,5 @@
 import pygame
+import time
 import pymunk
 
 from player_state import player_state
@@ -10,7 +11,7 @@ class Level(BaseLevel):
     def __init__(self, map_fn):
         super().__init__(map_fn)
 
-        self.lose_image = pygame.image.load('../gfx/game_over.png').convert_alpha()
+        self.lose_image = pygame.image.load('../gfx/you lost.png').convert_alpha()
         self.win_image = pygame.image.load('../gfx/end_screen.png').convert_alpha()
 
     def is_end_level(self):
@@ -23,7 +24,5 @@ class Level(BaseLevel):
             surface.blit(self.win_image, (0, 0))
         else:
             surface.blit(self.lose_image, (0, 0))
-
-        self.render_entities(surface)
 
         return surface

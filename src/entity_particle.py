@@ -13,5 +13,5 @@ class ParticleEntity(BaseEntity):
     def act(self, dt):
         g = 300
         self.body.apply_force_at_local_point((0, g*self.body.mass))
-        if time.time() - self.creation_time > 0.5:
+        if time.time() - self.creation_time > .25:
             self.remove()
