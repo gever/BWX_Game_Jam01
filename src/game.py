@@ -97,20 +97,8 @@ while running:
             if event.key == pygame.K_r:
                 player_state.total_lives -= 1
                 current_level.reset()
-            elif event.key == pygame.K_t:
-                if run_test_levels == False:
-                    run_test_levels = True
-                    end_skip = True
-                elif run_test_levels == True:
-                    run_test_levels = False
-                    end_skip = False
             elif event.key == pygame.K_f:
                 show_fps = not show_fps
-            #elif event.key == pygame.K_t:
-            #    # demonstrate changing tile layer visibility
-            #    # currently unused, remove at launch day if still unused   
-            #    tmx_data = current_level.map.set_layer_visibility('Tile Layer 2', False)
-            #    current_level._create_tile_physics()
             elif event.key == pygame.K_l:
                 apply_lighting = not apply_lighting
             elif event.key == pygame.K_MINUS:
@@ -121,8 +109,9 @@ while running:
                 find_next_level(-1)
             elif event.key == pygame.K_RIGHTBRACKET:
                 find_next_level(1)
-            if keys[pygame.K_w] or keys[pygame.K_s] or keys[pygame.K_d] or keys[pygame.K_a]:
+            if event.key in (pygame.K_w, pygame.K_a, pygame.K_s, pygame.K_d):
                 idle_timer = 0
+                print('reset')
                 no_music_timer = 0
                 get_audio().no_music = False
             else:
