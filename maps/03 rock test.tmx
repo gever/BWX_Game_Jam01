@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="546">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="23" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="548">
  <tileset firstgid="1" source="cave_crawler_v2.tsx"/>
  <layer id="1" name="Tile Layer 1" width="23" height="13">
   <data encoding="csv">
@@ -81,7 +81,7 @@
   <object id="529" name="pickaxe" x="97.7068" y="30.8396">
    <point/>
   </object>
-  <object id="530" name="pickaxe" x="178.697" y="44.386">
+  <object id="530" name="pickaxe" x="60.697" y="81.386">
    <point/>
   </object>
   <object id="531" name="pickaxe" x="178.273" y="42.6391">
@@ -102,7 +102,7 @@
   <object id="536" name="pickaxe" x="237.206" y="179.273">
    <point/>
   </object>
-  <object id="537" name="pickaxe" x="237.206" y="179.273">
+  <object id="537" name="pickaxe" x="121.206" y="108.273">
    <point/>
   </object>
   <object id="540" name="skull_monster" x="258.112" y="68.4108">
@@ -115,6 +115,9 @@
    <point/>
   </object>
   <object id="543" name="pickaxe" x="60.6617" y="80.6842">
+   <point/>
+  </object>
+  <object id="547" name="pickaxe" x="287.372" y="26.5271">
    <point/>
   </object>
  </objectgroup>
