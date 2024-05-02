@@ -5,6 +5,7 @@ import pygame
 
 from audio import init_audio, get_audio
 from config import *
+from network import Network
 from levels_loader import load_levels
 from entities_loader import load_entities
 from level_base import BaseLevel
@@ -31,8 +32,7 @@ idle_timer = 0
 no_music_timer = 0
 init_audio()
 
-# start background music
-get_audio().start_music()
+pygame.display.set_caption("grimace shake")
 
 # load all entities and levels
 load_light_texture()
@@ -43,7 +43,6 @@ levels, main_levels = load_levels()
 current_level_idx = 0
 current_level = levels[current_level_idx]
 current_level.reset()
-current_level.start()
 
 def find_next_level(fb):
     global no_music_timer
@@ -58,12 +57,17 @@ def find_next_level(fb):
 
 def switch_level(new_level_idx):
     global current_level, current_level_idx
-    current_level.stop()
     current_level = levels[new_level_idx]
     print("current level:", current_level.map_fn)
     current_level.reset()
-    current_level.start()
     current_level_idx = new_level_idx
+
+def read_pos(str):
+    str = str.split(",")
+    return int(str[0]), int(str[1])
+
+def make_pos(tup):
+    return str(tup[0]) + "," + str(tup[1])
 
 last_time = time.time()
 while running:

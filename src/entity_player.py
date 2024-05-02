@@ -7,6 +7,7 @@ from audio import get_audio
 from config import *
 from entity_base import BaseEntity
 from vec2 import Vec2
+from network import Network
 from player_state import player_state
 from entity_particle_water import WaterParticle
 
@@ -19,11 +20,9 @@ class PlayerAssets:
         spritesheet = pygame.image.load('../gfx/miner_walk_cycle.png').convert_alpha()
         swim_spritesheet = pygame.image.load('../gfx/miner_reflected_walk_cycle.png').convert_alpha()
         death_player_spritesheet = pygame.image.load('../gfx/new final dead player.png').convert_alpha()
-        #lava_death_player_spritesheet = pygame.image.load('../gfx/')
         sprites = []
         swim_sprites = []
         dead_sprites = []
-        #lava_death_sprites = []
         for i in range(0, 4):
             frame = spritesheet.subsurface((16*i, 0, 16, 22))
             sprites.append(frame)
@@ -86,6 +85,7 @@ class Player(BaseEntity):
         if self.dead == False:
             # determine desired player velocity based on keyboard input
             self.desired_velo = Vec2()
+            #n = Network()
             if keys[pygame.K_LEFT] or keys[pygame.K_a]:
                 self.desired_velo += Vec2(-1, 0)
                 self.current_anim = 'left'
@@ -100,18 +100,16 @@ class Player(BaseEntity):
                 self.desired_velo += Vec2(0, -1)
             if keys[pygame.K_DOWN] or keys[pygame.K_s]:
                 self.desired_velo += Vec2(0, 1)
+            self.x = self.body.position[0]
+            self.y = self.body.position[1]
+            self.full_pos = (self.x, self.y)
+            #self.full_pos = self.pos.decode(encoding='ascii',errors='xmlcharrefreplace')
+            
+            #n.send(self.full_pos[0])
 
         # normalize and scale desired velocity
         if not self.desired_velo.is_zero():
             multiplier = PLAYER_SPEED
-            if keys[pygame.K_SPACE]:
-                if self.stamina >= 30:
-                    multiplier += PLAYER_SPEED_BOOST
-                    self.stamina = self.stamina - 10
-            else:
-                self.stamina = self.stamina + 1
-                if self.stamina > MAX_STAMINA:
-                    self.stamina = MAX_STAMINA
             self.desired_velo = self.desired_velo.normalized() * multiplier
 
         # apply force to player body to make its velocity approach the desired velocity
@@ -124,7 +122,7 @@ class Player(BaseEntity):
             self.in_water = False
         self.apply_force_to_achieve_velocity(self.desired_velo*velo_mult, PLAYER_MOVEMENT_STRENGTH, x_only=self.level.is_start_level())
 
-        # # update player sprite frame
+        # update player sprite frame
         if self.desired_velo.is_zero():
             self.anim_phase = 0
             self.time_until_next_step = 0
@@ -152,19 +150,13 @@ class Player(BaseEntity):
     def kill(self):
         if not self.dead:
             self.dead = True
-            self.normal_death = True
             get_audio().play_sfx('death')
-
-    def lava_kill(self):
-        if not self.dead:
-            self.dead = True
-            self.lava_death = True
-            get_audio().play_sfx('lava_death')
 
     def die_if_tile_kills_you(self):
         tile_props = self.get_current_tile_props()
         if tile_props and tile_props.get('kills you'):
-            self.lava_kill()
+            self.dead = True
+            get_audio().play_sfx('lava_death')
 
     def act(self, dt):
         if self.in_water and not self.desired_velo.is_zero():

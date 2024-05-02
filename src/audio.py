@@ -39,7 +39,6 @@ class AudioEngine:
         self.music_idx = 0
 
     def play_sfx(self, key, loop=False):
-        #pygame.mixer.Sound.play(self.sfx[key])
         self.sfx[key].play(-1 if loop else 0)
 
     def _play_music_by_idx(self, idx):

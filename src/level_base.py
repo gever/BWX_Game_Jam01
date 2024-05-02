@@ -105,12 +105,6 @@ class BaseLevel:
     def _get_tile_props_by_coords(self, x, y):
         return self.map.get_tile_props_by_coords(self.map.get_first_tile_layer_index(), x, y)
 
-    def start(self):
-        pass
-
-    def stop(self):
-        pass
-
     def remove_entity(self, entity):
         self.entities.remove(entity)
 
@@ -228,5 +222,3 @@ class BaseLevel:
                 lives_offset += 16
         return surface
 
-    def stop(self):
-        pass
